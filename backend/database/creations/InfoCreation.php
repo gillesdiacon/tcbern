@@ -3,9 +3,9 @@
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
- * Creation/Migration template for use with "novice"
+ * Creation template for use with "novice"
  */
-class InfoMigration {
+class InfoCreation {
 
     function run(){
         Capsule::schema()->dropIfExists('info');

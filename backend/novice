@@ -3,8 +3,9 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-define("MIGRATIONS_PATH", __DIR__."/app/database/migrations");
-define("SEEDS_PATH", __DIR__."/app/database/seeds");
+define("CREATIONS_PATH", __DIR__."/database/creations");
+define("MIGRATIONS_PATH", __DIR__."/database/migrations");
+define("SEEDS_PATH", __DIR__."/database/seeds");
 
 /**
  * Script for creating, destroying, and seeding the app's database
@@ -27,6 +28,10 @@ class Novice {
             $this->help();
         } else {
             switch ($this->args[1]) {
+                case "create":
+                    $this->runCreations();
+                    if (!isset($this->args[2]) || $this->args[2] != '--seed')
+                        break;
                 case "migrate":
                     $this->runMigrations();
                     if (!isset($this->args[2]) || $this->args[2] != '--seed')
@@ -41,6 +46,14 @@ class Novice {
             }
         }
     }
+
+    function runCreations()
+    {
+        $files = glob(CREATIONS_PATH.'/*.php');
+
+        $this->run($files);
+    }
+
 
     function runMigrations()
     {
