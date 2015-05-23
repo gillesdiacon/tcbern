@@ -12,8 +12,4 @@ class Info extends Model {
     protected $table = 'info';
 
     // 'id', 'created_at' and 'updated_at' columns are automatically added by Eloquent
-
-    //public $title;
-
-    //public $content;
 }
