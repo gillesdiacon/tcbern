@@ -7,6 +7,7 @@ After updating composer.json (new dependency or ...), or after creating a new
 model in private/models, run this command to update autoloading scripts
 ```bash
 php composer.phar update
+```
 
 ## Database Creation, Migration and Seeding
 
