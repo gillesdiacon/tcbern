@@ -9,8 +9,8 @@ class InfoSeed {
 
     function run() {
         $info = new Info;
-        $info->title = "Test User 3";
-        $info->content = "This is my third news";
+        $info->title = "Test User 1";
+        $info->content = "This is my first news";
         $info->save();
 
         $info2 = new Info;

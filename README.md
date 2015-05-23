@@ -29,8 +29,3 @@ php novice migrate
 ```bash
 php novice seed
 ```
-
-#### Create/Migrate then seed
-```bash
-php novice migrate --seed
-```

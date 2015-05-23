@@ -19,7 +19,7 @@ class Novice {
 
     function help()
     {
-        echo "usage: php " . $this->args[0] . " <command> [<args>]\n";
+        echo "usage: php " . $this->args[0] . " [create|migrate|seed]\n";
     }
 
     function exec()
@@ -30,17 +30,19 @@ class Novice {
             switch ($this->args[1]) {
                 case "create":
                     $this->runCreations();
-                    if (!isset($this->args[2]) || $this->args[2] != '--seed')
-                        break;
+                    break;
+
                 case "migrate":
                     $this->runMigrations();
-                    if (!isset($this->args[2]) || $this->args[2] != '--seed')
-                        break;
+                    break;
+
                 case "seed":
                     $this->runSeed();
                     break;
+
                 case "help":
                 case "--help":
+                default:
                     $this->help();
                     break;
             }
