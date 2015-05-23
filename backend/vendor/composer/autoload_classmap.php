@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'TcBern\\Model\\Info' => $baseDir . '/app/models/Info.php',
+    'TcBern\\Model\\Info' => $baseDir . '/private/models/Info.php',
 );
