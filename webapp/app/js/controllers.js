@@ -1,6 +1,6 @@
 var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside'])
 
-tcbernControllers.controller('MainCtrl', function($scope, $aside) {
+tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
     $scope.asideState = {
       open: false
     };
@@ -29,6 +29,11 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside) {
             $modalInstance.dismiss();
             e.stopPropagation();
           };
+          $scope.go = function(e, to) {
+            $modalInstance.dismiss();
+            e.stopPropagation();
+            $state.go(to);
+          }
         }
       }).result.then(postClose, postClose);
     }

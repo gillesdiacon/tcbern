@@ -2,8 +2,8 @@
   <h3 class="modal-title">ngAside</h3>
 </div>-->
 <div class="modal-body">
-  <a ui-sref="news">News</a><br />
-  <a ui-sref="items">Items</a>
+  <button ng-click="go($event, 'news')">News</button><br />
+  <button ng-click="go($event, 'items')">Items</button><br />
 </div>
 <!--<div class="modal-footer">
   <button class="btn btn-primary" ng-click="ok($event)">OK</button>
