@@ -29,3 +29,21 @@ php novice migrate
 ```bash
 php novice seed
 ```
+
+## Webapp
+
+The application is built with [npm](https://www.npmjs.com/) and [bower](http://bower.io/).
+
+- Install
+```bash
+cd webapp
+npm install
+bower install
+```
+- Start
+```bash
+# Start locally a Node.js server listening on the port 8000
+npm start
+```
+
+[http://localhost:8000/app/index.html]
