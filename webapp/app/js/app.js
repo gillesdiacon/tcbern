@@ -1,4 +1,4 @@
-angular.module('tcbernApp', ['ui.router']).config(function($stateProvider, $urlRouterProvider) {
+angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function($stateProvider, $urlRouterProvider) {
   //For any unmatched urls, redirect to ...
   $urlRouterProvider.otherwise('/news');
   $urlRouterProvider.when('', '/news');
@@ -38,6 +38,3 @@ angular.module('tcbernApp', ['ui.router']).config(function($stateProvider, $urlR
       }
     });
 });
-
-// ng-controller="AppCtrl"
-//angular.module('tcbernApp', []).controller('AppCtrl', function($scope) {});

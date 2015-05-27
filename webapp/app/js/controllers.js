@@ -1,6 +1,6 @@
 var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside'])
 
-tcbernControllers.controller('MenuCtrl', function($scope, $aside) {
+tcbernControllers.controller('MainCtrl', function($scope, $aside) {
     $scope.asideState = {
       open: false
     };
@@ -15,7 +15,7 @@ tcbernControllers.controller('MenuCtrl', function($scope, $aside) {
       }
       
       $aside.open({
-        templateUrl: 'aside.html',
+        templateUrl: 'partials/menu.html',
         placement: 'left',
         size: 'sm',
         //backdrop: true,
