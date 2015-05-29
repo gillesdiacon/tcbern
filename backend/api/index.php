@@ -45,6 +45,7 @@ $app->get(
 
         // send response header for JSON content type
         $app->response()->header('Content-Type', 'application/json');
+        $app->response()->header('Access-Control-Allow-Origin', '*');
 
         // return JSON-encoded response body with query results
         echo $infos->toJson();
@@ -59,6 +60,7 @@ $app->get(
 
         // send response header for JSON content type
         $app->response()->header('Content-Type', 'application/json');
+        $app->response()->header('Access-Control-Allow-Origin', '*');
 
         try {
             // query database for one info by id
@@ -85,6 +87,7 @@ $app->post(
 
         // return JSON-encoded response body
         $app->response()->header('Content-Type', 'application/json');
+        $app->response()->header('Access-Control-Allow-Origin', '*');
 
         try {
             // get and decode JSON request body
@@ -114,6 +117,7 @@ $app->post(
 
         // return JSON-encoded response body
         $app->response()->header('Content-Type', 'application/json');
+        $app->response()->header('Access-Control-Allow-Origin', '*');
 
         try {
             // get and decode JSON request body
@@ -150,6 +154,7 @@ $app->delete(
 
         // return JSON-encoded response body
         $app->response()->header('Content-Type', 'application/json');
+        $app->response()->header('Access-Control-Allow-Origin', '*');
 
         try {
             // query database for one info by id
