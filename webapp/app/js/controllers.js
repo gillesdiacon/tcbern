@@ -1,4 +1,4 @@
-var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular'])
+var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular']);
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
     $scope.asideState = {
@@ -31,12 +31,17 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
   });
   
 tcbernControllers.controller('NewsCtrl', function ($scope, Restangular) {
-  $scope.newsList = [
+  Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/api');
+  var infos = Restangular.all('infos');
+  infos.getList().then(function(allInfos) {
+    $scope.newsList = allInfos;
+  });
+  /*$scope.newsList = [
     {'title': 'Match TC Bern - Carouge',
      'content': 'Matchbericht TC Bern - Carouge'},
     {'title': 'Rimini',
      'content': 'Reise nach Rimini'},
     {'title': 'Match Nyon - TC Bern',
      'content': 'Matchbericht Nyon - TC Bern'}
-  ];
+  ];*/
 });
