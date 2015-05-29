@@ -1,4 +1,5 @@
 var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular']);
+var token = '';
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
     $scope.asideState = {
@@ -31,7 +32,9 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
   });
   
 tcbernControllers.controller('NewsCtrl', function ($scope, Restangular) {
-  Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/api');
+  Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/api/api');
+  Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + token });
+  
   var infos = Restangular.all('infos');
   infos.getList().then(function(allInfos) {
     $scope.newsList = allInfos;
@@ -44,4 +47,19 @@ tcbernControllers.controller('NewsCtrl', function ($scope, Restangular) {
     {'title': 'Match Nyon - TC Bern',
      'content': 'Matchbericht Nyon - TC Bern'}
   ];*/
+});
+
+tcbernControllers.controller('LoginCtrl', function ($scope, $http) {
+  $scope.username = '';
+  $scope.password = '';
+  
+  $scope.login = function() {
+    $http.post('http://192.168.1.106/tcbern/backend/api/auth', {'username': $scope.username, 'password': $scope.password})
+      .success(function(data, status, header, config) {
+        token = data.token;
+      })
+      .error(function(data, status, header, config) {
+        alert('Error during the authentication: ' + data + ' with status ' + status);
+      });
+  };
 });
