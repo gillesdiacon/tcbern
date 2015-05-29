@@ -1,5 +1,5 @@
 angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function($stateProvider, $urlRouterProvider) {
-  //For any unmatched urls, redirect to ...
+  //For any unmatched urls, redirect to the news page
   $urlRouterProvider.otherwise('/news');
   $urlRouterProvider.when('', '/news');
   
@@ -7,25 +7,13 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function(
     .state('news', {
       url: '/news',
       templateUrl: 'partials/news.html',
-      controller: 'NewsCtrl',
-      onEnter: function() {
-        console.log('Enter /news');
-      },
-      onExit: function() {
-        console.log('Exit /news');
-      }
+      controller: 'NewsCtrl'
     })
     .state('items', {
       url: '/items',
       templateUrl: 'partials/items.html',
       controller: function ($scope) {
         $scope.itemList = ['A', 'B', 'C'];
-      },
-      onEnter: function() {
-        console.log('Enter /news');
-      },
-      onExit: function() {
-        console.log('Exit /news');
       }
     });
 });
