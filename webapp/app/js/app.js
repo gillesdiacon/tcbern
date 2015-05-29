@@ -7,16 +7,7 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function(
     .state('news', {
       url: '/news',
       templateUrl: 'partials/news.html',
-      controller: function ($scope) {
-        $scope.newsList = [
-          {'title': 'Match TC Bern - Carouge',
-           'content': 'Matchbericht TC Bern - Carouge'},
-          {'title': 'Rimini',
-           'content': 'Reise nach Rimini'},
-          {'title': 'Match Nyon - TC Bern',
-           'content': 'Matchbericht Nyon - TC Bern'}
-        ];
-      },
+      controller: 'NewsCtrl',
       onEnter: function() {
         console.log('Enter /news');
       },

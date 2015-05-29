@@ -1,4 +1,4 @@
-var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside'])
+var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular'])
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
     $scope.asideState = {
@@ -18,17 +18,8 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
         templateUrl: 'partials/menu.html',
         placement: 'left',
         size: 'sm',
-        //backdrop: true,
         animation: true,
         controller: function($scope, $modalInstance) {
-          $scope.ok = function(e) {
-            $modalInstance.close();
-            e.stopPropagation();
-          };
-          $scope.cancel = function(e) {
-            $modalInstance.dismiss();
-            e.stopPropagation();
-          };
           $scope.go = function(e, to) {
             $modalInstance.dismiss();
             e.stopPropagation();
@@ -39,7 +30,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
     }
   });
   
-tcbernControllers.controller('NewsCtrl', function ($scope) {
+tcbernControllers.controller('NewsCtrl', function ($scope, Restangular) {
   $scope.newsList = [
     {'title': 'Match TC Bern - Carouge',
      'content': 'Matchbericht TC Bern - Carouge'},
