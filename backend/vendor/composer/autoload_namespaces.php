@@ -8,9 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Slim' => array($vendorDir . '/slim/slim'),
-    'Illuminate\\Support' => array($vendorDir . '/illuminate/support'),
-    'Illuminate\\Events' => array($vendorDir . '/illuminate/events'),
-    'Illuminate\\Database' => array($vendorDir . '/illuminate/database'),
-    'Illuminate\\Container' => array($vendorDir . '/illuminate/container'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log'),
+    'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
     'Carbon' => array($vendorDir . '/nesbot/carbon/src'),
 );

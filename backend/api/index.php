@@ -6,6 +6,12 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = new Slim\Slim();
 
+$app->add(new \Slim\Middleware\JwtAuthentication([
+    "secure" => false,
+    "path" => "/api",
+    "secret" => "supersecretkeyyoushouldnotcommittogithub"
+]));
+
 
 // list of authorized entities
 $authorizedEntities = array("infos");
@@ -34,9 +40,38 @@ $app->get(
     }
 )->name("home");
 
+$app->options(
+    '/*',
+    function () use ($app) {
+        $app->response()->header('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+        $app->response()->header('Access-Control-Allow-Origin', '*');
+        $app->response()->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
+);
+
+// authentication
+$app->post(
+    '/auth',
+    function () use ($app) {
+        $params = $app->request()->getBody();
+        //if ($params['userename'] == "login" && $params['password'] == "password") {
+            $key = "supersecretkeyyoushouldnotcommittogithub";
+            $token = array(
+                "id" => "1",
+                "exp" => time() + (60 * 60 * 24)
+            );
+            $jwt = JWT::encode($token, $key);
+            $app->response->headers->set('Content-Type', 'application/json');
+            $app->response()->header('Access-Control-Allow-Origin', '*');
+
+            echo json_encode(array("token" => $jwt, "group" => "admin"));
+        //}
+    }
+);
+
 // handle GET requests for /entity
 $app->get(
-    '/:entity',
+    '/api/:entity',
     'verification',
     function ($entity) use ($app) {
 
@@ -54,7 +89,7 @@ $app->get(
 
 // handle GET requests for /infos/:id
 $app->get(
-    '/:entity/:id',
+    '/api/:entity/:id',
     'verification',
     function ($entity, $id) use ($app) {
 
@@ -81,7 +116,7 @@ $app->get(
 
 // handle POST requests to /articles
 $app->post(
-    '/:entity',
+    '/api/:entity',
     'verification',
     function ($entity) use ($app) {
 
@@ -111,7 +146,7 @@ $app->post(
 
 // handle POST requests to /articles/:id
 $app->post(
-    '/:entity/:id',
+    '/api/:entity/:id',
     'verification',
     function ($entity, $id) use ($app) {
 
@@ -148,7 +183,7 @@ $app->post(
 
 // handle DELETE requests for /infos/:id
 $app->delete(
-    '/:entity/:id',
+    '/api/:entity/:id',
     'verification',
     function ($entity, $id) use ($app) {
 
