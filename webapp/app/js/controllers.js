@@ -1,4 +1,4 @@
-var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular']);
+var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication']);
 var token = '';
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
@@ -49,16 +49,13 @@ tcbernControllers.controller('NewsCtrl', function ($scope, Restangular) {
   ];*/
 });
 
-tcbernControllers.controller('LoginCtrl', function ($scope, $http) {
+tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
   $scope.username = '';
   $scope.password = '';
   
   $scope.login = function() {
-    $http.post('http://192.168.1.106/tcbern/backend/api/auth', {'username': $scope.username, 'password': $scope.password})
-      .success(function(data, status, header, config) {
-        token = data.token;
-      })
-      .error(function(data, status, header, config) {
+    $authentication.authenticate($scope.username, $scope.password, function() {},
+      function(data, status, header, config) {
         alert('Error during the authentication: ' + data + ' with status ' + status);
       });
   };
