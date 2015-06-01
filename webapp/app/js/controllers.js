@@ -21,6 +21,12 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
         size: 'sm',
         animation: true,
         controller: function($scope, $modalInstance) {
+          $scope.menuElementList = [
+            {'route': 'news', 'html': 'News', 'requiresAuthentication': 'false'},
+            {'route': 'items', 'html': 'Items', 'requiresAuthentication': 'true'},
+            {'route': 'login', 'html': 'Login', 'requiresAuthentication': 'false'}
+          ];
+          
           $scope.go = function(e, to) {
             $modalInstance.dismiss();
             e.stopPropagation();
@@ -39,14 +45,6 @@ tcbernControllers.controller('NewsCtrl', function ($scope, Restangular) {
   infos.getList().then(function(allInfos) {
     $scope.newsList = allInfos;
   });
-  /*$scope.newsList = [
-    {'title': 'Match TC Bern - Carouge',
-     'content': 'Matchbericht TC Bern - Carouge'},
-    {'title': 'Rimini',
-     'content': 'Reise nach Rimini'},
-    {'title': 'Match Nyon - TC Bern',
-     'content': 'Matchbericht Nyon - TC Bern'}
-  ];*/
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {

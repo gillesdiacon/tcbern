@@ -1,12 +1,7 @@
-<!--<div class="modal-header">
-  <h3 class="modal-title">ngAside</h3>
-</div>-->
 <div class="modal-body">
-  <button ng-click="go($event, 'news')">News</button><br />
-  <button ng-click="go($event, 'items')">Items</button><br />
-  <button ng-click="go($event, 'login')">Login</button><br />
+  <ul>
+    <li ng-repeat="menuElement in menuElementList">
+      <button ng-click="go($event, menuElement.route)">{{menuElement.html}}</button><br />
+    </li>
+  </ul>
 </div>
-<!--<div class="modal-footer">
-  <button class="btn btn-primary" ng-click="ok($event)">OK</button>
-  <button class="btn btn-warning" ng-click="cancel($event)">Cancel</button>
-</div>-->
