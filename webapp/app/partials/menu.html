@@ -1,6 +1,6 @@
 <div class="modal-body">
   <ul>
-    <li ng-repeat="menuElement in menuElementList">
+    <li ng-repeat="menuElement in menuElementList | filter:checkAuthorization">
       <button ng-click="go($event, menuElement.route)">{{menuElement.html}}</button><br />
     </li>
   </ul>

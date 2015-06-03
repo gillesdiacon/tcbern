@@ -20,12 +20,21 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
         placement: 'left',
         size: 'sm',
         animation: true,
-        controller: function($scope, $modalInstance) {
+        controller: function($scope, $modalInstance, $authentication, $filter) {
           $scope.menuElementList = [
-            {'route': 'news', 'html': 'News', 'requiresAuthentication': 'false'},
-            {'route': 'items', 'html': 'Items', 'requiresAuthentication': 'true'},
-            {'route': 'login', 'html': 'Login', 'requiresAuthentication': 'false'}
+            {'route': 'news', 'html': 'News', 'requiresAuthentication': false},
+            {'route': 'items', 'html': 'Items', 'requiresAuthentication': true},
+            {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
           ];
+          
+          $scope.isAuthenticated = $authentication.isAuthenticated;
+          $scope.$watch(
+            function() { return $authentication.isAuthenticated; },
+            function(newValue) { $scope.isAuthenticated = $authentication.isAuthenticated; });
+          $scope.checkAuthorization = function(value, index) {
+            if ($scope.isAuthenticated) return true;
+            else return value.requiresAuthentication == false;
+          };
           
           $scope.go = function(e, to) {
             $modalInstance.dismiss();
