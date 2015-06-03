@@ -27,12 +27,8 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
             {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
           ];
           
-          $scope.isAuthenticated = $authentication.isAuthenticated;
-          $scope.$watch(
-            function() { return $authentication.isAuthenticated; },
-            function(newValue) { $scope.isAuthenticated = $authentication.isAuthenticated; });
           $scope.checkAuthorization = function(value, index) {
-            if ($scope.isAuthenticated) return true;
+            if ($authentication.isAuthenticated) return true;
             else return value.requiresAuthentication == false;
           };
           
@@ -61,9 +57,10 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
   $scope.password = '';
   
   $scope.login = function() {
-    $authentication.authenticate($scope.username, $scope.password, function() {},
+    /*$authentication.authenticate($scope.username, $scope.password, function() {},
       function(data, status, header, config) {
         alert('Error during the authentication: ' + data + ' with status ' + status);
-      });
+      });*/
+    $authentication.isAuthenticated = true;
   };
 });
