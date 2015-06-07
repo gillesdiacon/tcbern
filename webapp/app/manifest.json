@@ -1,0 +1,14 @@
+{
+  "short_name": "TC Bern App",
+  "name": "TC Bern Application",
+  "icons": [
+    {
+      "src": "images/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}
