@@ -3,12 +3,17 @@
   "name": "TC Bern Application",
   "icons": [
     {
-      "src": "images/favicon.png",
+      "src": "images/favicon-32x32.png",
       "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicon-64x64.png",
+      "sizes": "64x64",
       "type": "image/png"
     }
   ],
   "start_url": "/index.html",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait"
 }
