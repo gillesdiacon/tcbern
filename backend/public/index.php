@@ -71,7 +71,7 @@ $app->get(
     function ($entity) use ($app) {
         global $authorizedEntities;
 
-        // query database for all infos
+        // query database for all objects
         $objects = $authorizedEntities[$entity]::all();
 
         // send response header for JSON content type
@@ -83,7 +83,7 @@ $app->get(
     }
 );
 
-// handle GET requests for /infos/:id
+// handle GET requests for /entity/:id
 $app->get(
     '/api/:entity/:id',
     'verification',
@@ -111,7 +111,7 @@ $app->get(
     }
 );
 
-// handle POST requests to /articles
+// handle POST requests to /entity
 $app->post(
     '/api/:entity',
     'verification',
@@ -128,13 +128,15 @@ $app->post(
             $body = $request->getBody();
             $input = json_decode($body);
 
-            // store article record
-            $info = new Info();
-            $info->title = (string)$input->title;
-            $info->content = (string)$input->content;
-            $info->save();
+            $object = new $authorizedEntities[$entity]();
+            foreach($input as $key => $value) {
 
-            echo $info->toJson();
+                //Always cast to String
+                $object->$key = (string)$value;
+            }
+            $object->save();
+
+            echo $object->toJson();
         } catch (Exception $e) {
             $app->response()->status(400);
             $app->response()->header('X-Status-Reason', $e->getMessage());
@@ -142,7 +144,7 @@ $app->post(
     }
 );
 
-// handle POST requests to /articles/:id
+// handle POST requests to /entity/:id
 $app->post(
     '/api/:entity/:id',
     'verification',
@@ -160,16 +162,20 @@ $app->post(
             $input = json_decode($body);
 
             // query database for one info by id
-            $info = Info::find($id);
+            $object = $authorizedEntities[$entity]::find($id);
 
             // store modified article
             // return JSON-encoded response body
-            if ($info) {
-                $info->title = (string)$input->title;
-                $info->content = (string)$input->content;
-                $info->save();
+            if ($object) {
 
-                echo $info->toJson();
+                foreach($input as $key => $value) {
+
+                    //Always cast to String
+                    $object->$key = (string)$value;
+                }
+                $object->save();
+
+                echo $object->toJson();
             } else {
                 $app->response()->status(404);
             }
@@ -180,7 +186,7 @@ $app->post(
     }
 );
 
-// handle DELETE requests for /infos/:id
+// handle DELETE requests for /entity/:id
 $app->delete(
     '/api/:entity/:id',
     'verification',
