@@ -1,0 +1,11 @@
+<div>
+  <h1>News</h1>
+  <ul>
+    <li ng-repeat="info in infosList">
+      <h2>{{info.title}}</h2>
+      <span>{{info.content}}</span>
+      <a ng-href="#/infos/{{info.id}}">Detail</a>
+    </li>
+  </ul>
+  <div ui-view></div>
+</div>

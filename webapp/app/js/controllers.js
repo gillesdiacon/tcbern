@@ -42,14 +42,32 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
     }
   });
   
-tcbernControllers.controller('NewsCtrl', function ($scope, Restangular) {
-  Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/api/api');
-  Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + token });
+tcbernControllers.controller('InfosCtrl', function ($scope, Restangular) {
+  //Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/api/api');
+  //Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + token });
   
-  var infos = Restangular.all('infos');
+  /*var infos = Restangular.all('infos');
   infos.getList().then(function(allInfos) {
-    $scope.newsList = allInfos;
-  });
+    $scope.infosList = allInfos;
+  });*/
+  $scope.infosList = [
+    { 'id': '1', 'title': 'News 1', 'content': 'Content 1' },
+    { 'id': '2', 'title': 'News 2', 'content': 'Content 2' },
+    { 'id': '3', 'title': 'News 3', 'content': 'Content 3' }
+  ];
+  
+  $scope.getInfoById = function(id) {
+    for (i = 0; i < $scope.infosList.length; i++) {
+      if ($scope.infosList[i].id == id) {
+        return $scope.infosList[i];
+      }
+    }
+    
+    return {};
+  };
+});
+tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams) {
+  $scope.detail = $scope.getInfoById($stateParams.id);
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
