@@ -7,24 +7,24 @@ angular.module('authentication', [])
     };
     
     service.authenticate = function(username, password, successCallback, errorCallback) {
-      $http.post('http://192.168.1.106/tcbern/backend/api/auth', {'username': username, 'password': password})
+      $http.post('http://localhost/tcbern/backend/public/auth', {'username': username, 'password': password})
       .success(function(data, status, header, config) {
         service.token = data.token;
         service.group = data.group;
         service.isAuthenticated = true;
         
-        if (typeof(successCallback) != undefined) {
+        /*if (typeof(successCallback) != undefined) {
           sucessCallback(data, status, header, config);
-        }
+        }*/
       })
       .error(function(data, status, header, config) {
         service.token = null;
         service.group = null;
         service.isAuthenticated = false;
         
-        if (typeof(successCallback) != undefined) {
-          sucessCallback(data, status, header, config);
-        }
+        /*if (typeof(errorCallback) != undefined) {
+          errorCallback(data, status, header, config);
+        }*/
       });
     };
     

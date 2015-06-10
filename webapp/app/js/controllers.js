@@ -22,7 +22,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
         animation: true,
         controller: function($scope, $modalInstance, $authentication, $filter) {
           $scope.menuElementList = [
-            {'route': 'news', 'html': 'News', 'requiresAuthentication': false},
+            {'route': 'infos', 'html': 'News', 'requiresAuthentication': false},
             {'route': 'items', 'html': 'Items', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
           ];
@@ -43,18 +43,18 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
   });
   
 tcbernControllers.controller('InfosCtrl', function ($scope, Restangular) {
-  //Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/api/api');
-  //Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + token });
+  Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
+  Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + token });
   
-  /*var infos = Restangular.all('infos');
+  var infos = Restangular.all('infos');
   infos.getList().then(function(allInfos) {
     $scope.infosList = allInfos;
-  });*/
-  $scope.infosList = [
+  });
+  /*$scope.infosList = [
     { 'id': '1', 'title': 'News 1', 'content': 'Content 1' },
     { 'id': '2', 'title': 'News 2', 'content': 'Content 2' },
     { 'id': '3', 'title': 'News 3', 'content': 'Content 3' }
-  ];
+  ];*/
   
   $scope.getInfoById = function(id) {
     for (i = 0; i < $scope.infosList.length; i++) {
@@ -75,10 +75,10 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
   $scope.password = '';
   
   $scope.login = function() {
-    /*$authentication.authenticate($scope.username, $scope.password, function() {},
+    $authentication.authenticate($scope.username, $scope.password, function() {},
       function(data, status, header, config) {
         alert('Error during the authentication: ' + data + ' with status ' + status);
-      });*/
+      });
     $authentication.isAuthenticated = true;
   };
 });

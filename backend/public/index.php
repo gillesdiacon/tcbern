@@ -1,6 +1,7 @@
 <?php
 
-//use TcBern\Model\Info;
+use TcBern\Model\User;
+use TcBern\Model\Group;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -44,23 +45,31 @@ $app->options(
     }
 );
 
+function mapGroups($item) {
+  return array("id" => $item->id, "key" => $item->key);
+}
+
 // authentication
 $app->post(
     '/auth',
     function () use ($app) {
-        $params = $app->request()->getBody();
-        //if ($params['userename'] == "login" && $params['password'] == "password") {
+        $params = json_decode($app->request()->getBody(), true);
+        
+        $username = $params['username'];
+        $user = User::where('username', '=', $username)->firstOrFail();
+        
+        if ($user->password == $params['password']) {
             $key = "supersecretkeyyoushouldnotcommittogithub";
             $token = array(
-                "id" => "1",
+                "id" => $user->id,
                 "exp" => time() + (60 * 60 * 24)
             );
             $jwt = JWT::encode($token, $key);
             $app->response->headers->set('Content-Type', 'application/json');
             $app->response()->header('Access-Control-Allow-Origin', '*');
 
-            echo json_encode(array("token" => $jwt, "group" => "admin"));
-        //}
+            echo json_encode(array("token" => $jwt, "group" => array_map('mapGroups', $user->groups()->get()->all())));
+        }
     }
 );
 
