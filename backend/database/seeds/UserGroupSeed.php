@@ -2,6 +2,7 @@
 
 use TcBern\Model\User;
 use TcBern\Model\Group;
+use TcBern\Model\Identity;
 
 /**
  * Seed template for use with "novice"
@@ -40,5 +41,18 @@ class UserGroupSeed {
 
         $user3->groups()->attach($group);
 
+        $identity1 = new Identity;
+        $identity1->user = $user;
+        $identity1->firstname = "Cedric";
+        $identity1->lastname = "Lavanchy";
+        $identity1->email = "cla@tcbern.ch";
+        $identity1->birthday = time();
+        $identity1->streetnumber = "1";
+        $identity1->street = "Rue de chez moi";
+        $identity1->postcode = "3000";
+        $identity1->city = "Bern";
+        $identity1->country = "Switzerland";
+        $identity1->mobilenumber = "+41 79 123 45 67";
+        $identity1->save();
     }
 }
