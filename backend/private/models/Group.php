@@ -13,7 +13,7 @@ class Group extends Model {
 
     // 'id', 'created_at' and 'updated_at' columns are automatically added by Eloquent
 
-    public function users(){
+    public function users() {
         return $this->belongsToMany('TcBern\\Model\\User', 'usergroup');
     }
 }

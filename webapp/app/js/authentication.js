@@ -1,5 +1,5 @@
-angular.module('authentication', [])
-  .factory('$authentication', function($http) {
+angular.module('authentication', ['restangular'])
+  .factory('$authentication', function($http, Restangular) {
     var service = {
       token: null,
       group: null,
@@ -13,6 +13,7 @@ angular.module('authentication', [])
         service.group = data.group;
         service.isAuthenticated = true;
         
+        Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + service.token });
         /*if (typeof(successCallback) != undefined) {
           sucessCallback(data, status, header, config);
         }*/

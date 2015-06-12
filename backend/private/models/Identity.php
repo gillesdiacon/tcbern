@@ -14,6 +14,6 @@ class Identity extends Model {
     // 'id', 'created_at' and 'updated_at' columns are automatically added by Eloquent
 
     public function user(){
-        return $this->hasOne('TcBern\\Model\\User');
+        return $this->belongsTo('TcBern\\Model\\User', 'user_id');
     }
 }

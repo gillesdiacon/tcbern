@@ -42,7 +42,7 @@ class UserGroupSeed {
         $user3->groups()->attach($group);
 
         $identity1 = new Identity;
-        $identity1->user = $user;
+        $identity1->user()->associate($user);
         $identity1->firstname = "Cedric";
         $identity1->lastname = "Lavanchy";
         $identity1->email = "cla@tcbern.ch";
@@ -54,5 +54,19 @@ class UserGroupSeed {
         $identity1->country = "Switzerland";
         $identity1->mobilenumber = "+41 79 123 45 67";
         $identity1->save();
+
+        $identity2 = new Identity;
+        $identity2->user()->associate($user2);
+        $identity2->firstname = "Gilles";
+        $identity2->lastname = "Diacon";
+        $identity2->email = "gdi@tcbern.ch";
+        $identity2->birthday = time();
+        $identity2->streetnumber = "453";
+        $identity2->street = "La bas";
+        $identity2->postcode = "4000";
+        $identity2->city = "Westside";
+        $identity2->country = "Switzerland";
+        $identity2->phonenumber = "+41 31 765 43 21";
+        $identity2->save();
     }
 }

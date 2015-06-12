@@ -21,6 +21,11 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function(
         $scope.itemList = ['A', 'B', 'C'];
       }
     })
+    .state('identities', {
+      url: '/identities',
+      templateUrl: 'partials/identities.html',
+      controller: 'IdentitiesCtrl'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'partials/login.html',

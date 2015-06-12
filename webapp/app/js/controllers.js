@@ -1,7 +1,8 @@
 var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication']);
 var token = '';
 
-tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
+tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular) {
+    Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
     $scope.asideState = {
       open: false
     };
@@ -23,7 +24,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
         controller: function($scope, $modalInstance, $authentication, $filter) {
           $scope.menuElementList = [
             {'route': 'infos', 'html': 'News', 'requiresAuthentication': false},
-            {'route': 'items', 'html': 'Items', 'requiresAuthentication': true},
+            {'route': 'identities', 'html': 'Members', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
           ];
           
@@ -43,18 +44,10 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state) {
   });
   
 tcbernControllers.controller('InfosCtrl', function ($scope, Restangular) {
-  Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
-  Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + token });
-  
   var infos = Restangular.all('infos');
   infos.getList().then(function(allInfos) {
     $scope.infosList = allInfos;
   });
-  /*$scope.infosList = [
-    { 'id': '1', 'title': 'News 1', 'content': 'Content 1' },
-    { 'id': '2', 'title': 'News 2', 'content': 'Content 2' },
-    { 'id': '3', 'title': 'News 3', 'content': 'Content 3' }
-  ];*/
   
   $scope.getInfoById = function(id) {
     for (i = 0; i < $scope.infosList.length; i++) {
@@ -68,6 +61,12 @@ tcbernControllers.controller('InfosCtrl', function ($scope, Restangular) {
 });
 tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams) {
   $scope.detail = $scope.getInfoById($stateParams.id);
+});
+tcbernControllers.controller('IdentitiesCtrl', function ($scope, Restangular) {
+  var identities = Restangular.all('identities');
+  identities.getList().then(function(allIdentities) {
+    $scope.identityList = allIdentities;
+  });
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
