@@ -72,11 +72,25 @@ tcbernControllers.controller('IdentitiesCtrl', function ($scope, Restangular) {
 tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
   $scope.username = '';
   $scope.password = '';
+  $scope.message = '';
   
+  $scope.resetInfosWithMessage = function(reset, message) {
+    if (reset) {
+      $scope.username = '';
+      $scope.password = '';
+    }
+    $scope.message = message;
+  };
   $scope.login = function() {
-    $authentication.authenticate($scope.username, $scope.password, function() {},
+    $authentication.authenticate($scope.username, $scope.password, function(data, status, header, config) {
+        $scope.resetInfosWithMessage(true, 'Successfuly authenticated');
+      },
       function(data, status, header, config) {
-        alert('Error during the authentication: ' + data + ' with status ' + status);
+        if (status == 503) {
+          $scope.resetInfosWithMessage(false, 'Username or password invalid');
+        } else {
+          $scope.resetInfosWithMessage(false, 'Problem during authentication: status = ' + status);
+        }
       });
     $authentication.isAuthenticated = true;
   };
