@@ -3,6 +3,10 @@
   border-bottom: 2px solid black;
 }
 
+.div-state {
+  padding:10px;
+}
+
 .btn-menu {
   width: 32px;
   height: 32px;
@@ -20,4 +24,8 @@
 }
 .menu-element:hover {
   background-color: #eeeeee;
+}
+
+.login-text {
+  margin: 10px;
 }
