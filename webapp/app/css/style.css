@@ -1,0 +1,23 @@
+.header {
+  padding:10px;
+  border-bottom: 2px solid black;
+}
+
+.btn-menu {
+  width: 32px;
+  height: 32px;
+}
+
+.menu-element-list {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.menu-element {
+  width: 100%;
+  cursor: pointer;
+}
+.menu-element:hover {
+  background-color: #eeeeee;
+}

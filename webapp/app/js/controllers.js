@@ -3,6 +3,7 @@ var token = '';
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular) {
     Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
+    
     $scope.asideState = {
       open: false
     };
@@ -33,10 +34,10 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
             else return value.requiresAuthentication == false;
           };
           
-          $scope.go = function(e, to) {
+          $scope.go = function(e, element) {
             $modalInstance.dismiss();
             e.stopPropagation();
-            $state.go(to);
+            $state.go(element.route);
           }
         }
       }).result.then(postClose, postClose);
@@ -44,6 +45,8 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
   });
   
 tcbernControllers.controller('InfosCtrl', function ($scope, Restangular) {
+  $scope.title = 'News';
+  
   var infos = Restangular.all('infos');
   infos.getList().then(function(allInfos) {
     $scope.infosList = allInfos;
@@ -70,6 +73,8 @@ tcbernControllers.controller('IdentitiesCtrl', function ($scope, Restangular) {
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
+  $scope.title = 'Login';
+  
   $scope.username = '';
   $scope.password = '';
   $scope.message = '';

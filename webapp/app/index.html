@@ -10,6 +10,7 @@
   <title>TC Bern</title>
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="../bower_components/angular-aside/dist/css/angular-aside.css">
+  <link rel="stylesheet" href="css/style.css">
   
   <link rel="icon" type="image/png" href="images/favicon-64x64.png" />
   <link rel="apple-touch-icon" href="images/favicon.png" />
@@ -31,8 +32,9 @@
   <script src="js/app.js"></script>
 </head>
 <body ng-controller="MainCtrl">
-  <div>
-    <button ng-click="openAside()">Menu</button>
+  <div class="header">
+    <!--<button ng-click="openAside()">Menu</button>-->
+    <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu"></button>
   </div>
   
   <div ui-view style="height: 300px">
