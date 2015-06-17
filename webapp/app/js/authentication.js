@@ -1,3 +1,12 @@
+angular.module('header', [])
+  .factory('$header', function() {
+    var service = {
+      title: ''
+    };
+    
+    return service;
+  });
+
 angular.module('authentication', ['restangular'])
   .factory('$authentication', function($http, Restangular) {
     var service = {

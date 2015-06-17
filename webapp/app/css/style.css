@@ -2,14 +2,16 @@
   padding:10px;
   border-bottom: 2px solid black;
 }
-
-.div-state {
-  padding:10px;
+.header-title {
+  font-size: 32px;
 }
-
 .btn-menu {
   width: 32px;
   height: 32px;
+}
+
+.div-state {
+  padding:10px;
 }
 
 .menu-element-list {

@@ -1,8 +1,12 @@
-var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication']);
-var token = '';
+var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'header']);
 
-tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular) {
+tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header) {
     Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
+    
+    $scope.title = $header.title;
+    $scope.$watch(
+      function() { return $header.title; },
+      function(oldValue, newValue) { $scope.title = $header.title; });
     
     $scope.asideState = {
       open: false
@@ -44,8 +48,8 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
     }
   });
   
-tcbernControllers.controller('InfosCtrl', function ($scope, Restangular) {
-  $scope.title = 'News';
+tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header) {
+  $header.title = 'News';
   
   var infos = Restangular.all('infos');
   infos.getList().then(function(allInfos) {
@@ -62,18 +66,38 @@ tcbernControllers.controller('InfosCtrl', function ($scope, Restangular) {
     return {};
   };
 });
-tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams) {
-  $scope.detail = $scope.getInfoById($stateParams.id);
+tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, Restangular, $header) {
+  $header.title = 'Detail';
+  
+  Restangular.one('infos', $stateParams.id).get().then(function(info) {
+    $header.title = info.title;
+    $scope.detail = info;
+  });
 });
-tcbernControllers.controller('IdentitiesCtrl', function ($scope, Restangular) {
+tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restangular, $header) {
+  $header.title = 'Members';
+  
   var identities = Restangular.all('identities');
   identities.getList().then(function(allIdentities) {
     $scope.identityList = allIdentities;
   });
+  
+  $scope.go = function(event, identity) {
+    event.stopPropagation();
+    $state.go('identity_detail', { 'id': identity.id });
+  };
+});
+tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParams, Restangular, $header) {
+  $header.title = 'Member';
+  
+  Restangular.one('identities', $stateParams.id).get().then(function(identity) {
+    $header.title = identity.lastname + ' ' + identity.firstname;
+    $scope.identity = identity;
+  });
 });
 
-tcbernControllers.controller('LoginCtrl', function ($scope, $authentication) {
-  $scope.title = 'Login';
+tcbernControllers.controller('LoginCtrl', function ($scope, $authentication, $header) {
+  $header.title = 'Login';
   
   $scope.username = '';
   $scope.password = '';

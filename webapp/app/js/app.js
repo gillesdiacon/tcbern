@@ -9,8 +9,8 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function(
       templateUrl: 'partials/infos.html',
       controller: 'InfosCtrl'
     })
-    .state('infos.detail', {
-      url: '/:id',
+    .state('infos_detail', {
+      url: '/infos/:id',
       templateUrl: 'partials/infos.detail.html',
       controller: 'InfosDetailCtrl'
     })
@@ -25,6 +25,11 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function(
       url: '/identities',
       templateUrl: 'partials/identities.html',
       controller: 'IdentitiesCtrl'
+    })
+    .state('identity_detail', {
+      url: '/identities/:id',
+      templateUrl: 'partials/identities.detail.html',
+      controller: 'IdentityDetailCtrl'
     })
     .state('login', {
       url: '/login',

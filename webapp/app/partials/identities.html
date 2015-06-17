@@ -1,7 +1,6 @@
 <div>
-  <h1>Club Members</h1>
   <table>
-    <tr>
+    <!--<tr>
       <td>Firstname</td>
       <td>Lastname</td>
       <td>Email</td>
@@ -9,18 +8,18 @@
       <td>Address</td>
       <td>City, Country</td>
       <td>Phone</td>
-      <td>Mobile</td>
+      <td>Mobile</td>-->
     </tr>
-    <tr ng-repeat="identity in identityList">
+    <tr ng-repeat="identity in identityList" ng-click="go($event, identity)">
       <td>{{identity.firstname}}</td>
       <td>{{identity.lastname}}</td>
-      <td>{{identity.email}}</td>
+      <!--<td>{{identity.email}}</td>
       <td>{{identity.birthday}}</td>
       <td>{{identity.streetnumber}} {{identity.street}} {{identity.street2}}</td>
       <td>{{identity.postcode}} {{identity.city}}, {{identity.country}}</td>
       <td>{{identity.phonenumber}}</td>
-      <td>{{identity.mobilenumber}}</td>
+      <td>{{identity.mobilenumber}}</td>-->
     </tr>
-  </ul>
+  </table>
   <div ui-view></div>
 </div>
