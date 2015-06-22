@@ -33,6 +33,14 @@ class UserGroupCreation {
             $table->foreign('group_id')->references('id')->on('group')->onDelete('cascade');
             $table->primary(array('user_id', 'group_id'));
         });
+
+        Capsule::schema()->create('userposition', function($table) {
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->integer('position_id')->unsigned();
+            $table->foreign('position_id')->references('id')->on('position')->onDelete('cascade');
+            $table->primary(array('user_id', 'position_id'));
+        });
         
         Capsule::schema()->create('identity', function($table) {
             $table->increments('id');

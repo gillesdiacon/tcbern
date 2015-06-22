@@ -25,6 +25,9 @@ class UserGroupSeed {
 
         $user->groups()->attach($group);
         $user->groups()->attach($group2);
+        $user->positions()->attach(1); // position.member
+        $user->positions()->attach(2); // position.committee
+        $user->positions()->attach(3); // position.webManager
 
         $user2 = new User;
         $user2->username = "gilles";
@@ -33,6 +36,7 @@ class UserGroupSeed {
 
         $user2->groups()->attach($group);
         $user2->groups()->attach($group2);
+        $user2->positions()->attach(1); // position.member
 
         $user3 = new User;
         $user3->username = "manu";
