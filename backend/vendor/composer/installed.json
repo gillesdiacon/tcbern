@@ -16,7 +16,7 @@
         },
         "time": "2012-12-21 11:40:51",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Psr\\Log\\": ""
@@ -62,7 +62,7 @@
         },
         "time": "2015-03-08 18:41:17",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Slim": "."
@@ -107,7 +107,7 @@
         },
         "time": "2015-05-20 19:16:04",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "classmap": [
                 "Authentication/",
@@ -134,18 +134,73 @@
         "homepage": "https://github.com/firebase/php-jwt"
     },
     {
-        "name": "symfony/translation",
-        "version": "v2.7.0",
-        "version_normalized": "2.7.0.0",
+        "name": "tuupola/slim-jwt-auth",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/Translation.git",
-            "reference": "cc1907bbeacfcc703c031b67545400d6e7d1eb79"
+            "url": "https://github.com/tuupola/slim-jwt-auth.git",
+            "reference": "51115020e75db25eff876403f31ece33b0278d5e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Translation/zipball/cc1907bbeacfcc703c031b67545400d6e7d1eb79",
-            "reference": "cc1907bbeacfcc703c031b67545400d6e7d1eb79",
+            "url": "https://api.github.com/repos/tuupola/slim-jwt-auth/zipball/51115020e75db25eff876403f31ece33b0278d5e",
+            "reference": "51115020e75db25eff876403f31ece33b0278d5e",
+            "shasum": ""
+        },
+        "require": {
+            "firebase/php-jwt": "~2.0",
+            "php": ">=5.3.0",
+            "psr/log": "~1.0",
+            "slim/slim": "~2.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.6",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2015-05-15 18:19:33",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Slim\\Middleware\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mika Tuupola",
+                "email": "tuupola@appelsiini.net",
+                "homepage": "http://www.appelsiini.net/",
+                "role": "Developer"
+            }
+        ],
+        "description": "JSON Web Token Authorization Middleware for Slim Framework",
+        "homepage": "https://github.com/tuupola/slim-jwt-auth",
+        "keywords": [
+            "auth",
+            "json",
+            "jwt",
+            "middleware",
+            "slim"
+        ]
+    },
+    {
+        "name": "symfony/translation",
+        "version": "v2.7.1",
+        "version_normalized": "2.7.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Translation.git",
+            "reference": "8349a2b0d11bd0311df9e8914408080912983a0b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Translation/zipball/8349a2b0d11bd0311df9e8914408080912983a0b",
+            "reference": "8349a2b0d11bd0311df9e8914408080912983a0b",
             "shasum": ""
         },
         "require": {
@@ -166,14 +221,14 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2015-05-29 14:44:44",
+        "time": "2015-06-11 17:26:34",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "2.7-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Symfony\\Component\\Translation\\": ""
@@ -220,7 +275,7 @@
         },
         "time": "2015-05-09 03:23:44",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Carbon": "src"
@@ -269,7 +324,7 @@
         },
         "time": "2015-02-10 06:19:18",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Stringy\\": "src/"
@@ -331,7 +386,7 @@
                 "dev-master": "1.0.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Doctrine\\Common\\Inflector\\": "lib/"
@@ -374,30 +429,30 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v5.0.0",
-        "version_normalized": "5.0.0.0",
+        "version": "v5.1.1",
+        "version_normalized": "5.1.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
-            "reference": "78f1dba092d5fcb6d3a19537662abe31c4d128fd"
+            "reference": "6e18848e5d332d802aa8bfa60b95e022023973f1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/contracts/zipball/78f1dba092d5fcb6d3a19537662abe31c4d128fd",
-            "reference": "78f1dba092d5fcb6d3a19537662abe31c4d128fd",
+            "url": "https://api.github.com/repos/illuminate/contracts/zipball/6e18848e5d332d802aa8bfa60b95e022023973f1",
+            "reference": "6e18848e5d332d802aa8bfa60b95e022023973f1",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.4.0"
+            "php": ">=5.5.9"
         },
-        "time": "2015-01-30 16:27:08",
+        "time": "2015-06-08 18:13:21",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.0-dev"
+                "dev-master": "5.1-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Contracts\\": ""
@@ -413,41 +468,43 @@
                 "email": "taylorotwell@gmail.com"
             }
         ],
-        "description": "The Illuminate Contracts package."
+        "description": "The Illuminate Contracts package.",
+        "homepage": "http://laravel.com"
     },
     {
         "name": "illuminate/support",
-        "version": "v5.0.28",
-        "version_normalized": "5.0.28.0",
+        "version": "v5.1.2",
+        "version_normalized": "5.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "b6d68e1f2a7053bf4c755c5e6b15fcfb700e14e7"
+            "reference": "cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/b6d68e1f2a7053bf4c755c5e6b15fcfb700e14e7",
-            "reference": "b6d68e1f2a7053bf4c755c5e6b15fcfb700e14e7",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4",
+            "reference": "cf0604a576bb5bf3b36ed5c3a4b52c5464fd49b4",
             "shasum": ""
         },
         "require": {
             "danielstjules/stringy": "~1.8",
             "doctrine/inflector": "~1.0",
             "ext-mbstring": "*",
-            "illuminate/contracts": "5.0.*",
-            "php": ">=5.4.0"
+            "illuminate/contracts": "5.1.*",
+            "php": ">=5.5.9"
         },
         "suggest": {
-            "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0)."
+            "jeremeamia/superclosure": "Required to be able to serialize closures (~2.0).",
+            "symfony/var-dumper": "Required to use the dd function (2.7.*)."
         },
-        "time": "2015-04-15 19:26:55",
+        "time": "2015-06-15 07:46:41",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.0-dev"
+                "dev-master": "5.1-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Support\\": ""
@@ -471,31 +528,31 @@
     },
     {
         "name": "illuminate/container",
-        "version": "v5.0.28",
-        "version_normalized": "5.0.28.0",
+        "version": "v5.1.2",
+        "version_normalized": "5.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
-            "reference": "a11c01c1d8b6941bd7ef2f104749ada5e34f146e"
+            "reference": "248cd26c38d1e29eac74d32d9fff158b2232a3c6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/container/zipball/a11c01c1d8b6941bd7ef2f104749ada5e34f146e",
-            "reference": "a11c01c1d8b6941bd7ef2f104749ada5e34f146e",
+            "url": "https://api.github.com/repos/illuminate/container/zipball/248cd26c38d1e29eac74d32d9fff158b2232a3c6",
+            "reference": "248cd26c38d1e29eac74d32d9fff158b2232a3c6",
             "shasum": ""
         },
         "require": {
-            "illuminate/contracts": "5.0.*",
-            "php": ">=5.4.0"
+            "illuminate/contracts": "5.1.*",
+            "php": ">=5.5.9"
         },
-        "time": "2015-03-25 17:06:14",
+        "time": "2015-06-13 00:40:15",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.0-dev"
+                "dev-master": "5.1-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Container\\": ""
@@ -516,40 +573,41 @@
     },
     {
         "name": "illuminate/database",
-        "version": "v5.0.28",
-        "version_normalized": "5.0.28.0",
+        "version": "v5.1.2",
+        "version_normalized": "5.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/database.git",
-            "reference": "dd7bd24a0240607e1de36cfe8d43335653d1536c"
+            "reference": "b70475a97ce1dff742c971332739ce5de79a512f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/database/zipball/dd7bd24a0240607e1de36cfe8d43335653d1536c",
-            "reference": "dd7bd24a0240607e1de36cfe8d43335653d1536c",
+            "url": "https://api.github.com/repos/illuminate/database/zipball/b70475a97ce1dff742c971332739ce5de79a512f",
+            "reference": "b70475a97ce1dff742c971332739ce5de79a512f",
             "shasum": ""
         },
         "require": {
-            "illuminate/container": "5.0.*",
-            "illuminate/contracts": "5.0.*",
-            "illuminate/support": "5.0.*",
-            "nesbot/carbon": "~1.0",
-            "php": ">=5.4.0"
+            "illuminate/container": "5.1.*",
+            "illuminate/contracts": "5.1.*",
+            "illuminate/support": "5.1.*",
+            "nesbot/carbon": "~1.19",
+            "php": ">=5.5.9"
         },
         "suggest": {
             "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
-            "illuminate/console": "Required to use the database commands (5.0.*).",
-            "illuminate/events": "Required to use the observers with Eloquent (5.0.*).",
-            "illuminate/filesystem": "Required to use the migrations (5.0.*)."
+            "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
+            "illuminate/console": "Required to use the database commands (5.1.*).",
+            "illuminate/events": "Required to use the observers with Eloquent (5.1.*).",
+            "illuminate/filesystem": "Required to use the migrations (5.1.*)."
         },
-        "time": "2015-04-19 09:23:09",
+        "time": "2015-06-15 07:46:41",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "5.0-dev"
+                "dev-master": "5.1-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "Illuminate\\Database\\": ""
@@ -572,61 +630,6 @@
             "laravel",
             "orm",
             "sql"
-        ]
-    },
-    {
-        "name": "tuupola/slim-jwt-auth",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tuupola/slim-jwt-auth.git",
-            "reference": "51115020e75db25eff876403f31ece33b0278d5e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tuupola/slim-jwt-auth/zipball/51115020e75db25eff876403f31ece33b0278d5e",
-            "reference": "51115020e75db25eff876403f31ece33b0278d5e",
-            "shasum": ""
-        },
-        "require": {
-            "firebase/php-jwt": "~2.0",
-            "php": ">=5.3.0",
-            "psr/log": "~1.0",
-            "slim/slim": "~2.3"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.6",
-            "squizlabs/php_codesniffer": "~2.3"
-        },
-        "time": "2015-05-15 18:19:33",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-4": {
-                "Slim\\Middleware\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Mika Tuupola",
-                "email": "tuupola@appelsiini.net",
-                "homepage": "http://www.appelsiini.net/",
-                "role": "Developer"
-            }
-        ],
-        "description": "JSON Web Token Authorization Middleware for Slim Framework",
-        "homepage": "https://github.com/tuupola/slim-jwt-auth",
-        "keywords": [
-            "auth",
-            "json",
-            "jwt",
-            "middleware",
-            "slim"
         ]
     }
 ]

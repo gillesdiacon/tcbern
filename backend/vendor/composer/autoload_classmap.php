@@ -13,5 +13,6 @@ return array(
     'TcBern\\Model\\Group' => $baseDir . '/private/models/Group.php',
     'TcBern\\Model\\Identity' => $baseDir . '/private/models/Identity.php',
     'TcBern\\Model\\Info' => $baseDir . '/private/models/Info.php',
+    'TcBern\\Model\\Position' => $baseDir . '/private/models/Position.php',
     'TcBern\\Model\\User' => $baseDir . '/private/models/User.php',
 );
