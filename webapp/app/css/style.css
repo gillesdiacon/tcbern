@@ -15,9 +15,7 @@
 }
 
 .menu-element-list {
-  list-style-type: none;
   width: 100%;
-  padding: 0;
 }
 
 .menu-element {
@@ -30,4 +28,9 @@
 
 .login-text {
   margin: 10px;
+}
+
+.no-bullet-list {
+  list-style-type: none;
+  padding: 0;
 }

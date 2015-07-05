@@ -1,4 +1,4 @@
-var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'header']);
+var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'header', 'hc.marked']);
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header) {
     Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');

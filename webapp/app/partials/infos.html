@@ -1,11 +1,9 @@
 <div>
-  <h1>News</h1>
   <ul>
-    <li ng-repeat="info in infosList">
-      <!--<h2>{{info.title}}</h2>
-      <span>{{info.content}}</span>
-      <a ng-href="#/infos/{{info.id}}">Detail</a>-->
+    <li ng-repeat="info in infosList" class="no-bullet-list">
       <div marked="info.content"></div>
+      <a ng-href="#/infos/{{info.id}}">Detail</a>
+      <hr>
     </li>
   </ul>
   <div ui-view></div>

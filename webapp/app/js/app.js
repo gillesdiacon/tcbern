@@ -1,4 +1,4 @@
-angular.module('tcbernApp', ['ui.router', 'tcbernControllers']).config(function($stateProvider, $urlRouterProvider) {
+angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked']).config(function($stateProvider, $urlRouterProvider) {
   //For any unmatched urls, redirect to the infos page
   $urlRouterProvider.otherwise('/infos');
   $urlRouterProvider.when('', '/infos');
