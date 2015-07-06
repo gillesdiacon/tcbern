@@ -1,5 +1,6 @@
 body {
   font-family: 'Verdana',arial,sans-serif;
+  background-color: #e5e5e5;
 }
 
 .header {
@@ -49,4 +50,26 @@ body {
 .no-bullet-list {
   list-style-type: none;
   padding: 0;
+}
+
+.box ul.boxList {
+  padding-right: 40px;
+}
+
+.boxElement{
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 2px solid #C9C9C9;
+  background-color: #ffffff;
+}
+
+.infoTitle {
+  font-weight: bold;
+}
+
+.infoContent {
+  padding-left: 20px;
 }
