@@ -1,4 +1,7 @@
-<div class="modal-body">
+<div class="modal-body menu-body">
+  <div class="header menuHeader">
+    <div class="header-title">TcBern</div>
+  </div>
   <ul class="menu-element-list">
     <li ng-repeat="menuElement in menuElementList | filter:checkAuthorization" ng-click="go($event, menuElement)" class="menu-element no-bullet-list">
       <!--<button ng-click="go($event, menuElement)">{{menuElement.html}}</button><br />-->
