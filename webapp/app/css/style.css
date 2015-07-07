@@ -75,6 +75,11 @@ body {
   list-style-type: none;
 }
 
+.limitedHeight {
+  max-height: 150px;
+  overflow: hidden;
+}
+
 .box ul.boxList {
   padding-right: 40px;
 }

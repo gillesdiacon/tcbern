@@ -66,7 +66,7 @@ tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header
     return {};
   };
 });
-tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, Restangular, $header) {
+tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, Restangular, $header, marked) {
   $header.title = 'Detail';
   
   Restangular.one('infos', $stateParams.id).get().then(function(info) {

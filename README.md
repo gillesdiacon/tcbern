@@ -50,6 +50,10 @@ npm start
 
 [http://localhost:8000/app/index.html](http://localhost:8000/app/index.html)
 
+### Info Markdown
+
+The info must be written by following the markdown system (see [ttps://help.github.com/articles/markdown-basics/](https://help.github.com/articles/markdown-basics/)) and its extension (see [https://help.github.com/articles/writing-on-github/](https://help.github.com/articles/writing-on-github/))
+
 ### Install the application on mobile devices
 
 #### Android (Android Browser)

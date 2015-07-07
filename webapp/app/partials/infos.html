@@ -1,8 +1,10 @@
 <div class="box">
   <ul class="boxList">
     <li ng-repeat="info in infosList" class="no-bullet-list boxElement">
-      <div marked="info.title" class="infoTitle"></div>
-      <div marked="info.content" class="infoContent"></div>
+      <div class="limitedHeight">
+        <div marked="info.title" class="infoTitle"></div>
+        <div marked="info.content" class="infoContent"></div>
+      </div>
       <a ng-href="#/infos/{{info.id}}">Detail</a>
     </li>
   </ul>
