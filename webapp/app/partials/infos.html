@@ -1,9 +1,9 @@
-<div>
-  <ul>
-    <li ng-repeat="info in infosList" class="no-bullet-list">
-      <div marked="info.content"></div>
+<div class="box">
+  <ul class="boxList">
+    <li ng-repeat="info in infosList" class="no-bullet-list boxElement">
+      <div marked="info.title" class="infoTitle"></div>
+      <div marked="info.content" class="infoContent"></div>
       <a ng-href="#/infos/{{info.id}}">Detail</a>
-      <hr>
     </li>
   </ul>
   <div ui-view></div>

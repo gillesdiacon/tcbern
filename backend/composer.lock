@@ -572,7 +572,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tuupola/slim-jwt-auth/zipball/51115020e75db25eff876403f31ece33b0278d5e",
+                "url": "https://api.github.com/repos/tuupola/slim-jwt-auth/zipball/3abfbc7ca5b1f4d330624f645f78dc8cbc92d0d3",
                 "reference": "51115020e75db25eff876403f31ece33b0278d5e",
                 "shasum": ""
             },
