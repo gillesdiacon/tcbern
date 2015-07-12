@@ -16,8 +16,4 @@ class User extends Model {
     public function groups() {
         return $this->belongsToMany('TcBern\\Model\\Group', 'usergroup');
     }
-
-    public function positions() {
-        return $this->belongsToMany('TcBern\\Model\\Position', 'userposition');
-    }
 }

@@ -1,4 +1,4 @@
-f<?php
+<?php
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -8,6 +8,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 class UserGroupCreation {
 
     function run(){
+        Capsule::schema()->dropIfExists('profileposition');
+        Capsule::schema()->dropIfExists('profile');
         Capsule::schema()->dropIfExists('identity');
         Capsule::schema()->dropIfExists('usergroup');
         Capsule::schema()->dropIfExists('user');
@@ -33,14 +35,6 @@ class UserGroupCreation {
             $table->foreign('group_id')->references('id')->on('group')->onDelete('cascade');
             $table->primary(array('user_id', 'group_id'));
         });
-
-        Capsule::schema()->create('userposition', function($table) {
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
-            $table->integer('position_id')->unsigned();
-            $table->foreign('position_id')->references('id')->on('position')->onDelete('cascade');
-            $table->primary(array('user_id', 'position_id'));
-        });
         
         Capsule::schema()->create('identity', function($table) {
             $table->increments('id');
@@ -59,6 +53,24 @@ class UserGroupCreation {
             $table->string('phonenumber')->nullable();
             $table->string('mobilenumber')->nullable();
             $table->timestamps(); // automatically create 'created_at' and 'updated_at' columns
+        });
+        
+        Capsule::schema()->create('profile', function($table) {
+            $table->increments('id');
+            $table->integer('identity_id')->unsigned();
+            $table->foreign('identity_id')->references('id')->on('identity')->onDelete('cascade');
+            $table->string('status_key');
+            $table->date('registration_date');
+            $table->date('resignation_date');
+            $table->timestamps(); // automatically create 'created_at' and 'updated_at' columns
+        });
+
+        Capsule::schema()->create('profileposition', function($table) {
+            $table->integer('profile_id')->unsigned();
+            $table->foreign('profile_id')->references('id')->on('profile')->onDelete('cascade');
+            $table->integer('position_id')->unsigned();
+            $table->foreign('position_id')->references('id')->on('position')->onDelete('cascade');
+            $table->primary(array('profile_id', 'position_id'));
         });
     }
 }

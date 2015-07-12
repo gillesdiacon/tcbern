@@ -3,6 +3,7 @@
 use TcBern\Model\User;
 use TcBern\Model\Group;
 use TcBern\Model\Identity;
+use TcBern\Model\Profile;
 
 /**
  * Seed template for use with "novice"
@@ -25,9 +26,6 @@ class UserGroupSeed {
 
         $user->groups()->attach($group);
         $user->groups()->attach($group2);
-        $user->positions()->attach(1); // position.member
-        $user->positions()->attach(2); // position.committee
-        $user->positions()->attach(3); // position.webManager
 
         $user2 = new User;
         $user2->username = "gilles";
@@ -36,7 +34,6 @@ class UserGroupSeed {
 
         $user2->groups()->attach($group);
         $user2->groups()->attach($group2);
-        $user2->positions()->attach(1); // position.member
 
         $user3 = new User;
         $user3->username = "manu";
@@ -58,6 +55,12 @@ class UserGroupSeed {
         $identity1->country = "Switzerland";
         $identity1->mobilenumber = "+41 79 123 45 67";
         $identity1->save();
+        
+        $profile1 = new Profile;
+        $profile1->identity()->associate($identity1);
+        $profile1->status_key = "active";
+        $profile1->registration_date = time();
+        $profile1->save();
 
         $identity2 = new Identity;
         $identity2->user()->associate($user2);
@@ -72,5 +75,19 @@ class UserGroupSeed {
         $identity2->country = "Switzerland";
         $identity2->phonenumber = "+41 31 765 43 21";
         $identity2->save();
+        
+        $profile2 = new Profile;
+        $profile2->identity()->associate($identity2);
+        $profile2->status_key = "active";
+        $profile2->registration_date = time();
+        $profile2->save();
+        
+        $profile1->positions()->attach(1); // position.member
+        $profile1->positions()->attach(2); // position.committee
+        $profile1->positions()->attach(3); // position.webManager
+        $profile1->save();
+        
+        $profile2->positions()->attach(1); // position.member
+        $profile2->save();
     }
 }

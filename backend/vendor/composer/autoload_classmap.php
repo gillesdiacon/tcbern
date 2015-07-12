@@ -14,5 +14,6 @@ return array(
     'TcBern\\Model\\Identity' => $baseDir . '/private/models/Identity.php',
     'TcBern\\Model\\Info' => $baseDir . '/private/models/Info.php',
     'TcBern\\Model\\Position' => $baseDir . '/private/models/Position.php',
+    'TcBern\\Model\\Profile' => $baseDir . '/private/models/Profile.php',
     'TcBern\\Model\\User' => $baseDir . '/private/models/User.php',
 );
