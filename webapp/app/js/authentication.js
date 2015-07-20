@@ -38,5 +38,11 @@ angular.module('authentication', ['restangular'])
         });
     };
     
+    service.logout = function() {
+      service.token = null;
+      service.group = null;
+      service.isAuthenticated = false;
+    };
+    
     return service;
   });

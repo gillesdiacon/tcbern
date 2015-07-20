@@ -1,7 +1,12 @@
 <div>
-  <input type="text" placeholder="Username" ng-model="username" class="login-text"></input> <br />
-  <input type="password" placeholder="Password" ng-model="password" class="login-text"></input> <br />
-  <button ng-click="login()">LogIn!</button>
+  <div ng-if="authenticated == false">
+    <input type="text" placeholder="Username" ng-model="$parent.username" class="login-text"></input> <br />
+    <input type="password" placeholder="Password" ng-model="$parent.password" class="login-text"></input> <br />
+    <button ng-click="login()">LogIn!</button>
+  </div>
+  <div ng-if="authenticated == true">
+    <button ng-click="logout()">LogOut!</button>
+  </div>
   <br />
   <label>{{message}}</input>
 </div>

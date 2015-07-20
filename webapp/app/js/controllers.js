@@ -104,12 +104,16 @@ tcbernControllers.controller('CommitteeCtrl', function ($scope, $stateParams, Re
   });
 });
 
-tcbernControllers.controller('LoginCtrl', function ($scope, $authentication, $header) {
+tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authentication, $header) {
   $header.title = 'Login';
   
   $scope.username = '';
   $scope.password = '';
   $scope.message = '';
+  $scope.authenticated = false;
+  
+  $scope.$watch(function() { return $authentication.isAuthenticated; },
+    function(value) { $scope.authenticated = value; });
   
   $scope.resetInfosWithMessage = function(reset, message) {
     if (reset) {
@@ -120,7 +124,8 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $authentication, $he
   };
   $scope.login = function() {
     $authentication.authenticate($scope.username, $scope.password, function(data, status, header, config) {
-        $scope.resetInfosWithMessage(true, 'Successfuly authenticated');
+        $scope.resetInfosWithMessage(true, '');
+        $state.go('infos');
       },
       function(data, status, header, config) {
         if (status == 503) {
@@ -129,6 +134,8 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $authentication, $he
           $scope.resetInfosWithMessage(false, 'Problem during authentication: status = ' + status);
         }
       });
-    $authentication.isAuthenticated = true;
+  };
+  $scope.logout = function() {
+    $authentication.logout();
   };
 });
