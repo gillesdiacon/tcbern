@@ -1,0 +1,10 @@
+<div class="box">
+  <ul class="boxList">
+    <li ng-repeat="committeeMember in committeeMemberList" class="no-bullet-list boxElement">
+      <div>
+        {{committeeMember.identity.firstname}} {{committeeMember.identity.lastname}}
+      </div>
+    </li>
+  </ul>
+  <div ui-view></div>
+</div>

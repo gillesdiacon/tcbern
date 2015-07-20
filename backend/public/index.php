@@ -2,6 +2,7 @@
 
 use TcBern\Model\User;
 use TcBern\Model\Group;
+use TcBern\Model\Profile;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -75,16 +76,26 @@ $app->post(
     }
 );
 
+$app->get(
+    '/api/committee',
+    function() use ($app) {
+        $profiles = Profile::whereHas('positions', function($q) {
+          $q->where('key', '=', 'position.committee');
+        })->get();
+        echo $profiles->load('identity', 'positions')->toJson();
+    }
+);
+
 // handle GET requests for /entity
 $app->get(
     '/api/:entity',
     'verification',
     function ($entity) use ($app) {
         global $authorizedEntities;
-
+        
         // query database for all objects
         $objects = $authorizedEntities[$entity]::all();
-
+        
         // send response header for JSON content type
         $app->response()->header('Content-Type', 'application/json');
         $app->response()->header('Access-Control-Allow-Origin', '*');

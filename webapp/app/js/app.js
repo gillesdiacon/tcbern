@@ -21,6 +21,11 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked']).con
         $scope.itemList = ['A', 'B', 'C'];
       }
     })
+    .state('committee', {
+      url: '/committee',
+      templateUrl: 'partials/committee.html',
+      controller: 'CommitteeCtrl'
+    })
     .state('identities', {
       url: '/identities',
       templateUrl: 'partials/identities.html',

@@ -29,6 +29,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
         controller: function($scope, $modalInstance, $authentication, $filter) {
           $scope.menuElementList = [
             {'route': 'infos', 'html': 'News', 'requiresAuthentication': false},
+            {'route': 'committee', 'html': 'Committee', 'requiresAuthentication': false},
             {'route': 'identities', 'html': 'Members', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
           ];
@@ -93,6 +94,13 @@ tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParam
   Restangular.one('identities', $stateParams.id).get().then(function(identity) {
     $header.title = identity.lastname + ' ' + identity.firstname;
     $scope.identity = identity;
+  });
+});
+tcbernControllers.controller('CommitteeCtrl', function ($scope, $stateParams, Restangular, $header) {
+  $header.title = 'Committee';
+  
+  Restangular.all('committee').getList().then(function(allCommitteeMembers) {
+    $scope.committeeMemberList = allCommitteeMembers;
   });
 });
 
