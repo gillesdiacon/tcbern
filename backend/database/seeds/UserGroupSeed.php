@@ -84,7 +84,7 @@ class UserGroupSeed {
         
         $profile1->positions()->attach(1); // position.member
         $profile1->positions()->attach(2); // position.committee
-        $profile1->positions()->attach(3); // position.webManager
+        $profile1->positions()->attach(9); // position.webManager
         $profile1->save();
         
         $profile2->positions()->attach(1); // position.member
