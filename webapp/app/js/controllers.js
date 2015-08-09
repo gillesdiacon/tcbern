@@ -49,8 +49,8 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
           $scope.menuElementList = [
             {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
             {'route': 'committee', 'html': 'MENU_COMMITTEE', 'requiresAuthentication': false},
-            {'route': 'identities', 'html': 'Members', 'requiresAuthentication': true},
-            {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
+            {'route': 'identities', 'html': 'MENU_MEMBERS', 'requiresAuthentication': true},
+            {'route': 'login', 'html': 'MENU_LOGIN', 'requiresAuthentication': false}
           ];
           
           $scope.checkAuthorization = function(value, index) {
@@ -69,7 +69,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
   });
   
 tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header) {
-  $header.title = 'News';
+  $header.title = 'TITLE_INFO';
   
   var infos = Restangular.all('infos');
   infos.getList().then(function(allInfos) {
@@ -87,7 +87,7 @@ tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header
   };
 });
 tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, Restangular, $header, marked) {
-  $header.title = 'Detail';
+  $header.title = 'TITLE_INFO_DETAIL';
   
   Restangular.one('infos', $stateParams.id).get().then(function(info) {
     $header.title = info.title;
@@ -95,7 +95,7 @@ tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, 
   });
 });
 tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restangular, $header) {
-  $header.title = 'Members';
+  $header.title = 'TITLE_MEMBERS';
   
   var identities = Restangular.all('identities');
   identities.getList().then(function(allIdentities) {
@@ -108,7 +108,7 @@ tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restang
   };
 });
 tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParams, Restangular, $header) {
-  $header.title = 'Member';
+  $header.title = 'TITLE_MEMBERS_DETAIL';
   
   Restangular.one('identities', $stateParams.id).get().then(function(identity) {
     $header.title = identity.lastname + ' ' + identity.firstname;
@@ -116,7 +116,7 @@ tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParam
   });
 });
 tcbernControllers.controller('CommitteeCtrl', function ($scope, $stateParams, Restangular, $header) {
-  $header.title = 'Committee';
+  $header.title = 'TITLE_COMMITTEE';
   
   Restangular.all('committee').getList().then(function(allCommitteeMembers) {
     $scope.committeeMemberList = allCommitteeMembers;
@@ -130,7 +130,7 @@ tcbernControllers.controller('CommitteeCtrl', function ($scope, $stateParams, Re
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authentication, $header) {
-  $header.title = 'Login';
+  $header.title = 'TITLE_LOGIN';
   
   $scope.username = '';
   $scope.password = '';
