@@ -18,6 +18,7 @@ $app = new Slim\Slim();
 // list of authorized entities
 $authorizedEntities = array(
     "infos" => "TcBern\\Model\\Info",
+    "internationalisation" => "TcBern\\Model\\Internationalisation",
     "identities" => "TcBern\\Model\\Identity");
 
 // route middleware for simple API authentication

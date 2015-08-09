@@ -1,10 +1,14 @@
 <div class="box">
-  <ul class="boxList">
-    <li ng-repeat="committeeMember in committeeMemberList" class="no-bullet-list boxElement">
-      <div>
+  <table class="boxList">
+    <tr ng-repeat="committeeMember in committeeMemberList" class="no-bullet-list boxElement">
+      <td class="tableListCell">
+        <p ng-repeat="position in committeeMember.positions">
+          {{position.key | translate}}
+        </p>
+      </td><td class="tableListCell">
         {{committeeMember.identity.firstname}} {{committeeMember.identity.lastname}}
-      </div>
-    </li>
+      </td>
+    </tr>
   </ul>
   <div ui-view></div>
 </div>

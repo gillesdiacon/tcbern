@@ -11,7 +11,7 @@ use TcBern\Model\Profile;
 class UserGroupSeed {
 
     function run() {
-        $group = new Group;
+        /*$group = new Group;
         $group->key = "member";
         $group->save();
 
@@ -88,6 +88,6 @@ class UserGroupSeed {
         $profile1->save();
         
         $profile2->positions()->attach(1); // position.member
-        $profile2->save();
+        $profile2->save();*/
     }
 }

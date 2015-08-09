@@ -1,4 +1,23 @@
-var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'header', 'hc.marked']);
+var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'header', 'hc.marked', 'pascalprecht.translate'])
+  .config(function($translateProvider) {
+    $translateProvider.useLoader('translateCustomLoader', {});
+    //$translateProvider.useSanitizeValueStrategy('sanitize');
+    $translateProvider.preferredLanguage('de');
+  });
+  
+tcbernControllers.factory('translateCustomLoader', function ($http, $q) {
+  return function(options) {
+    var language = options.key;
+    return $http.get('http://localhost/tcbern/backend/public/api/internationalisation')
+      .then(function(response) {
+        var result = {};
+        response.data.forEach(function(entry) {
+          result[entry.key] = entry[language];
+        });
+        return result;
+      }, function(response) {});
+  };
+});
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header) {
     Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
@@ -28,8 +47,8 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
         animation: true,
         controller: function($scope, $modalInstance, $authentication, $filter) {
           $scope.menuElementList = [
-            {'route': 'infos', 'html': 'News', 'requiresAuthentication': false},
-            {'route': 'committee', 'html': 'Committee', 'requiresAuthentication': false},
+            {'route': 'infos', 'html': 'MENU_NEWS', 'requiresAuthentication': false},
+            {'route': 'committee', 'html': 'MENU_COMMITTEE', 'requiresAuthentication': false},
             {'route': 'identities', 'html': 'Members', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
           ];
@@ -102,6 +121,12 @@ tcbernControllers.controller('CommitteeCtrl', function ($scope, $stateParams, Re
   Restangular.all('committee').getList().then(function(allCommitteeMembers) {
     $scope.committeeMemberList = allCommitteeMembers;
   });
+  
+  $scope.getPositions = function(member) {
+    return member.positions.map(function(entry) {
+      return entry.key;
+    });
+  };
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authentication, $header) {

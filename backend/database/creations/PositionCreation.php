@@ -9,7 +9,6 @@ class PositionCreation {
 
     function run(){
         Capsule::schema()->dropIfExists('position');
-        
         Capsule::schema()->create('position', function($table) {
             $table->increments('id');
             $table->string('key');
