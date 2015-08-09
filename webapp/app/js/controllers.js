@@ -47,7 +47,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
         animation: true,
         controller: function($scope, $modalInstance, $authentication, $filter) {
           $scope.menuElementList = [
-            {'route': 'infos', 'html': 'MENU_NEWS', 'requiresAuthentication': false},
+            {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
             {'route': 'committee', 'html': 'MENU_COMMITTEE', 'requiresAuthentication': false},
             {'route': 'identities', 'html': 'Members', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'Login', 'requiresAuthentication': false}
