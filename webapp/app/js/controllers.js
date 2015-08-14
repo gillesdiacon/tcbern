@@ -8,7 +8,7 @@ var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ng
 tcbernControllers.factory('translateCustomLoader', function ($http, $q) {
   return function(options) {
     var language = options.key;
-    return $http.get('http://localhost/tcbern/backend/public/api/internationalisation')
+    return $http.get('http://192.168.1.106/tcbern/backend/public/api/internationalisation')
       .then(function(response) {
         var result = {};
         response.data.forEach(function(entry) {
@@ -20,7 +20,7 @@ tcbernControllers.factory('translateCustomLoader', function ($http, $q) {
 });
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header) {
-    Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
+    Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/public/api');
     
     $scope.title = $header.title;
     $scope.$watch(
