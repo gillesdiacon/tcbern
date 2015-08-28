@@ -8,7 +8,7 @@ var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ng
 tcbernControllers.factory('translateCustomLoader', function ($http, $q) {
   return function(options) {
     var language = options.key;
-    return $http.get('http://192.168.1.106/tcbern/backend/public/api/internationalisation')
+    return $http.get('http://localhost/tcbern/backend/public/api/internationalisation')
       .then(function(response) {
         var result = {};
         response.data.forEach(function(entry) {
@@ -20,7 +20,7 @@ tcbernControllers.factory('translateCustomLoader', function ($http, $q) {
 });
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header) {
-    Restangular.setBaseUrl('http://192.168.1.106/tcbern/backend/public/api');
+    Restangular.setBaseUrl('http://localhost/tcbern/backend/public/api');
     
     $scope.title = $header.title;
     $scope.$watch(
@@ -49,6 +49,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
           $scope.menuElementList = [
             {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
             {'route': 'committee', 'html': 'MENU_COMMITTEE', 'requiresAuthentication': false},
+            {'route': 'training', 'html': 'MENU_TRAINING', 'requiresAuthentication': false},
             {'route': 'identities', 'html': 'MENU_MEMBERS', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'MENU_LOGIN', 'requiresAuthentication': false}
           ];
@@ -127,6 +128,9 @@ tcbernControllers.controller('CommitteeCtrl', function ($scope, $stateParams, Re
       return entry.key;
     });
   };
+});
+tcbernControllers.controller('TrainingCtrl', function ($header) {
+  $header.title = 'TITLE_TRAINING';
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authentication, $header) {

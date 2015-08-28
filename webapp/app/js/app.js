@@ -15,17 +15,15 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked'])
       templateUrl: 'partials/infos.detail.html',
       controller: 'InfosDetailCtrl'
     })
-    .state('items', {
-      url: '/items',
-      templateUrl: 'partials/items.html',
-      controller: function ($scope) {
-        $scope.itemList = ['A', 'B', 'C'];
-      }
-    })
     .state('committee', {
       url: '/committee',
       templateUrl: 'partials/committee.html',
       controller: 'CommitteeCtrl'
+    })
+    .state('training', {
+      url: '/training',
+      templateUrl: 'partials/training.html',
+      controller: 'TrainingCtrl'
     })
     .state('identities', {
       url: '/identities',
