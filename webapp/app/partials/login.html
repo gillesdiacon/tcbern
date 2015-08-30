@@ -1,7 +1,7 @@
 <div>
   <div ng-if="authenticated == false">
-    <input type="text" placeholder="{{'LOGIN_USERNAME' | translate}}" ng-model="$parent.username" class="login-text"></input> <br />
-    <input type="password" placeholder="{{'LOGIN_PASSWORD' | translate}}" ng-model="$parent.password" class="login-text"></input> <br />
+    <input type="text" placeholder="{{'LOGIN_USERNAME' | translate}}" ng-model="$parent.username" class="login-text" ng-keyup="$event.keyCode == 13 && login()"></input> <br />
+    <input type="password" placeholder="{{'LOGIN_PASSWORD' | translate}}" ng-model="$parent.password" class="login-text" ng-keyup="$event.keyCode == 13 && login()"></input> <br />
     <button ng-click="login()">{{'LOGIN_BTN' | translate}}</button>
   </div>
   <div ng-if="authenticated == true">

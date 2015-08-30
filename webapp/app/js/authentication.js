@@ -16,7 +16,7 @@ angular.module('authentication', ['restangular'])
     };
     
     service.authenticate = function(username, password, successCallback, errorCallback) {
-      $http.post('http://localhost/tcbern/backend/public/auth', {'username': username, 'password': password}, { 'successCallback': successCallback })
+      $http.post('../../backend/public/auth', {'username': username, 'password': password}, { 'successCallback': successCallback })
         .success(function(data, status, header, config) {
           service.token = data.token;
           service.group = data.group;
