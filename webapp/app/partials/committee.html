@@ -1,15 +1,12 @@
 <div class="box">
-  <table class="boxList">
-    <tr ng-repeat="committeeMember in committeeMemberList" class="no-bullet-list boxElement">
-      <td class="tableListCell">
-        <p ng-repeat="position in committeeMember.positions">
-          {{position.key | translate}}
-        </p>
-      </td>
-      <td class="tableListCell">
-        {{committeeMember.identity.firstname}} {{committeeMember.identity.lastname}}
-      </td>
-    </tr>
+  <ul class="boxList">
+    <li class="no-bullet-list boxElement committeeElemnt" ng-repeat="committeeMember in committeeMemberList">
+      <p class="committeePosition"
+         ng-repeat="position in committeeMember.positions"
+         ng-if="position.key !== 'position.committee' && position.key !== 'position.member'">{{position.key | translate}}</p>
+      <img class="committeePhoto" ng-src="images/{{committeeMember.identity.firstname}}.jpg" alt="{{committeeMember.identity.firstname}} {{committeeMember.identity.lastname}}"/>
+      <span class="committeeIdentity">{{committeeMember.identity.firstname}} {{committeeMember.identity.lastname}}</span>
+    </li>
   </ul>
   <div ui-view></div>
 </div>
