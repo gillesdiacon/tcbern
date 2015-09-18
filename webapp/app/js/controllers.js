@@ -1,4 +1,4 @@
-var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'header', 'hc.marked', 'pascalprecht.translate'])
+var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'ui.calendar', 'header', 'hc.marked', 'pascalprecht.translate'])
   .config(function($translateProvider) {
     $translateProvider.useLoader('translateCustomLoader', {});
     //$translateProvider.useSanitizeValueStrategy('sanitize');
@@ -48,6 +48,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
         controller: function($scope, $modalInstance, $authentication, $filter) {
           $scope.menuElementList = [
             {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
+            {'route': 'agenda', 'html': 'MENU_AGENDA', 'requiresAuthentication': false},
             {'route': 'committee', 'html': 'MENU_COMMITTEE', 'requiresAuthentication': false},
             {'route': 'training', 'html': 'MENU_TRAINING', 'requiresAuthentication': false},
             {'route': 'identities', 'html': 'MENU_MEMBERS', 'requiresAuthentication': true},
@@ -87,7 +88,7 @@ tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header
     return {};
   };
 });
-tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, Restangular, $header, marked) {
+tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, Restangular, $header) {
   $header.title = 'TITLE_INFO_DETAIL';
   
   Restangular.one('infos', $stateParams.id).get().then(function(info) {
@@ -95,6 +96,36 @@ tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, 
     $scope.detail = info;
   });
 });
+tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
+  $header.title = 'TITLE_AGENDA';
+  
+  $scope.uiConfig = {
+      calendar:{
+        lang: 'de',
+        height: 450,
+        editable: false,
+        header:{
+          left: '',
+          center: 'title',
+          right: 'today prev,next'
+        },
+        firstDay: 1 // Set monday as first day
+      }
+    };
+  $scope.eventSources = [
+    {
+      url: "http://www.google.com/calendar/feeds/webmaster%40tcbern.ch/public/basic",
+      googleCalendarApiKey: 'AIzaSyBJXlRv1-B4O9DdLL6qKfvm76Mu70IrgDA',
+      className: 'gcal-event',
+      currentTimezone: 'Europe/Zurich'
+    }, {
+      url: "http://www.google.com/calendar/feeds/tcbern.ch_eql9autq91jrg4u7sttjmijoe0%40group.calendar.google.com/public/basic",
+      googleCalendarApiKey: 'AIzaSyBJXlRv1-B4O9DdLL6qKfvm76Mu70IrgDA',
+      className: 'gcal-event',
+      currentTimezone: 'Europe/Zurich'
+    }];
+});
+
 tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restangular, $header) {
   $header.title = 'TITLE_MEMBERS';
   

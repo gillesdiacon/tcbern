@@ -15,6 +15,11 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked'])
       templateUrl: 'partials/infos.detail.html',
       controller: 'InfosDetailCtrl'
     })
+    .state('agenda', {
+      url: '/agenda',
+      templateUrl: 'partials/agenda.html',
+      controller: 'AgendaCtrl'
+    })
     .state('committee', {
       url: '/committee',
       templateUrl: 'partials/committee.html',

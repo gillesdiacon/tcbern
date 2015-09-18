@@ -20,6 +20,7 @@ class InternationalisationSeed {
     function run() {
         // Menu
         $this->createAndSaveInternationalisation("MENU_INFO", "Infos", "Nachrichten", "Info");
+        $this->createAndSaveInternationalisation("MENU_AGENDA", "Agenda", "Agenda", "Agenda");
         $this->createAndSaveInternationalisation("MENU_COMMITTEE", "Comité", "Vorstand", "Committee");
         $this->createAndSaveInternationalisation("MENU_TRAINING", "Entrainement", "Training", "Training");
         $this->createAndSaveInternationalisation("MENU_MEMBERS", "Membres", "Mitglieder", "Members");
@@ -50,6 +51,7 @@ class InternationalisationSeed {
         // Titles
         $this->createAndSaveInternationalisation("TITLE_INFO", "Informations", "Nachrichten", "Info");
         $this->createAndSaveInternationalisation("TITLE_INFO_DETAIL", "Information Détail", "Nachrichtsdetail", "Info Detail");
+        $this->createAndSaveInternationalisation("TITLE_AGENDA", "Agenda", "Agenda", "Agenda");
         $this->createAndSaveInternationalisation("TITLE_MEMBERS", "Membres", "Mitglieder", "Members");
         $this->createAndSaveInternationalisation("TITLE_MEMBERS_DETAIL", "Membre Détail", "Mitgliedsdetail", "Member Detail");
         $this->createAndSaveInternationalisation("TITLE_COMMITTEE", "Comité", "Vorstand", "Committee");
