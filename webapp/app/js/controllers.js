@@ -99,6 +99,12 @@ tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, 
 tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
   $header.title = 'TITLE_AGENDA';
   
+  $scope.event = undefined;
+  $scope.eventClick = function (event, jsEvent, view, resourceObj) {
+    $scope.event = event;
+    jsEvent.stopPropagation();
+    jsEvent.preventDefault();
+  };
   $scope.uiConfig = {
       calendar:{
         lang: 'de',
@@ -109,7 +115,8 @@ tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
           center: 'title',
           right: 'today prev,next'
         },
-        firstDay: 1 // Set monday as first day
+        firstDay: 1, // Set monday as first day
+        eventClick: $scope.eventClick
       }
     };
   $scope.eventSources = [
@@ -124,6 +131,10 @@ tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
       className: 'gcal-event',
       currentTimezone: 'Europe/Zurich'
     }];
+    
+  $scope.formatDate = function(date) {
+    return date.toLocaleTimeString("de", {hour: "2-digit", minute: "2-digit"});
+  };
 });
 
 tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restangular, $header) {
