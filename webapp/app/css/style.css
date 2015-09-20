@@ -112,6 +112,7 @@ body {
 
 .committeePhoto {
     padding-left: 20px;
+    max-height: 100px;
 }
 
 .committeeIdentity {
