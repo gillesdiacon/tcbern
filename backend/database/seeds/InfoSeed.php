@@ -174,6 +174,25 @@ Rückspiel: 9. Juni 20:45 in Bern.");
 
 Jetzt ist es endlich Zeit, die Körper und Muskeln zu erholen. Die Saison war lang und anstrengend. Ein herzlicher Dank an alle Klub-Mitglieder für diese grossartige Saison!");
         
+        $this->createAndSaveInfo(mktime(0, 0, 0, 9, 23, 2015), "Turnier 2015", "Das vierte Turnier des TCBern wurde am 19. September in der Mehrfachsporthalle Weissenstein durchgeführt. 
+Mit nur 7 Mannschaften haben leider nicht soviele Teams wie in den letzten Jahren teilgenommen. 
+
+Dennoch wurden schöne Begegnungen mit spektakulären Spielzügen ausgetragen. 
+Auch Dank dem guten Essen und Trinken aus der Kantine hat das Turnier sicher alle Teilnehmer erfreut. 
+
+Sportlich hat sich der TcBern gut geschlagen und im kleinen Final knapp gegen Chavannes verloren. 
+Der eine Punkt Vorsprung zur Halbzeit konnte leider nicht verteidigt werden. 
+
+Klassement:
+
+* Meyrin Panthers
+* No country for these tchoukers
+* Chavannes
+* Bern
+* Sion
+* Uni Neuchâtel
+* La Tchaux");
+        
         //$this->createAndSaveInfo("", "");
         
         
