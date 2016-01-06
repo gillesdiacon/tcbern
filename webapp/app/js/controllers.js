@@ -19,8 +19,16 @@ tcbernControllers.factory('translateCustomLoader', function ($http, $q) {
   };
 });
 
-tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header) {
+tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header, $authentication) {
     Restangular.setBaseUrl('../../backend/public/api');
+    Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, queryParams) {
+        var updatedRequest = {};
+        if ($authentication.token != null) {
+            headers.Token = $authentication.token;
+            updatedRequest.headers = headers;
+        }
+        return updatedRequest;
+    });
     
     $scope.title = $header.title;
     $scope.$watch(

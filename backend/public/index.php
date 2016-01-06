@@ -21,6 +21,10 @@ $authorizedEntities = array(
     "internationalisation" => "TcBern\\Model\\Internationalisation",
     "identities" => "TcBern\\Model\\Identity");
 
+// list of entities that requires an authentication
+$authenticationRequiredEntities = array(
+    "identities" => "TcBern\\Model\\Identity");
+
 // route middleware for simple API authentication
 function verification(\Slim\Route $route)
 {
@@ -50,7 +54,15 @@ $app->options(
 );
 
 function mapGroups($item) {
-  return array("id" => $item->id, "key" => $item->key);
+    return array("id" => $item->id, "key" => $item->key);
+}
+
+function encode($token, $key) {
+    return md5(json_encode($token));
+}
+
+function containsNoToken($request) {
+    return $request->headers->get('Token') == null;
 }
 
 // authentication
@@ -68,7 +80,8 @@ $app->post(
                 "id" => $user->id,
                 "exp" => time() + (60 * 60 * 24)
             );
-            $jwt = JWT::encode($token, $key);
+            $jwt = encode($token, $key);
+            //JWT::encode($token, $key);
             $app->response->headers->set('Content-Type', 'application/json');
             $app->response()->header('Access-Control-Allow-Origin', '*');
 
@@ -94,6 +107,10 @@ $app->get(
     function ($entity) use ($app) {
         global $authorizedEntities;
         
+        if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
+          $app->halt(401, "Authentication is required for '$entity'");
+        }
+        
         // query database for all objects
         $objects = $authorizedEntities[$entity]::all();
         
@@ -112,6 +129,10 @@ $app->get(
     'verification',
     function ($entity, $id) use ($app) {
         global $authorizedEntities;
+        
+        if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
+          $app->halt(401, "Authentication is required for '$entity'");
+        }
 
         // send response header for JSON content type
         $app->response()->header('Content-Type', 'application/json');
@@ -140,6 +161,10 @@ $app->post(
     'verification',
     function ($entity) use ($app) {
         global $authorizedEntities;
+        
+        if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
+          $app->halt(401, "Authentication is required for '$entity'");
+        }
 
         // return JSON-encoded response body
         $app->response()->header('Content-Type', 'application/json');
@@ -173,6 +198,10 @@ $app->post(
     'verification',
     function ($entity, $id) use ($app) {
         global $authorizedEntities;
+        
+        if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
+          $app->halt(401, "Authentication is required for '$entity'");
+        }
 
         // return JSON-encoded response body
         $app->response()->header('Content-Type', 'application/json');
@@ -215,6 +244,10 @@ $app->delete(
     'verification',
     function ($entity, $id) use ($app) {
         global $authorizedEntities;
+        
+        if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
+          $app->halt(401, "Authentication is required for '$entity'");
+        }
 
         // return JSON-encoded response body
         $app->response()->header('Content-Type', 'application/json');
@@ -251,6 +284,19 @@ function verifyEntityParam($entityParam) {
     global $authorizedEntities;
 
     return array_key_exists($entityParam, $authorizedEntities);
+}
+
+/**
+ * Returns true if the entity parameter is part of
+ * the listed of authentiation-required entities
+ *
+ * @param $entityParam string the entity param
+ * @return bool true if the entity param is authentication-required
+ */
+function isAuthenticationRequired($entityParam) {
+    global $authenticationRequiredEntities;
+
+    return array_key_exists($entityParam, $authenticationRequiredEntities);
 }
 
 /**

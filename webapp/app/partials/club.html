@@ -1,0 +1,17 @@
+<div class="box">
+  <h1>{{'CONTACT_H1' | translate}}</h1>
+  <ul class="boxList">
+    <a ng-href="mailto:{{contact}}" target="_blank">{{contact}}</a>
+  </ul>
+  <h1>{{'MENU_CLUB' | translate}}</h1>
+  <ul class="boxList">
+    <li class="no-bullet-list boxElement committeeElemnt" ng-repeat="committeeMember in committeeMemberList">
+      <p class="committeePosition"
+         ng-repeat="position in committeeMember.positions"
+         ng-if="position.key !== 'position.committee' && position.key !== 'position.member'">{{position.key | translate}}</p>
+      <img class="committeePhoto" ng-src="images/{{committeeMember.identity.firstname}}.jpg" alt="{{committeeMember.identity.firstname}} {{committeeMember.identity.lastname}}"/>
+      <span class="committeeIdentity">{{committeeMember.identity.firstname}} {{committeeMember.identity.lastname}}</span>
+    </li>
+  </ul>
+  <div ui-view></div>
+</div>
