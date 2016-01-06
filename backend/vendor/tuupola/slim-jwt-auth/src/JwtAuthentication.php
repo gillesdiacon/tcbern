@@ -96,9 +96,9 @@ class JwtAuthentication extends \Slim\Middleware
             return;
         }
 
-        /* If token cannot be decoded return with 400 Bad Request. */
+        /* If token cannot be decoded return with 401 Unauthorized. */
         if (false === $decoded = $this->decodeToken($token)) {
-            $this->app->response->status(400);
+            $this->app->response->status(401);
             $this->error(array(
                 "message" => $this->message
             ));
@@ -145,7 +145,7 @@ class JwtAuthentication extends \Slim\Middleware
     public function error($params)
     {
         if (is_callable($this->options["error"])) {
-            $this->options["error"]($params);
+            return $this->options["error"]($params);
         }
     }
 
@@ -170,9 +170,9 @@ class JwtAuthentication extends \Slim\Middleware
         }
 
         /* Bearer not found, try a cookie. */
-        if (isset($_COOKIE[$this->options["cookie"]])) {
+        if ($this->app->getCookie($this->options["cookie"])) {
             $this->log(LogLevel::DEBUG, "Using token from cookie");
-            return $_COOKIE[$this->options["cookie"]];
+            return $this->app->getCookie($this->options["cookie"]);
         };
 
         /* If everything fails log and return false. */
