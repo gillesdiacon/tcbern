@@ -21,7 +21,7 @@ class InternationalisationSeed {
         // Menu
         $this->createAndSaveInternationalisation("MENU_INFO", "Infos", "Nachrichten", "Info");
         $this->createAndSaveInternationalisation("MENU_AGENDA", "Agenda", "Agenda", "Agenda");
-        $this->createAndSaveInternationalisation("MENU_COMMITTEE", "Comité", "Vorstand", "Committee");
+        $this->createAndSaveInternationalisation("MENU_CLUB", "Club", "Klub", "Club");
         $this->createAndSaveInternationalisation("MENU_TRAINING", "Entrainement", "Training", "Training");
         $this->createAndSaveInternationalisation("MENU_MEMBERS", "Membres", "Mitglieder", "Members");
         $this->createAndSaveInternationalisation("MENU_LOGIN", "Login", "Login", "Login");
@@ -65,6 +65,7 @@ class InternationalisationSeed {
         $this->createAndSaveInternationalisation("LOGIN_USERNAME", "Nom d'utilisateur", "Benützername", "Username");
         $this->createAndSaveInternationalisation("LOGIN_PASSWORD", "Mot de passe", "Passwort", "Password");
         $this->createAndSaveInternationalisation("LOGOUT_BTN", "LogOut!", "LogOut!", "LogOut!");
+        $this->createAndSaveInternationalisation("CONTACT_H1", "Contact", "Kontakt", "Contact");
         
     }
 }

@@ -49,7 +49,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
           $scope.menuElementList = [
             {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
             {'route': 'agenda', 'html': 'MENU_AGENDA', 'requiresAuthentication': false},
-            {'route': 'committee', 'html': 'MENU_COMMITTEE', 'requiresAuthentication': false},
+            {'route': 'club', 'html': 'MENU_CLUB', 'requiresAuthentication': false},
             {'route': 'training', 'html': 'MENU_TRAINING', 'requiresAuthentication': false},
             {'route': 'identities', 'html': 'MENU_MEMBERS', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'MENU_LOGIN', 'requiresAuthentication': false}
@@ -158,8 +158,9 @@ tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParam
     $scope.identity = identity;
   });
 });
-tcbernControllers.controller('CommitteeCtrl', function ($scope, $stateParams, Restangular, $header) {
+tcbernControllers.controller('ClubCtrl', function ($scope, $stateParams, Restangular, $header) {
   $header.title = 'TITLE_COMMITTEE';
+  $scope.contact = 'vorstand' + '@' + 'tcbern.ch';
   
   Restangular.all('committee').getList().then(function(allCommitteeMembers) {
     $scope.committeeMemberList = allCommitteeMembers;

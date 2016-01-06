@@ -20,10 +20,10 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked'])
       templateUrl: 'partials/agenda.html',
       controller: 'AgendaCtrl'
     })
-    .state('committee', {
-      url: '/committee',
-      templateUrl: 'partials/committee.html',
-      controller: 'CommitteeCtrl'
+    .state('club', {
+      url: '/club',
+      templateUrl: 'partials/club.html',
+      controller: 'ClubCtrl'
     })
     .state('training', {
       url: '/training',
