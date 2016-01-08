@@ -72,9 +72,9 @@ $app->post(
         $params = json_decode($app->request()->getBody(), true);
         
         $username = $params['username'];
-        $user = User::where('username', '=', $username)->firstOrFail();
+        $user = User::where('username', '=', $username)->first();
         
-        if ($user->password == $params['password']) {
+        if ($user != null && $user->password == $params['password']) {
             $key = "supersecretkeyyoushouldnotcommittogithub";
             $token = array(
                 "id" => $user->id,
@@ -82,11 +82,14 @@ $app->post(
             );
             $jwt = encode($token, $key);
             //JWT::encode($token, $key);
-            $app->response->headers->set('Content-Type', 'application/json');
-            $app->response()->header('Access-Control-Allow-Origin', '*');
 
             echo json_encode(array("token" => $jwt, "group" => array_map('mapGroups', $user->groups()->get()->all())));
+        } else {
+            $app->halt(503, "Username or password incorrect");
         }
+        
+        $app->response->headers->set('Content-Type', 'application/json');
+        $app->response()->header('Access-Control-Allow-Origin', '*');
     }
 );
 
