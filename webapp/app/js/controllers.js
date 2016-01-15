@@ -60,6 +60,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
             {'route': 'club', 'html': 'MENU_CLUB', 'requiresAuthentication': false},
             {'route': 'training', 'html': 'MENU_TRAINING', 'requiresAuthentication': false},
             {'route': 'identities', 'html': 'MENU_MEMBERS', 'requiresAuthentication': true},
+            {'route': 'account', 'html': 'MENU_ACCOUNT', 'requiresAuthentication': true},
             {'route': 'login', 'html': 'MENU_LOGIN', 'requiresAuthentication': false}
           ];
           
@@ -205,7 +206,7 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authenticat
   $scope.login = function() {
     $authentication.authenticate($scope.username, $scope.password, function(data, status, header, config) {
         $scope.resetInfosWithMessage(true, '');
-        $state.go('infos');
+        $state.go('account');
       },
       function(data, status, header, config) {
         if (status == 503) {
@@ -217,5 +218,37 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authenticat
   };
   $scope.logout = function() {
     $authentication.logout();
+  };
+});
+tcbernControllers.controller('AccountCtrl', function ($scope, $header, Restangular, $authentication, $http) {
+  $header.title = 'TITLE_ACCOUNT';
+  
+  $scope.identity = {};
+  $scope.password = '';
+  $scope.passwordRepeated = '';
+  
+  $scope.message = '';
+  
+  Restangular.one('identities', $authentication.userId).get().then(function(identity) { $scope.identity = identity; });
+  
+  $scope.updateIdentity = function() {
+    $scope.identity.put();
+  };
+  $scope.updateUser = function() {
+    if ($scope.password == '') {
+        $scope.message = 'The new password cannot be empty';
+    } else if ($scope.password != $scope.passwordRepeated) {
+        $scope.message = 'The password and the repeated one must be identical';
+    } else {
+        $http.post('../../backend/public/password/' + $authentication.userId, {'password': md5($scope.password)}, {headers: {'Token': $authentication.token}})
+        .success(function(data, status, header, config) {
+          $scope.password = '';
+          $scope.passwordRepeated = '';
+          $scope.message = 'Password saved';
+        })
+        .error(function(data, status, header, config) {
+          $scope.message = 'Error during operation';
+        });
+    }
   };
 });

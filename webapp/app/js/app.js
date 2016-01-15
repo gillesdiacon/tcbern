@@ -40,6 +40,11 @@ angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked'])
       templateUrl: 'partials/identities.detail.html',
       controller: 'IdentityDetailCtrl'
     })
+    .state('account', {
+      url: '/account',
+      templateUrl: 'partials/account.html',
+      controller: 'AccountCtrl'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'partials/login.html',

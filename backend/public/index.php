@@ -23,7 +23,8 @@ $authorizedEntities = array(
 
 // list of entities that requires an authentication
 $authenticationRequiredEntities = array(
-    "identities" => "TcBern\\Model\\Identity");
+    "identities" => "TcBern\\Model\\Identity",
+    "users" => "TcBern\\Model\\User");
 
 // route middleware for simple API authentication
 function verification(\Slim\Route $route)
@@ -83,13 +84,42 @@ $app->post(
             $jwt = encode($token, $key);
             //JWT::encode($token, $key);
 
-            echo json_encode(array("token" => $jwt, "group" => array_map('mapGroups', $user->groups()->get()->all())));
+            echo json_encode(array("token" => $jwt, "userId" => $user->id, "group" => array_map('mapGroups', $user->groups()->get()->all())));
         } else {
             $app->halt(503, "Username or password incorrect");
         }
         
         $app->response->headers->set('Content-Type', 'application/json');
         $app->response()->header('Access-Control-Allow-Origin', '*');
+    }
+);
+$app->post(
+    '/password/:id',
+    function ($id) use ($app) {
+        global $authorizedEntities;
+        
+        if (isAuthenticationRequired('users') && containsNoToken($app->request())) {
+          $app->halt(401, "Authentication is required for '/password'");
+        }
+        
+        try {
+            $request = $app->request();
+            $body = $request->getBody();
+            $input = json_decode($body);
+            echo $input->password;
+            $user = User::find($id);
+            if ($user) {
+                $user->password = $input->password;
+                $user->save();
+
+                echo "success";
+            } else {
+                $app->response()->status(404);
+            }
+        } catch (Exception $e) {
+            $app->response()->status(400);
+            $app->response()->header('X-Status-Reason', $e->getMessage());
+        }
     }
 );
 
@@ -195,8 +225,8 @@ $app->post(
     }
 );
 
-// handle POST requests to /entity/:id
-$app->post(
+// handle PUT requests to /entity/:id
+$app->put(
     '/api/:entity/:id',
     'verification',
     function ($entity, $id) use ($app) {
@@ -222,7 +252,6 @@ $app->post(
             // store modified article
             // return JSON-encoded response body
             if ($object) {
-
                 foreach($input as $key => $value) {
 
                     //Always cast to String

@@ -24,6 +24,7 @@ class InternationalisationSeed {
         $this->createAndSaveInternationalisation("MENU_CLUB", "Club", "Klub", "Club");
         $this->createAndSaveInternationalisation("MENU_TRAINING", "Entrainement", "Training", "Training");
         $this->createAndSaveInternationalisation("MENU_MEMBERS", "Membres", "Mitglieder", "Members");
+        $this->createAndSaveInternationalisation("MENU_ACCOUNT", "Mes Données", "Meine Daten", "My Data");
         $this->createAndSaveInternationalisation("MENU_LOGIN", "Login", "Login", "Login");
         
         // Positions
@@ -42,7 +43,11 @@ class InternationalisationSeed {
         $this->createAndSaveInternationalisation("IDENTITY_LASTNAME", "Nom", "Name", "Lastname");
         $this->createAndSaveInternationalisation("IDENTITY_EMAIL", "Email", "Email", "Email");
         $this->createAndSaveInternationalisation("IDENTITY_BIRTHDAY", "Date de naissance", "Geburtsdatum", "Birthday");
+        $this->createAndSaveInternationalisation("IDENTITY_STREETNUMBER", "Numéro", "Nummer", "Number");
+        $this->createAndSaveInternationalisation("IDENTITY_STREET", "Rue", "Strasse", "Street");
+        $this->createAndSaveInternationalisation("IDENTITY_STREET2", "Rue 2", "Strasse 2", "Street 2");
         $this->createAndSaveInternationalisation("IDENTITY_ADDRESS", "Adresse", "Adresse", "Address");
+        $this->createAndSaveInternationalisation("IDENTITY_POSTCODE", "Code postal", "Postleitzahl", "Postcode");
         $this->createAndSaveInternationalisation("IDENTITY_CITY", "Ville", "Stadt", "City");
         $this->createAndSaveInternationalisation("IDENTITY_COUNTRY", "Pays", "Land", "Country");
         $this->createAndSaveInternationalisation("IDENTITY_PHONE", "Téléphone", "Telefon", "Phone");
@@ -56,15 +61,17 @@ class InternationalisationSeed {
         $this->createAndSaveInternationalisation("TITLE_MEMBERS_DETAIL", "Membre Détail", "Mitgliedsdetail", "Member Detail");
         $this->createAndSaveInternationalisation("TITLE_COMMITTEE", "Comité", "Vorstand", "Committee");
         $this->createAndSaveInternationalisation("TITLE_TRAINING", "Entrainements", "Training", "Training");
+        $this->createAndSaveInternationalisation("TITLE_ACCOUNT", "Mes Données", "Meine Daten", "My Data");
         $this->createAndSaveInternationalisation("TITLE_LOGIN", "Login", "Login", "Login");
         
         // Buttons, Fields, Views, etc.
         $this->createAndSaveInternationalisation("INFO_DETAIL_CLOSE", "Fermer", "Schliessen", "Close");
         $this->createAndSaveInternationalisation("INFO_DETAIL_OPEN", "Plus...", "Mehr...", "More...");
-        $this->createAndSaveInternationalisation("LOGIN_BTN", "LogIn!", "LogIn!", "LogIn!");
+        $this->createAndSaveInternationalisation("BTN_LOGIN", "LogIn!", "LogIn!", "LogIn!");
         $this->createAndSaveInternationalisation("LOGIN_USERNAME", "Nom d'utilisateur", "Benützername", "Username");
         $this->createAndSaveInternationalisation("LOGIN_PASSWORD", "Mot de passe", "Passwort", "Password");
-        $this->createAndSaveInternationalisation("LOGOUT_BTN", "LogOut!", "LogOut!", "LogOut!");
+        $this->createAndSaveInternationalisation("BTN_LOGOUT", "LogOut!", "LogOut!", "LogOut!");
+        $this->createAndSaveInternationalisation("BTN_SAVe", "Enregistrer", "Speichern", "Save");
         $this->createAndSaveInternationalisation("CONTACT_H1", "Contact", "Kontakt", "Contact");
         
     }
