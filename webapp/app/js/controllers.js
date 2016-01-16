@@ -213,7 +213,7 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authenticat
     $scope.login = function() {
         $authentication.authenticate($scope.username, $scope.password, function(data, status, header, config) {
             $scope.resetInfosWithMessage(true, '');
-            $state.go('account');
+            $state.go('infos');
         },
         function(data, status, header, config) {
             if (status == 503) {
