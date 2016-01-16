@@ -13,6 +13,10 @@ $app = new Slim\Slim();
 //    "path" => "/api",
 //    "secret" => "supersecretkeyyoushouldnotcommittogithub"
 //]));
+$cipher = mcrypt_module_open('rijndael-256', '', 'ofb', '');
+$iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($cipher), MCRYPT_DEV_RANDOM);
+$keySize = mcrypt_enc_get_key_size($cipher);
+$encryptionKey = substr(md5('supersecretkeyyoushouldnotcommittogithub'), 0, $keySize);
 
 
 // list of authorized entities
@@ -23,6 +27,11 @@ $authorizedEntities = array(
 
 // list of entities that requires an authentication
 $authenticationRequiredEntities = array(
+    "identities" => "TcBern\\Model\\Identity",
+    "users" => "TcBern\\Model\\User");
+
+// list of entities that requires the ownership to be modified
+$ownershipRequiredEntities = array(
     "identities" => "TcBern\\Model\\Identity",
     "users" => "TcBern\\Model\\User");
 
@@ -58,33 +67,47 @@ function mapGroups($item) {
     return array("id" => $item->id, "key" => $item->key);
 }
 
-function encode($token, $key) {
-    return md5(json_encode($token));
+function encode($token, $cipher, $encryptionKey, $iv) {
+    /*mcrypt_generic_init($cipher, $encryptionKey, $iv);
+    $encrypted = mcrypt_generic($cipher, json_encode($token));
+    mcrypt_generic_deinit($cipher);*/
+    return base64_encode(json_encode($token));
+}
+
+function decode($token, $cipher, $encryptionKey, $iv) {
+    $decodedToken = base64_decode($token);
+    /*mcrypt_generic_init($cipher, $encryptionKey, $iv);
+    $decrypted = mdecrypt_generic($cipher, $decodedToken);
+    mcrypt_generic_deinit($cipher);
+    echo $decrypted;*/
+    return json_decode($decodedToken);
 }
 
 function containsNoToken($request) {
     return $request->headers->get('Token') == null;
 }
 
+function isNotOwner($entity, $id, $userId) {
+    return $id != $userId;
+}
+
 // authentication
 $app->post(
     '/auth',
     function () use ($app) {
+        global $cipher, $encryptionKey, $iv;
         $params = json_decode($app->request()->getBody(), true);
         
         $username = $params['username'];
         $user = User::where('username', '=', $username)->first();
         
         if ($user != null && $user->password == $params['password']) {
-            $key = "supersecretkeyyoushouldnotcommittogithub";
             $token = array(
                 "id" => $user->id,
                 "exp" => time() + (60 * 60 * 24)
             );
-            $jwt = encode($token, $key);
-            //JWT::encode($token, $key);
-
-            echo json_encode(array("token" => $jwt, "userId" => $user->id, "group" => array_map('mapGroups', $user->groups()->get()->all())));
+            $encoded = encode($token, $cipher, $encryptionKey, $iv);
+            echo json_encode(array("token" => $encoded, "userId" => $user->id, "group" => array_map('mapGroups', $user->groups()->get()->all())));
         } else {
             $app->halt(503, "Username or password incorrect");
         }
@@ -96,17 +119,23 @@ $app->post(
 $app->post(
     '/password/:id',
     function ($id) use ($app) {
-        global $authorizedEntities;
+        global $authorizedEntities, $cipher, $encryptionKey, $iv;
         
-        if (isAuthenticationRequired('users') && containsNoToken($app->request())) {
-          $app->halt(401, "Authentication is required for '/password'");
+        $request = $app->request();
+        if (isAuthenticationRequired('users') && containsNoToken($request)) {
+            $app->halt(401, "Authentication is required for '/password'");
+        }
+        
+        $token = $request->headers->get('Token');
+        $decoded = decode($request->headers->get('Token'), $cipher, $encryptionKey, $iv);
+        if (/* check admin rights */ isOwnershipRequired('users') && isNotOwner('users', $id, $decoded->id)) {
+            $app->halt(401, "You must be the owner of these data");
         }
         
         try {
             $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
-            echo $input->password;
             $user = User::find($id);
             if ($user) {
                 $user->password = $input->password;
@@ -138,7 +167,7 @@ $app->get(
     '/api/:entity',
     'verification',
     function ($entity) use ($app) {
-        global $authorizedEntities;
+        global $authorizedEntities, $cipher, $encryptionKey, $iv;
         
         if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
           $app->halt(401, "Authentication is required for '$entity'");
@@ -161,7 +190,7 @@ $app->get(
     '/api/:entity/:id',
     'verification',
     function ($entity, $id) use ($app) {
-        global $authorizedEntities;
+        global $authorizedEntities, $cipher, $encryptionKey, $iv;
         
         if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
           $app->halt(401, "Authentication is required for '$entity'");
@@ -193,7 +222,7 @@ $app->post(
     '/api/:entity',
     'verification',
     function ($entity) use ($app) {
-        global $authorizedEntities;
+        global $authorizedEntities, $cipher, $encryptionKey, $iv;
         
         if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
           $app->halt(401, "Authentication is required for '$entity'");
@@ -230,10 +259,17 @@ $app->put(
     '/api/:entity/:id',
     'verification',
     function ($entity, $id) use ($app) {
-        global $authorizedEntities;
+        global $authorizedEntities, $cipher, $encryptionKey, $iv;
         
-        if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
+        $request = $app->request();
+        if (isAuthenticationRequired($entity) && containsNoToken($request)) {
           $app->halt(401, "Authentication is required for '$entity'");
+        }
+        
+        $token = $request->headers->get('Token');
+        $decoded = decode($request->headers->get('Token'), $cipher, $encryptionKey, $iv);
+        if (/* check admin rights */ isOwnershipRequired($entity) && isNotOwner($entity, $id, $decoded->id)) {
+            $app->halt(401, "You must be the owner of these data");
         }
 
         // return JSON-encoded response body
@@ -242,7 +278,6 @@ $app->put(
 
         try {
             // get and decode JSON request body
-            $request = $app->request();
             $body = $request->getBody();
             $input = json_decode($body);
 
@@ -275,7 +310,7 @@ $app->delete(
     '/api/:entity/:id',
     'verification',
     function ($entity, $id) use ($app) {
-        global $authorizedEntities;
+        global $authorizedEntities, $cipher, $encryptionKey, $iv;
         
         if (isAuthenticationRequired($entity) && containsNoToken($app->request())) {
           $app->halt(401, "Authentication is required for '$entity'");
@@ -313,7 +348,7 @@ $app->run();
  * @return bool true if the entity param is authorized
  */
 function verifyEntityParam($entityParam) {
-    global $authorizedEntities;
+    global $authorizedEntities, $cipher, $encryptionKey, $iv;
 
     return array_key_exists($entityParam, $authorizedEntities);
 }
@@ -332,6 +367,19 @@ function isAuthenticationRequired($entityParam) {
 }
 
 /**
+ * Returns true if the entity parameter is part of
+ * the listed of ownership-required entities
+ *
+ * @param $entityParam string the entity param
+ * @return bool true if the entity param is ownership-required
+ */
+function isOwnershipRequired($entityParam) {
+    global $ownershipRequiredEntities;
+
+    return array_key_exists($entityParam, $ownershipRequiredEntities);
+}
+
+/**
  * Returns the class name corresponding to the entity param
  *
  * @param $entityParam string the entity param name
@@ -339,7 +387,7 @@ function isAuthenticationRequired($entityParam) {
  * @return mixed the entity class name
  */
 function getEntityClassName($entityParam) {
-    global $authorizedEntities;
+    global $authorizedEntities, $cipher, $encryptionKey, $iv;
 
     return $authorizedEntities[$entityParam];
 }
