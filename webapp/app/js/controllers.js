@@ -145,7 +145,7 @@ tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
     };
 });
 
-tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restangular, $header) {
+tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restangular, $header, $authentication) {
     if (!$authentication.isAuthenticated) {
         $state.go('login');
     } else {
@@ -162,7 +162,7 @@ tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restang
         };
     }
 });
-tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParams, $state, Restangular, $header) {
+tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParams, $state, Restangular, $header, $authentication) {
     if (!$authentication.isAuthenticated) {
         $state.go('login');
     } else {

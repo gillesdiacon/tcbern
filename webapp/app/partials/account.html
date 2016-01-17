@@ -1,23 +1,59 @@
 <div class="box">
   <form>
-    {{'IDENTITY_FIRSTNAME' | translate}} <input type="text" ng-model="identity.firstname"></input><br />
-    {{'IDENTITY_LASTNAME' | translate}} <input type="text" ng-model="identity.lastname"></input><br />
-    {{'IDENTITY_EMAIL' | translate}} <input type="text" ng-model="identity.email"></input><br />
-    {{'IDENTITY_BIRTHDAY' | translate}} <input type="text" ng-model="identity.birthday"></input><br />
-    {{'IDENTITY_STREETNUMBER' | translate}} <input type="text" ng-model="identity.streetnumber"></input><br />
-    {{'IDENTITY_STREET' | translate}} <input type="text" ng-model="identity.street"></input><br />
-    {{'IDENTITY_STREET2' | translate}} <input type="text" ng-model="identity.street2"></input><br />
-    {{'IDENTITY_POSTCODE' | translate}} <input type="text" ng-model="identity.postcode"></input><br />
-    {{'IDENTITY_CITY' | translate}} <input type="text" ng-model="identity.city"></input><br />
-    {{'IDENTITY_COUNTRY' | translate}} <input type="text" ng-model="identity.country"></input><br />
-    {{'IDENTITY_PHONE' | translate}} <input type="text" ng-model="identity.phonenumber"></input><br />
-    {{'IDENTITY_MOBILE' | translate}} <input type="text" ng-model="identity.mobilenumber"></input><br />
-    <input type="submit" ng-click="updateIdentity()" value="{{'BTN_SAVE' | translate}}" />
+    <ul class="boxList">
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.firstname" placeholder="{{'IDENTITY_FIRSTNAME' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.lastname" placeholder="{{'IDENTITY_LASTNAME' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.email" placeholder="{{'IDENTITY_EMAIL' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.birthday" placeholder="{{'IDENTITY_BIRTHDAY' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.streetnumber" placeholder="{{'IDENTITY_STREETNUMBER' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.street" placeholder="{{'IDENTITY_STREET' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.street2" placeholder="{{'IDENTITY_STREET2' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.postcode" placeholder="{{'IDENTITY_POSTCODE' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.city" placeholder="{{'IDENTITY_CITY' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.country" placeholder="{{'IDENTITY_COUNTRY' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.phonenumber" placeholder="{{'IDENTITY_PHONE' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="text" style="width: 100%" ng-model="identity.mobilenumber" placeholder="{{'IDENTITY_MOBILE' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <td class="tableListCell"><input type="submit" ng-click="updateIdentity()" value="{{'BTN_SAVE' | translate}}" />
+        </li>
+    </ul>
   </form>
   <form>
-    {{'LOGIN_PASSWORD' | translate}} <input type="password" ng-model="password"></input><br />
-    {{'LOGIN_PASSWORD_REPEAT' | translate}} <input type="password" ng-model="passwordRepeated"></input><br />
-    <input type="submit" ng-click="updateUser()" value="{{'BTN_SAVE' | translate}}" />
+    <ul class="boxList">
+        <li class="boxElement no-bullet-list">
+            <input type="password" style="width: 100%" ng-model="password" placeholder="{{'LOGIN_PASSWORD' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <input type="password" style="width: 100%" ng-model="passwordRepeated" placeholder="{{'LOGIN_PASSWORD_REPEAT' | translate}}"></input>
+        </li>
+        <li class="boxElement no-bullet-list">
+            <td class="tableListCell"><input type="submit" ng-click="updateUser()" value="{{'BTN_SAVE' | translate}}" />
+        </li>
+    </ul>
   </form>
   <label>{{message}}</input>
 </div>
