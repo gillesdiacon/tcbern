@@ -1,5 +1,6 @@
 .idea
-webapp/bower_components
+webapp/dist/
+webapp/app/bower_components
 webapp/node_modules
 /webapp/**/.git
 /backend/**/.git

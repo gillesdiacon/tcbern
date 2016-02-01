@@ -5,7 +5,7 @@ var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ng
         $translateProvider.preferredLanguage('de');
     });
 
-tcbernControllers.factory('translateCustomLoader', function ($http, $q) {
+tcbernControllers.factory('translateCustomLoader', function ($http) {
     return function(options) {
         var language = options.key;
         return $http.get('../../backend/public/api/internationalisation')
@@ -23,7 +23,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
     Restangular.setBaseUrl('../../backend/public/api');
     Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, queryParams) {
         var updatedRequest = {};
-        if ($authentication.token != null) {
+        if ($authentication.token !== null) {
             headers.Token = $authentication.token;
             updatedRequest.headers = headers;
         }
@@ -65,18 +65,21 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
                 ];
 
                 $scope.checkAuthorization = function(value, index) {
-                    if ($authentication.isAuthenticated) return true;
-                    else return value.requiresAuthentication == false;
+                    if ($authentication.isAuthenticated) {
+                        return true;
+                    } else {
+                        return value.requiresAuthentication === false;
+                    }
                 };
 
                 $scope.go = function(e, element) {
                     $modalInstance.dismiss();
                     e.stopPropagation();
                     $state.go(element.route);
-                }
+                };
             }
         }).result.then(postClose, postClose);
-    }
+    };
 });
 
 tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header) {
@@ -88,8 +91,8 @@ tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header
     });
 
     $scope.getInfoById = function(id) {
-        for (i = 0; i < $scope.infosList.length; i++) {
-            if ($scope.infosList[i].id == id) {
+        for (var i = 0; i < $scope.infosList.length; i++) {
+            if ($scope.infosList[i].id === id) {
                 return $scope.infosList[i];
             }
         }
@@ -129,19 +132,19 @@ tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
         }
     };
     $scope.eventSources = [{
-        url: "http://www.google.com/calendar/feeds/webmaster%40tcbern.ch/public/basic",
+        url: 'http://www.google.com/calendar/feeds/webmaster%40tcbern.ch/public/basic',
         googleCalendarApiKey: 'AIzaSyBJXlRv1-B4O9DdLL6qKfvm76Mu70IrgDA',
         className: 'gcal-event',
         currentTimezone: 'Europe/Zurich'
     }, {
-        url: "http://www.google.com/calendar/feeds/tcbern.ch_eql9autq91jrg4u7sttjmijoe0%40group.calendar.google.com/public/basic",
+        url: 'http://www.google.com/calendar/feeds/tcbern.ch_eql9autq91jrg4u7sttjmijoe0%40group.calendar.google.com/public/basic',
         googleCalendarApiKey: 'AIzaSyBJXlRv1-B4O9DdLL6qKfvm76Mu70IrgDA',
         className: 'gcal-event',
         currentTimezone: 'Europe/Zurich'
     }];
 
     $scope.formatDate = function(date) {
-        return date.toLocaleTimeString("de", {hour: "2-digit", minute: "2-digit"});
+        return date.toLocaleTimeString('de', {hour: '2-digit', minute: '2-digit'});
     };
 });
 
@@ -216,7 +219,7 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authenticat
             $state.go('infos');
         },
         function(data, status, header, config) {
-            if (status == 503) {
+            if (status === 503) {
                 $scope.resetInfosWithMessage(false, 'Username or password invalid');
             } else {
                 $scope.resetInfosWithMessage(false, 'Problem during authentication: status = ' + status);
@@ -245,9 +248,9 @@ tcbernControllers.controller('AccountCtrl', function ($scope, $state, $header, R
             $scope.identity.put();
         };
         $scope.updateUser = function() {
-            if ($scope.password == '') {
+            if ($scope.password === '') {
                 $scope.message = 'The new password cannot be empty';
-            } else if ($scope.password != $scope.passwordRepeated) {
+            } else if ($scope.password !== $scope.passwordRepeated) {
                 $scope.message = 'The password and the repeated one must be identical';
             } else {
                 $http.post('../../backend/public/password/' + $authentication.userId, {'password': md5($scope.password)}, {headers: {'Token': $authentication.token}})

@@ -32,14 +32,14 @@ angular.module('authentication', ['restangular'])
           service.isAuthenticated = true;
           
           Restangular.setDefaultHeaders({ 'Authorization': 'Bearer ' + service.token });
-          if (typeof(successCallback) != undefined) {
+          if (typeof(successCallback) !== undefined) {
             successCallback.call(this, data, status, header, config);
           }
         })
         .error(function(data, status, header, config) {
           service.logout();
           
-          if (typeof(errorCallback) != undefined) {
+          if (typeof(errorCallback) !== undefined) {
             errorCallback.call(this, data, status, header, config);
           }
         });
