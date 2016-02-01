@@ -1,11 +1,13 @@
 var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'ui.calendar', 'header', 'hc.marked', 'pascalprecht.translate'])
     .config(function($translateProvider) {
+        'use strict';
         $translateProvider.useLoader('translateCustomLoader', {});
         //$translateProvider.useSanitizeValueStrategy('sanitize');
         $translateProvider.preferredLanguage('de');
     });
 
 tcbernControllers.factory('translateCustomLoader', function ($http) {
+    'use strict';
     return function(options) {
         var language = options.key;
         return $http.get('../../backend/public/api/internationalisation')
@@ -20,6 +22,7 @@ tcbernControllers.factory('translateCustomLoader', function ($http) {
 });
 
 tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restangular, $header, $authentication) {
+    'use strict';
     Restangular.setBaseUrl('../../backend/public/api');
     Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, queryParams) {
         var updatedRequest = {};
@@ -83,6 +86,7 @@ tcbernControllers.controller('MainCtrl', function($scope, $aside, $state, Restan
 });
 
 tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header) {
+    'use strict';
     $header.title = 'TITLE_INFO';
 
     var infos = Restangular.all('infos');
@@ -101,6 +105,7 @@ tcbernControllers.controller('InfosCtrl', function ($scope, Restangular, $header
     };
 });
 tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, Restangular, $header) {
+    'use strict';
     $header.title = 'TITLE_INFO_DETAIL';
 
     Restangular.one('infos', $stateParams.id).get().then(function(info) {
@@ -109,6 +114,7 @@ tcbernControllers.controller('InfosDetailCtrl', function ($scope, $stateParams, 
     });
 });
 tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
+    'use strict';
     $header.title = 'TITLE_AGENDA';
 
     $scope.event = undefined;
@@ -149,6 +155,7 @@ tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
 });
 
 tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restangular, $header, $authentication) {
+    'use strict';
     if (!$authentication.isAuthenticated) {
         $state.go('login');
     } else {
@@ -166,6 +173,7 @@ tcbernControllers.controller('IdentitiesCtrl', function ($scope, $state, Restang
     }
 });
 tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParams, $state, Restangular, $header, $authentication) {
+    'use strict';
     if (!$authentication.isAuthenticated) {
         $state.go('login');
     } else {
@@ -178,6 +186,7 @@ tcbernControllers.controller('IdentityDetailCtrl', function ($scope, $stateParam
     }
 });
 tcbernControllers.controller('ClubCtrl', function ($scope, $stateParams, Restangular, $header) {
+    'use strict';
     $header.title = 'TITLE_COMMITTEE';
     $scope.contact = 'vorstand' + '@' + 'tcbern.ch';
 
@@ -192,10 +201,12 @@ tcbernControllers.controller('ClubCtrl', function ($scope, $stateParams, Restang
     };
 });
 tcbernControllers.controller('TrainingCtrl', function ($header) {
+    'use strict';
     $header.title = 'TITLE_TRAINING';
 });
 
 tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authentication, $header) {
+    'use strict';
     $header.title = 'TITLE_LOGIN';
 
     $scope.username = '';
@@ -231,6 +242,7 @@ tcbernControllers.controller('LoginCtrl', function ($scope, $state, $authenticat
     };
 });
 tcbernControllers.controller('AccountCtrl', function ($scope, $state, $header, Restangular, $authentication, $http) {
+    'use strict';
     if (!$authentication.isAuthenticated) {
         $state.go('login');
     } else {

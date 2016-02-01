@@ -1,5 +1,6 @@
 angular.module('header', [])
   .factory('$header', function() {
+    'use strict';
     var service = {
       title: ''
     };
@@ -9,6 +10,7 @@ angular.module('header', [])
 
 angular.module('authentication', ['restangular'])
   .factory('$authentication', function($http, Restangular) {
+    'use strict';
     var service = {
       token: null,
       userId: null,
