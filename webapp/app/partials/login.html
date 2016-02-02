@@ -1,6 +1,6 @@
 <div>
   <div ng-if="authenticated == false">
-    <input type="text" id="txtUsername" autofocus placeholder="{{'LOGIN_USERNAME' | translate}}" ng-model="$parent.username" class="login-text" ng-keyup="$event.keyCode == 13 && login()" /> <br />
+    <input type="text" id="txtUsername" placeholder="{{'LOGIN_USERNAME' | translate}}" ng-model="$parent.username" class="login-text" ng-keyup="$event.keyCode == 13 && login()" /> <br />
     <input type="password" placeholder="{{'LOGIN_PASSWORD' | translate}}" ng-model="$parent.password" class="login-text" ng-keyup="$event.keyCode == 13 && login()" /> <br />
     <button ng-click="login()">{{'BTN_LOGIN' | translate}}</button>
   </div>
