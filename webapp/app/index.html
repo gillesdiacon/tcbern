@@ -22,6 +22,16 @@
   <link rel="icon" type="image/png" href="images/favicon-94x94.png" />
   <link rel="apple-touch-icon" href="images/favicon-94x94.png" />
   <link rel="manifest" href="/manifest.json">
+</head>
+<body ng-controller="MainCtrl">
+  <div class="header">
+    <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu"></button>
+    <div class="header-title" >{{title | translate}}</div>
+  </div>
+  
+  <div ui-view style="height: 300px" class="div-state">
+    <p>Waiting the state to be loaded</p>
+  </div>
   
   <!-- build:js vendor.js -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -51,15 +61,8 @@
   <script src="js/controllers.js"></script>
   <script src="js/app.js"></script>
   <!-- endbuild -->
-</head>
-<body ng-controller="MainCtrl">
-  <div class="header">
-    <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu"></button>
-    <div class="header-title" >{{title | translate}}</div>
-  </div>
   
-  <div ui-view style="height: 300px" class="div-state">
-    <p>Waiting the state to be loaded</p>
-  </div>
+  <!-- inject:template-js -->
+  <!-- endinject -->
 </body>
 </html>
