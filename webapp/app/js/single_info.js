@@ -4,7 +4,7 @@
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appSingleInfo', {
         templateUrl: 'partials/single-info.html',
-        controllerAs: "vm",
+        controllerAs: 'vm',
         bindings: {
             info: '='
         }

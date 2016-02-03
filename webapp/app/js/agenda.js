@@ -2,12 +2,16 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('AgendaCtrl', ['$scope', AgendaController]);
+    tcbernControllers.component('appAgenda', {
+        templateUrl: 'partials/agenda.html',
+        controllerAs: 'vm',
+        controller: [AgendaController]
+    });
 
-    function AgendaController($scope) {
+    function AgendaController() {
         var vm = this;
 
-        $scope.setTitle('TITLE_AGENDA');
+        //$scope.setTitle('TITLE_AGENDA');
 
         vm.event = undefined;
         vm.eventClick = function (event, jsEvent) {

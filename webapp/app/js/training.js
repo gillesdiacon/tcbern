@@ -2,9 +2,14 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('TrainingCtrl', ['$scope', TrainingController]);
+    tcbernControllers.component('appTraining', {
+        templateUrl: 'partials/training.html',
+        controllerAs: 'vm',
+        controller: [TrainingController]
+    });
 
-    function TrainingController($scope) {
-        $scope.setTitle('TITLE_TRAINING');
+    function TrainingController() {
+        var vm = this;
+        //$scope.setTitle('TITLE_TRAINING');
     }
 })();

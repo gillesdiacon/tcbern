@@ -10,48 +10,39 @@
             $stateProvider
                 .state('infos', {
                     url: '/infos',
-                    templateUrl: 'partials/infos.html',
-                    controller: 'InfosCtrl as vm'
+                    template: '<app-infos-list></app-infos-list>'
                 })
                 .state('infos_detail', {
                     url: '/infos/:id',
-                    templateUrl: 'partials/infos.detail.html',
-                    controller: 'InfosDetailCtrl as vm'
+                    template: '<app-infos-detail></app-infos-detail>'
                 })
                 .state('agenda', {
                     url: '/agenda',
-                    templateUrl: 'partials/agenda.html',
-                    controller: 'AgendaCtrl as vm'
+                    template: '<app-agenda></app-agenda>'
                 })
                 .state('club', {
                     url: '/club',
-                    templateUrl: 'partials/club.html',
-                    controller: 'ClubCtrl as vm'
+                    template: '<app-club></app-club>'
                 })
                 .state('training', {
                     url: '/training',
-                    templateUrl: 'partials/training.html',
-                    controller: 'TrainingCtrl as vm'
+                    template: '<app-training></app-training>'
                 })
                 .state('identities', {
                     url: '/identities',
-                    templateUrl: 'partials/identities.html',
-                    controller: 'IdentitiesCtrl as vm'
+                    template: '<app-identities-list></app-identities-list>'
                 })
                 .state('identity_detail', {
                     url: '/identities/:id',
-                    templateUrl: 'partials/identities.detail.html',
-                    controller: 'IdentityDetailCtrl as vm'
+                    template: '<app-identities-detail></app-identities-detail>'
                 })
                 .state('account', {
                     url: '/account',
-                    templateUrl: 'partials/account.html',
-                    controller: 'AccountCtrl as vm'
+                    template: '<app-account-editor></app-account-editor>'
                 })
                 .state('login', {
                     url: '/login',
-                    template: '<app-login></app-login>'//'partials/login.html',
-                    //controller: 'LoginCtrl as vm'
+                    template: '<app-login></app-login>'
                 });
         }]);
 })();

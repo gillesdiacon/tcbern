@@ -2,15 +2,19 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('AccountCtrl', ['$scope', '$state', 'Restangular', '$authentication', '$http', AccountController]);
+    tcbernControllers.component('appAccountEditor', {
+        templateUrl: 'partials/account.html',
+        controllerAs: 'vm',
+        controller: ['$state', 'Restangular', '$authentication', '$http', AccountController]
+    });
 
-    function AccountController($scope, $state, Restangular, $authentication, $http) {
+    function AccountController($state, Restangular, $authentication, $http) {
         if (!$authentication.isAuthenticated) {
             $state.go('login');
         } else {
             var vm = this;
 
-            $scope.setTitle('TITLE_ACCOUNT');
+            //$scope.setTitle('TITLE_ACCOUNT');
 
             vm.identity = {};
             vm.password = '';
@@ -29,7 +33,7 @@
                 } else if (vm.password !== vm.passwordRepeated) {
                     vm.message = 'The password and the repeated one must be identical';
                 } else {
-                    $http.post('../../backend/public/password/' + $authentication.userId, {'password': md5($scope.password)}, {headers: {'Token': $authentication.token}})
+                    $http.post('../../backend/public/password/' + $authentication.userId, {'password': md5(vm.password)}, {headers: {'Token': $authentication.token}})
                         .then(function() {
                             vm.password = '';
                             vm.passwordRepeated = '';

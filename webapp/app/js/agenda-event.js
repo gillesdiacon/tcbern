@@ -5,7 +5,7 @@
     tcbernControllers.component('appAgendaEvent', {
         templateUrl: 'partials/agenda-event.html',
         controller: AgendaEventController,
-        controllerAs: "vm",
+        controllerAs: 'vm',
         bindings: {
             event: '=',
             dateFormatter: '&'

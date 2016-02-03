@@ -2,10 +2,14 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('InfosCtrl', ['$scope', 'Restangular', InfosController]);
+    tcbernControllers.component('appInfosList', {
+        templateUrl: 'partials/infos.html',
+        controllerAs: 'vm',
+        controller: ['Restangular', InfosController]
+    });
 
-    function InfosController($scope, Restangular) {
-        $scope.setTitle('TITLE_INFO');
+    function InfosController(Restangular) {
+        //$scope.setTitle('TITLE_INFO');
 
         var vm = this;
 

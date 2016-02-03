@@ -2,13 +2,17 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('IdentitiesCtrl', ['$scope', '$state', 'Restangular', '$authentication', IdentitiesController]);
+    tcbernControllers.component('appIdentitiesList', {
+        templateUrl: 'partials/identities.html',
+        controllerAs: 'vm',
+        controller: ['$state', 'Restangular', '$authentication', IdentitiesController]
+    });
 
-    function IdentitiesController($scope, $state, Restangular, $authentication) {
+    function IdentitiesController($state, Restangular, $authentication) {
         if (!$authentication.isAuthenticated) {
             $state.go('login');
         } else {
-            $scope.setTitle('TITLE_MEMBERS');
+            //$scope.setTitle('TITLE_MEMBERS');
 
             var vm = this;
 
