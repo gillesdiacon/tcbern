@@ -25,7 +25,7 @@
 </head>
 <body ng-app="tcbernApp" ng-controller="MainCtrl as vm">
 <div class="header">
-    <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu" />
+    <input type="image" src="images/menu-icon.png" ng-click="vm.openAside()" alt="Menu" class="btn-menu" />
     <div class="header-title">{{vm.title | translate}}</div>
 </div>
 
@@ -69,6 +69,7 @@
 <script src="js/infos_detail.js"></script>
 <script src="js/login.js"></script>
 <script src="js/main.js"></script>
+<script src="js/single_info.js"></script>
 <script src="js/training.js"></script>
 <script src="js/app.js"></script>
 <!-- endbuild -->

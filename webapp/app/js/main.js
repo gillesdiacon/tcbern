@@ -5,34 +5,32 @@
     tcbernControllers.controller('MainCtrl', ['$scope', '$aside', '$state', 'Restangular', '$authentication', MainController]);
 
     function MainController($scope, $aside, $state, Restangular, $authentication) {
-        var vm = this;
-
         Restangular.setBaseUrl('../../backend/public/api');
         Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers) {
-            var updatedRequest = {};
             if ($authentication.token !== null) {
                 headers.Token = $authentication.token;
-                updatedRequest.headers = headers;
+                return { 'headers': headers };
+            } else {
+                return {};
             }
-            return updatedRequest;
         });
 
-        vm.title = ''; //$header.title;
+        var vm = this;
+        vm.title = '';
+        // inherited and thus usable by all the other controllers
         $scope.setTitle = function(t) {
             vm.title = t;
         };
 
-        $scope.asideState = {
+        vm.asideState = {
             open: false
         };
 
-        $scope.openAside = function() {
-            $scope.asideState = {
-                open: true
-            };
+        vm.openAside = function() {
+            vm.asideState.open = true;
 
             function postClose() {
-                $scope.asideState.open = false;
+                vm.asideState.open = false;
             }
 
             $aside.open({
@@ -40,8 +38,10 @@
                 placement: 'left',
                 size: 'sm',
                 animation: true,
-                controller: ['$scope', '$modalInstance', '$authentication', function($scope, $modalInstance, $authentication) {
-                    $scope.menuElementList = [
+                controllerAs: 'vm',
+                controller: ['$modalInstance', '$authentication', function($modalInstance, $authentication) {
+                    var vm = this;
+                    vm.menuElementList = [
                         {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
                         {'route': 'agenda', 'html': 'MENU_AGENDA', 'requiresAuthentication': false},
                         {'route': 'club', 'html': 'MENU_CLUB', 'requiresAuthentication': false},
@@ -51,7 +51,7 @@
                         {'route': 'login', 'html': 'MENU_LOGIN', 'requiresAuthentication': false}
                     ];
 
-                    $scope.checkAuthorization = function(value) {
+                    vm.checkAuthorization = function(value) {
                         if ($authentication.isAuthenticated) {
                             return true;
                         } else {
@@ -59,7 +59,7 @@
                         }
                     };
 
-                    $scope.go = function(e, element) {
+                    vm.go = function(e, element) {
                         $modalInstance.dismiss();
                         e.stopPropagation();
                         $state.go(element.route);
