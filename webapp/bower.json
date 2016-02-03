@@ -1,7 +1,7 @@
 {
   "name": "tcbern-webapp",
   "description": "TC Bern website",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "angular": "1.5.x-beta.0",
