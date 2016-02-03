@@ -2,9 +2,11 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('MainCtrl', ['$scope', '$aside', '$state', 'Restangular', '$header', '$authentication', MainController]);
+    tcbernControllers.controller('MainCtrl', ['$scope', '$aside', '$state', 'Restangular', '$authentication', MainController]);
 
-    function MainController($scope, $aside, $state, Restangular, $header, $authentication) {
+    function MainController($scope, $aside, $state, Restangular, $authentication) {
+        var vm = this;
+
         Restangular.setBaseUrl('../../backend/public/api');
         Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers) {
             var updatedRequest = {};
@@ -15,10 +17,10 @@
             return updatedRequest;
         });
 
-        $scope.title = $header.title;
-        $scope.$watch(
-            function() { return $header.title; },
-            function() { $scope.title = $header.title; });
+        vm.title = ''; //$header.title;
+        $scope.setTitle = function(t) {
+            vm.title = t;
+        };
 
         $scope.asideState = {
             open: false

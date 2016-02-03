@@ -2,14 +2,16 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('AgendaCtrl', function($scope, $header) {
+    tcbernControllers.controller('AgendaCtrl', ['$scope', AgendaController]);
+
+    function AgendaController($scope) {
         var vm = this;
 
-        $header.title = 'TITLE_AGENDA';
+        $scope.setTitle('TITLE_AGENDA');
 
         vm.event = undefined;
-        vm.eventClick = function (event, jsEvent, view, resourceObj) {
-            $scope.event = event;
+        vm.eventClick = function (event, jsEvent) {
+            vm.event = event;
             jsEvent.stopPropagation();
             jsEvent.preventDefault();
         };
@@ -24,7 +26,7 @@
                     right: 'today prev,next'
                 },
                 firstDay: 1, // Set monday as first day
-                eventClick: $scope.eventClick
+                eventClick: vm.eventClick
             }
         };
         vm.eventSources = [{
@@ -43,5 +45,5 @@
         vm.formatDate = function(date) {
             return date.toLocaleTimeString('de', {hour: '2-digit', minute: '2-digit'});
         };
-    });
+    }
 })();

@@ -1,11 +1,5 @@
 (function () {
     'use strict';
-    angular.module('header', [])
-        .factory('$header', function () {
-            return {
-                title: ''
-            };
-        });
 
     angular.module('authentication', ['restangular'])
         .factory('$authentication', ['$http', 'Restangular', function ($http, Restangular) {

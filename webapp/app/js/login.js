@@ -2,10 +2,10 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('LoginCtrl', ['$scope', '$state', '$authentication', '$header', LoginController]);
+    tcbernControllers.controller('LoginCtrl', ['$scope', '$state', '$authentication', LoginController]);
 
-    function LoginController($scope, $state, $authentication, $header) {
-        $header.title = 'TITLE_LOGIN';
+    function LoginController($scope, $state, $authentication) {
+        $scope.setTitle('TITLE_LOGIN');
 
         var vm = this;
         vm.username = '';

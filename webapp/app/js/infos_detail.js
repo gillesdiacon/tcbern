@@ -2,15 +2,15 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('InfosDetailCtrl', ['$stateParams', 'Restangular', '$header', InfosDetailController]);
+    tcbernControllers.controller('InfosDetailCtrl', ['$scope', '$stateParams', 'Restangular', InfosDetailController]);
 
-    function InfosDetailController($stateParams, Restangular, $header) {
-        $header.title = 'TITLE_INFO_DETAIL';
+    function InfosDetailController($scope, $stateParams, Restangular) {
+        $scope.setTitle('TITLE_INFO_DETAIL');
 
         var vm = this;
 
         Restangular.one('infos', $stateParams.id).get().then(function(info) {
-            $header.title = info.title;
+            $scope.setTitle(info.title);
             vm.detail = info;
         });
     }

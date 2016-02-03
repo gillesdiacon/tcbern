@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'ui.calendar', 'header', 'hc.marked', 'pascalprecht.translate'])
+    var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'ui.calendar', 'hc.marked', 'pascalprecht.translate'])
         .config(['$translateProvider', function ($translateProvider) {
             $translateProvider.useLoader('translateCustomLoader', {});
             //$translateProvider.useSanitizeValueStrategy('sanitize');

@@ -2,18 +2,18 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('IdentityDetailCtrl', ['$stateParams', '$state', 'Restangular', '$header', '$authentication', IdentityDetailController]);
+    tcbernControllers.controller('IdentityDetailCtrl', ['$scope', '$stateParams', '$state', 'Restangular', '$authentication', IdentityDetailController]);
 
-    function IdentityDetailController($stateParams, $state, Restangular, $header, $authentication) {
+    function IdentityDetailController($scope, $stateParams, $state, Restangular, $authentication) {
         if (!$authentication.isAuthenticated) {
             $state.go('login');
         } else {
-            $header.title = 'TITLE_MEMBERS_DETAIL';
+            $scope.setTitle('TITLE_MEMBERS_DETAIL');
 
             var vm = this;
 
             Restangular.one('identities', $stateParams.id).get().then(function(identity) {
-                $header.title = identity.lastname + ' ' + identity.firstname;
+                $scope.setTitle(identity.lastname + ' ' + identity.firstname);
                 vm.identity = identity;
             });
         }

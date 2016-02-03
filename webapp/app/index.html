@@ -23,10 +23,10 @@
     <link rel="manifest" href="manifest.json">
 
 </head>
-<body ng-app="tcbernApp" ng-controller="MainCtrl">
+<body ng-app="tcbernApp" ng-controller="MainCtrl as vm">
 <div class="header">
     <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu" />
-    <div class="header-title">{{title | translate}}</div>
+    <div class="header-title">{{vm.title | translate}}</div>
 </div>
 
 <div ui-view style="height: 300px" class="div-state">

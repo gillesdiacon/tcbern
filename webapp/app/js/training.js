@@ -2,9 +2,9 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('TrainingCtrl', ['$header', TrainingController]);
+    tcbernControllers.controller('TrainingCtrl', ['$scope', TrainingController]);
 
-    function TrainingController($header) {
-        $header.title = 'TITLE_TRAINING';
+    function TrainingController($scope) {
+        $scope.setTitle('TITLE_TRAINING');
     }
 })();

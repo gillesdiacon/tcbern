@@ -2,15 +2,15 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('AccountCtrl', AccountController);
+    tcbernControllers.controller('AccountCtrl', ['$scope', '$state', 'Restangular', '$authentication', '$http', AccountController]);
 
-    function AccountController($scope, $state, $header, Restangular, $authentication, $http) {
+    function AccountController($scope, $state, Restangular, $authentication, $http) {
         if (!$authentication.isAuthenticated) {
             $state.go('login');
         } else {
             var vm = this;
 
-            $header.title = 'TITLE_ACCOUNT';
+            $scope.setTitle('TITLE_ACCOUNT');
 
             vm.identity = {};
             vm.password = '';
