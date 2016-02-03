@@ -2,9 +2,9 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('ClubCtrl', ClubController);
+    tcbernControllers.controller('ClubCtrl', ['Restangular', '$header', ClubController]);
 
-    function ClubController($scope, $stateParams, Restangular, $header) {
+    function ClubController(Restangular, $header) {
         $header.title = 'TITLE_COMMITTEE';
 
         var vm = this;

@@ -2,7 +2,7 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('IdentitiesCtrl', IdentitiesController);
+    tcbernControllers.controller('IdentitiesCtrl', ['$state', 'Restangular', '$header', '$authentication', IdentitiesController]);
 
     function IdentitiesController($state, Restangular, $header, $authentication) {
         if (!$authentication.isAuthenticated) {

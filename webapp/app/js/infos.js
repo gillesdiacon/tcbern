@@ -2,9 +2,9 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('InfosCtrl', InfosController);
+    tcbernControllers.controller('InfosCtrl', ['$header', 'Restangular', InfosController]);
 
-    function InfosController(Restangular, $header) {
+    function InfosController($header, Restangular) {
         $header.title = 'TITLE_INFO';
 
         var vm = this;
