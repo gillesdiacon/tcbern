@@ -30,7 +30,7 @@ gulp.task('analyze', function () {
 });
 
 gulp.task('release', ['clean'], function() {
-    gulp.src('app/images/*.png')
+    gulp.src(['app/images/*.png', 'app/images/*.jpg'])
         .pipe(gulp.dest('dist/images'));
     
     var partials = gulp.src(['app/**/*.html', '!app/index.html', '!app/bower_components/**/*.html'])
@@ -46,7 +46,7 @@ gulp.task('release', ['clean'], function() {
     
     var main = gulp.src('app/*.html')
         .pipe($$.useref())
-        //.pipe(gulpif('*.js', $$.uglify()))
+        .pipe(gulpif('*.js', $$.uglify()))
         .pipe(gulpif('*.js', $$.rev()))
         .pipe(gulpif('*.css', $$.cssnano()))
         .pipe(gulpif('*.css', $$.rev()))
