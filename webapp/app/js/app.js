@@ -1,5 +1,5 @@
 angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked'])
-.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
   'use strict';
   //For any unmatched urls, redirect to the infos page
   $urlRouterProvider.otherwise('/infos');

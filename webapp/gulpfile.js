@@ -12,9 +12,8 @@ var gulpif = require('gulp-if');
 var inject = require('gulp-inject');
 var uglify = require('gulp-uglify');
 var cssnano = require('gulp-cssnano');
-var gulpFilter = require('gulp-filter');
 var concat = require('gulp-concat');
-var html2js = require('gulp-html2js');
+var ngHtml2Js = require("gulp-ng-html2js");
 
 gulp.task('clean', function () {
     del(['dist/**', 'temp/**']);
@@ -38,10 +37,8 @@ gulp.task('release', ['clean'], function() {
         .pipe($$.htmlhint({'doctype-first': false}))
         .pipe($$.htmlhint.reporter())
         .pipe($$.htmlmin({ removeComments: true }))
-        .pipe(html2js({
-            outputModuleName: 'tcbernApp',
-            useStrict: true,
-            target: 'js'
+        .pipe(ngHtml2Js({
+            moduleName: 'tcbernApp'
         }))
         .pipe($$.concat({path: 'template.js', cwd: ''}))
         .pipe($$.rev())

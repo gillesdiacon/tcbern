@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- Used to cache the files but not so easily maintainable.  manifest="tcbern.appcache" -->
-<html lang="en" ng-app="tcbernApp">
+<html lang="en">
 <!-- The profile is required for the icon to be displayed with the title -->
 <head profile="http://www.w3.org/2005/10/profile">
     <meta charset="utf-8">
@@ -20,12 +20,12 @@
 
     <link rel="icon" type="image/png" href="images/favicon-94x94.png"/>
     <link rel="apple-touch-icon" href="images/favicon-94x94.png"/>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
 
 </head>
-<body ng-controller="MainCtrl">
+<body ng-app="tcbernApp" ng-controller="MainCtrl">
 <div class="header">
-    <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu"></button>
+    <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu" />
     <div class="header-title">{{title | translate}}</div>
 </div>
 
@@ -35,36 +35,36 @@
 
 
 <!-- build:js vendor.js -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-animate/angular-animate.min.js"></script>
-<script src="bower_components/angular-route/angular-route.min.js"></script>
-<script src="bower_components/angular-resource/angular-resource.min.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="bower_components/angular-aside/dist/js/angular-aside.min.js"></script>
-<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-aside/dist/js/angular-aside.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
 <script src="bower_components/marked/marked.min.js"></script>
-<script src="bower_components/angular-marked/angular-marked.min.js"></script>
+<script src="bower_components/angular-marked/angular-marked.js"></script>
 <script src="bower_components/lodash/lodash.js"></script>
-<script src="bower_components/restangular/dist/restangular.min.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
 <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
-<script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
 <script src='bower_components/fullcalendar/dist/lang/de.js'></script>
 <script src="bower_components/fullcalendar/dist/gcal.js"></script>
-<script src="bower_components/blueimp-md5/js/md5.min.js"></script>
+<script src="bower_components/blueimp-md5/js/md5.js"></script>
 <!-- endbuild -->
 
-<!-- inject:template-js -->
-<!-- endinject -->
-
-<!-- build:js vendor.js -->
+<!-- build:js app.js -->
 <script src="js/authentication.js"></script>
 <script src="js/controllers.js"></script>
 <script src="js/app.js"></script>
 <!-- endbuild -->
+
+<!-- inject:template-js -->
+<!-- endinject -->
 
 </body>
 </html>
