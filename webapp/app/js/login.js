@@ -28,11 +28,11 @@
             vm.message = message;
         };
         vm.login = function () {
-            $authentication.authenticate(vm.username, vm.password, function () {
+            $authentication.authenticate(vm.username, vm.password)
+                .then(function () {
                     vm.resetInfosWithMessage(true, '');
                     $state.go('infos');
-                },
-                function (data, status) {
+                }).catch(function (data, status) {
                     if (status === 503) {
                         vm.resetInfosWithMessage(false, 'Username or password invalid');
                     } else {

@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('authentication', ['restangular'])
-        .factory('$authentication', ['$http', 'Restangular', function ($http, Restangular) {
+        .factory('$authentication', ['$http', '$q', 'Restangular', function ($http, $q, Restangular) {
             var service = {
                 token: null,
                 userId: null,
@@ -17,30 +17,25 @@
                 service.isAuthenticated = false;
             };
 
-            // TODO convert to promise
-            service.authenticate = function (username, password, successCallback, errorCallback) {
-                $http.post('../../backend/public/auth', {
-                        'username': username,
-                        'password': md5(password)
-                    }, {'successCallback': successCallback})
-                    .success(function (data, status, header, config) {
-                        service.token = data.token;
-                        service.userId = data.userId;
-                        service.group = data.group;
-                        service.isAuthenticated = true;
-
-                        Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + service.token});
-                        if (typeof(successCallback) !== undefined) {
-                            successCallback.call(this, data, status, header, config);
-                        }
-                    })
-                    .error(function (data, status, header, config) {
-                        service.logout();
-
-                        if (typeof(errorCallback) !== undefined) {
-                            errorCallback.call(this, data, status, header, config);
-                        }
-                    });
+            service.authenticate = function (username, password) {
+                return $q(function(resolve, reject) {
+                    $http.post('../../backend/public/auth', {
+                            'username': username,
+                            'password': md5(password)
+                        })
+                        .then(function (response) {
+                            service.token = response.data.token;
+                            service.userId = response.data.userId;
+                            service.group = response.data.group;
+                            service.isAuthenticated = true;
+                            Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + service.token});
+                            resolve();
+                        })
+                        .catch(function (data, status) {
+                            service.logout();
+                            reject(data, status);
+                        });
+                });
             };
 
             return service;
