@@ -3,52 +3,68 @@
 <html lang="en" ng-app="tcbernApp">
 <!-- The profile is required for the icon to be displayed with the title -->
 <head profile="http://www.w3.org/2005/10/profile">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  
-  <title>TC Bern</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="bower_components/angular-aside/dist/css/angular-aside.css">
-  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
-  <link rel="stylesheet" href="css/style.css">
-  
-  <link rel="icon" type="image/png" href="images/favicon-94x94.png" />
-  <link rel="apple-touch-icon" href="images/favicon-94x94.png" />
-  <link rel="manifest" href="/manifest.json">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/moment/min/moment.min.js"></script>
-  <script src="bower_components/angular/angular.min.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-  <script src="bower_components/angular-route/angular-route.min.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="bower_components/angular-aside/dist/js/angular-aside.min.js"></script>
-  <script src="bower_components/angular-translate/angular-translate.min.js"></script>
-  <script src="bower_components/marked/marked.min.js"></script>
-  <script src="bower_components/angular-marked/angular-marked.min.js"></script>
-  <script src="bower_components/lodash/lodash.js"></script>
-  <script src="bower_components/restangular/dist/restangular.min.js"></script>
-  <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
-  <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-  <script src='bower_components/fullcalendar/dist/lang/de.js'></script>
-  <script src="bower_components/fullcalendar/dist/gcal.js"></script>
-  <script src="bower_components/blueimp-md5/js/md5.min.js"></script>
-  <script src="js/authentication.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/app.js"></script>
+    <title>TC Bern</title>
+    <!-- build:css vendor.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-aside/dist/css/angular-aside.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <!-- endbuild -->
+
+    <!-- build:css app.css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
+
+    <link rel="icon" type="image/png" href="images/favicon-94x94.png"/>
+    <link rel="apple-touch-icon" href="images/favicon-94x94.png"/>
+    <link rel="manifest" href="/manifest.json">
+
 </head>
 <body ng-controller="MainCtrl">
-  <div class="header">
+<div class="header">
     <input type="image" src="images/menu-icon.png" ng-click="openAside()" alt="Menu" class="btn-menu"></button>
-    <div class="header-title" >{{title | translate}}</div>
-  </div>
-  
-  <div ui-view style="height: 300px" class="div-state">
+    <div class="header-title">{{title | translate}}</div>
+</div>
+
+<div ui-view style="height: 300px" class="div-state">
     <p>Waiting the state to be loaded</p>
-  </div>
+</div>
+
+
+<!-- build:js vendor.js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-aside/dist/js/angular-aside.min.js"></script>
+<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+<script src="bower_components/marked/marked.min.js"></script>
+<script src="bower_components/angular-marked/angular-marked.min.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/restangular/dist/restangular.min.js"></script>
+<script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+<script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src='bower_components/fullcalendar/dist/lang/de.js'></script>
+<script src="bower_components/fullcalendar/dist/gcal.js"></script>
+<script src="bower_components/blueimp-md5/js/md5.min.js"></script>
+<!-- endbuild -->
+
+<!-- inject:template-js -->
+<!-- endinject -->
+
+<!-- build:js vendor.js -->
+<script src="js/authentication.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/app.js"></script>
+<!-- endbuild -->
+
 </body>
 </html>
