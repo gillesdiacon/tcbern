@@ -50,8 +50,8 @@
                 })
                 .state('login', {
                     url: '/login',
-                    templateUrl: 'partials/login.html',
-                    controller: 'LoginCtrl as vm'
+                    template: '<app-login></app-login>'//'partials/login.html',
+                    //controller: 'LoginCtrl as vm'
                 });
         }]);
 })();

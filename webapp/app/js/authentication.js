@@ -31,11 +31,11 @@
                         service.group = response.data.group;
                         service.isAuthenticated = true;
                         Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + service.token});
-                        resolve();
+                        resolve(response);
                     })
-                    .catch(function (data, status) {
+                    .catch(function (response) {
                         service.logout();
-                        reject(data, status);
+                        reject(response);
                     });
             });
         };

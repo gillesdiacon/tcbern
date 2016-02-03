@@ -10,5 +10,6 @@
         <button ng-click="vm.logout()">{{'BTN_LOGOUT' | translate}}</button>
     </div>
     <br/>
-    <label>{{vm.message}}</label>
+
+    <app-message message="vm.message" is-error="vm.isError"></app-message>
 </div>
