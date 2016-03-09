@@ -1,53 +1,48 @@
-angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked'])
-.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
-  //For any unmatched urls, redirect to the infos page
-  $urlRouterProvider.otherwise('/infos');
-  $urlRouterProvider.when('', '/infos');
-  
-  $stateProvider
-    .state('infos', {
-      url: '/infos',
-      templateUrl: 'partials/infos.html',
-      controller: 'InfosCtrl'
-    })
-    .state('infos_detail', {
-      url: '/infos/:id',
-      templateUrl: 'partials/infos.detail.html',
-      controller: 'InfosDetailCtrl'
-    })
-    .state('agenda', {
-      url: '/agenda',
-      templateUrl: 'partials/agenda.html',
-      controller: 'AgendaCtrl'
-    })
-    .state('club', {
-      url: '/club',
-      templateUrl: 'partials/club.html',
-      controller: 'ClubCtrl'
-    })
-    .state('training', {
-      url: '/training',
-      templateUrl: 'partials/training.html',
-      controller: 'TrainingCtrl'
-    })
-    .state('identities', {
-      url: '/identities',
-      templateUrl: 'partials/identities.html',
-      controller: 'IdentitiesCtrl'
-    })
-    .state('identity_detail', {
-      url: '/identities/:id',
-      templateUrl: 'partials/identities.detail.html',
-      controller: 'IdentityDetailCtrl'
-    })
-    .state('account', {
-      url: '/account',
-      templateUrl: 'partials/account.html',
-      controller: 'AccountCtrl'
-    })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'partials/login.html',
-      controller: 'LoginCtrl'
-    });
-});
+(function () {
+    'use strict';
+
+    angular.module('tcbernApp', ['ui.router', 'tcbernControllers', 'hc.marked'])
+        .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+            //For any unmatched urls, redirect to the infos page
+            $urlRouterProvider.otherwise('/infos');
+            $urlRouterProvider.when('', '/infos');
+
+            $stateProvider
+                .state('infos', {
+                    url: '/infos',
+                    template: '<app-infos-list></app-infos-list>'
+                })
+                .state('infos_detail', {
+                    url: '/infos/:id',
+                    template: '<app-infos-detail></app-infos-detail>'
+                })
+                .state('agenda', {
+                    url: '/agenda',
+                    template: '<app-agenda></app-agenda>'
+                })
+                .state('club', {
+                    url: '/club',
+                    template: '<app-club></app-club>'
+                })
+                .state('training', {
+                    url: '/training',
+                    template: '<app-training></app-training>'
+                })
+                .state('identities', {
+                    url: '/identities',
+                    template: '<app-identities-list></app-identities-list>'
+                })
+                .state('identity_detail', {
+                    url: '/identities/:id',
+                    template: '<app-identities-detail></app-identities-detail>'
+                })
+                .state('account', {
+                    url: '/account',
+                    template: '<app-account-editor></app-account-editor>'
+                })
+                .state('login', {
+                    url: '/login',
+                    template: '<app-login></app-login>'
+                });
+        }]);
+})();

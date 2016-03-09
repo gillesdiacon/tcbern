@@ -2,58 +2,58 @@
   <form>
     <ul class="boxList">
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.firstname" placeholder="{{'IDENTITY_FIRSTNAME' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.firstname" placeholder="{{'IDENTITY_FIRSTNAME' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.lastname" placeholder="{{'IDENTITY_LASTNAME' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.lastname" placeholder="{{'IDENTITY_LASTNAME' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.email" placeholder="{{'IDENTITY_EMAIL' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.email" placeholder="{{'IDENTITY_EMAIL' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.birthday" placeholder="{{'IDENTITY_BIRTHDAY' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.birthday" placeholder="{{'IDENTITY_BIRTHDAY' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.streetnumber" placeholder="{{'IDENTITY_STREETNUMBER' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.streetnumber" placeholder="{{'IDENTITY_STREETNUMBER' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.street" placeholder="{{'IDENTITY_STREET' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.street" placeholder="{{'IDENTITY_STREET' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.street2" placeholder="{{'IDENTITY_STREET2' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.street2" placeholder="{{'IDENTITY_STREET2' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.postcode" placeholder="{{'IDENTITY_POSTCODE' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.postcode" placeholder="{{'IDENTITY_POSTCODE' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.city" placeholder="{{'IDENTITY_CITY' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.city" placeholder="{{'IDENTITY_CITY' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.country" placeholder="{{'IDENTITY_COUNTRY' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.country" placeholder="{{'IDENTITY_COUNTRY' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.phonenumber" placeholder="{{'IDENTITY_PHONE' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.phonenumber" placeholder="{{'IDENTITY_PHONE' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="text" style="width: 100%" ng-model="identity.mobilenumber" placeholder="{{'IDENTITY_MOBILE' | translate}}"></input>
+            <input type="text" style="width: 100%" ng-model="vm.identity.mobilenumber" placeholder="{{'IDENTITY_MOBILE' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <td class="tableListCell"><input type="submit" ng-click="updateIdentity()" value="{{'BTN_SAVE' | translate}}" />
+            <input type="submit" ng-click="vm.updateIdentity()" value="{{'BTN_SAVE' | translate}}" />
         </li>
     </ul>
   </form>
   <form>
     <ul class="boxList">
         <li class="boxElement no-bullet-list">
-            <input type="password" style="width: 100%" ng-model="password" placeholder="{{'LOGIN_PASSWORD' | translate}}"></input>
+            <input type="password" style="width: 100%" ng-model="vm.password" placeholder="{{'LOGIN_PASSWORD' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <input type="password" style="width: 100%" ng-model="passwordRepeated" placeholder="{{'LOGIN_PASSWORD_REPEAT' | translate}}"></input>
+            <input type="password" style="width: 100%" ng-model="vm.passwordRepeated" placeholder="{{'LOGIN_PASSWORD_REPEAT' | translate}}" />
         </li>
         <li class="boxElement no-bullet-list">
-            <td class="tableListCell"><input type="submit" ng-click="updateUser()" value="{{'BTN_SAVE' | translate}}" />
+            <input type="submit" ng-click="vm.updateUser()" value="{{'BTN_SAVE' | translate}}" />
         </li>
     </ul>
   </form>
-  <label>{{message}}</input>
+  <label>{{message}}</label>
 </div>

@@ -1,8 +1,8 @@
 <div class="box">
-  <ul class="boxList">
-    <li ng-repeat="identity in identityList" ng-click="go($event, identity)" class="no-bullet-list boxElement">
-      {{identity.firstname}} {{identity.lastname}}
-    </li>
-  </ul>
-  <div ui-view></div>
+    <ul class="boxList">
+        <li ng-repeat="identity in vm.identityList" ng-click="vm.go($event, identity)" class="no-bullet-list boxElement">
+            {{identity.firstname}} {{identity.lastname}}
+        </li>
+    </ul>
+    <div ui-view></div>
 </div>

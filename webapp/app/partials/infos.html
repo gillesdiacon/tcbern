@@ -1,12 +1,11 @@
 <div class="box">
-  <ul class="boxList">
-    <li ng-repeat="info in infosList" class="no-bullet-list boxElement">
-      <div class="limitedHeight">
-        <div marked="info.title" class="infoTitle"></div>
-        <div marked="info.content" class="infoContent"></div>
-      </div>
-      <a ng-href="#/infos/{{info.id}}">{{'INFO_DETAIL_OPEN' | translate}}</a>
-    </li>
-  </ul>
-  <div ui-view></div>
+    <ul class="boxList">
+        <li ng-repeat="info in vm.infosList" class="no-bullet-list boxElement">
+            <div class="limitedHeight">
+                <app-single-info info="info"></app-single-info>
+            </div>
+            <a ng-href="#/infos/{{info.id}}">{{'INFO_DETAIL_OPEN' | translate}}</a>
+        </li>
+    </ul>
+    <div ui-view></div>
 </div>
