@@ -1,0 +1,36 @@
+.snippet-group {
+    width: 100%;
+}
+
+.snippet-view {
+    background-color: rgba(239, 108, 0, 0.3);
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 15px;
+    padding: 5px;
+}
+
+.snippet-2 {
+    max-width: 300px;
+}
+
+.snippet-3 {
+    max-width: 200px;
+    height: 300px;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.clickable {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.welcome-title {
+    font-size: x-large;
+}
+
+a.welcome-link {
+    color: black;
+    text-decoration: none;
+}

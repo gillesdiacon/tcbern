@@ -1,0 +1,49 @@
+<div>
+    <!-- Header: -->
+    <!-- Image(s) and link to news and trainings -->
+    Welcome to the TC Bern
+
+    <!-- Content: -->
+    <!-- Trainings -->
+    <div>
+        <a href="#/training" class="welcome-title welcome-link">Training</a>
+        <table class="snippet-group">
+            <tr>
+                <td align="center">
+                    <div align="left" class="snippet-view snippet-2">
+                        Bernmobil Turnhalle<br />
+                        Dienstag - 20:00 - 21:45<br />
+                        Tscharnerstrasse (Zugang) 3007 Bern<br />
+                        <a href="https://www.google.ch/maps/place/46%C2%B056'31.8%22N+7%C2%B025'41.2%22E/@46.9421667,7.4281111,436m/data=!3m2!1e3!4b1!4m2!3m1!1s0x0:0x0?hl=de"
+                           target="_blank">Google Maps</a>
+                    </div>
+                </td>
+                <td align="center">
+                    <div align="left" class="snippet-view snippet-2">
+                        Schosshalde<br />
+                        Freitag - 20:00 - 21:45<br />
+                        Schosshaldenstrasse 37, 3006 Bern<br />
+                        <a href="https://www.google.ch/maps/place/Schosshaldenstrasse+37,+3006+Bern/@46.9474278,7.4656385,628m/data=!3m1!1e3!4m2!3m1!1s0x478e3761e24985c5:0x156dd5a706fc1e1d?hl=de"
+                           target="_blank">Google Maps</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 3 last news -->
+    <div>
+        <a href="#/infos" class="welcome-title welcome-link">Infos</a>
+        <table class="snippet-group">
+            <tr>
+                <td align="center" ng-repeat="info in vm.infoPreview">
+                    <div align="left" ng-click="vm.gotoInfo(info.id)" class="snippet-view snippet-3 clickable">
+                        <i>{{info.date}}</i><br />
+                        <b>{{info.title}}</b><br />
+                        {{info.content}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
