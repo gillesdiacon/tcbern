@@ -1,13 +1,18 @@
 <div>
     <!-- Header: -->
     <!-- Image(s) and link to news and trainings -->
-    Welcome to the TC Bern
+    <div style="background-color: white; width: 100%" align="right">
+        <img src="images/welcome.jpg">
+    </div>
 
     <!-- Content: -->
     <!-- Trainings -->
-    <div>
-        <a href="#/training" class="welcome-title welcome-link">Training</a>
-        <table class="snippet-group">
+    <div class="snippet-block">
+        <div style="width: 100%; border-bottom: 1px solid black">
+            <a href="#/training" class="welcome-title welcome-link">Training</a>
+        </div>
+
+        <table class="snippet-block">
             <tr>
                 <td align="center">
                     <div align="left" class="snippet-view snippet-2">
@@ -33,8 +38,10 @@
 
     <!-- 3 last news -->
     <div>
-        <a href="#/infos" class="welcome-title welcome-link">Infos</a>
-        <table class="snippet-group">
+        <div  style="width: 100%; border-bottom: 1px solid black">
+            <a href="#/infos" class="welcome-title welcome-link">Infos</a>
+        </div>
+        <table class="snippet-block">
             <tr>
                 <td align="center" ng-repeat="info in vm.infoPreview">
                     <div align="left" ng-click="vm.gotoInfo(info.id)" class="snippet-view snippet-3 clickable">
