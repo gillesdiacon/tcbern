@@ -1,17 +1,15 @@
 <div>
-  <div ng-if="authenticated == false">
-    <input type="text" id="txtUsername" placeholder="{{'LOGIN_USERNAME' | translate}}" ng-model="$parent.username" class="login-text" ng-keyup="$event.keyCode == 13 && login()"></input> <br />
-    <input type="password" placeholder="{{'LOGIN_PASSWORD' | translate}}" ng-model="$parent.password" class="login-text" ng-keyup="$event.keyCode == 13 && login()"></input> <br />
-    <button ng-click="login()">{{'BTN_LOGIN' | translate}}</button>
-  </div>
-  <div ng-if="authenticated == true">
-    <button ng-click="logout()">{{'BTN_LOGOUT' | translate}}</button>
-  </div>
-  <br />
-  <label>{{message}}</input>
+    <div ng-if="vm.authenticated == false">
+        <input type="text" autofocus placeholder="{{'LOGIN_USERNAME' | translate}}" ng-model="vm.username"
+               class="login-text" ng-keyup="$event.keyCode == 13 && vm.login()"/> <br/>
+        <input type="password" placeholder="{{'LOGIN_PASSWORD' | translate}}" ng-model="vm.password"
+               class="login-text" ng-keyup="$event.keyCode == 13 && vm.login()"/> <br/>
+        <button ng-click="vm.login()">{{'BTN_LOGIN' | translate}}</button>
+    </div>
+    <div ng-if="vm.authenticated == true">
+        <button ng-click="vm.logout()">{{'BTN_LOGOUT' | translate}}</button>
+    </div>
+    <br/>
+
+    <app-message message="vm.message" is-error="vm.isError"></app-message>
 </div>
-<script type="text/javascript">
-$(function() {
-  $("#txtUsername").focus();
-});
-</script>

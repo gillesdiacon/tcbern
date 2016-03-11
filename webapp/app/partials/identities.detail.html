@@ -1,37 +1,37 @@
 <div class="box">
-  <table class="boxList">
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_FIRSTNAME' | translate}}</td>
-      <td class="tableListCell">{{identity.firstname}}</td>
-    </tr>
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_LASTNAME' | translate}}</td>
-      <td class="tableListCell">{{identity.lastname}}</td>
-    </tr>
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_EMAIL' | translate}}</td>
-      <td class="tableListCell">{{identity.email}}</td>
-    </tr>
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_BIRTHDAY' | translate}}</td>
-      <td class="tableListCell">{{identity.birthday}}</td>
-    </tr>
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_ADDRESS' | translate}}</td>
-      <td class="tableListCell">{{identity.streetnumber}} {{identity.street}} {{identity.street2}}</td>
-    </tr>
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_CITY' | translate}}, {{'IDENTITY_COUNTRY' | translate}}</td>
-      <td class="tableListCell">{{identity.postcode}} {{identity.city}}, {{identity.country}}</td>
-    </tr>
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_PHONE' | translate}}</td>
-      <td class="tableListCell">{{identity.phonenumber}}</td>
-    </tr>
-    <tr class="boxElement">
-      <td class="tableListCell">{{'IDENTITY_MOBILE' | translate}}</td>
-      <td class="tableListCell">{{identity.mobilenumber}}</td>
-    </tr>
-  </table>
-  <a href="#/identities">Close</a>
+    <table class="boxList">
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_FIRSTNAME' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.firstname}}</td>
+        </tr>
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_LASTNAME' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.lastname}}</td>
+        </tr>
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_EMAIL' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.email}}</td>
+        </tr>
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_BIRTHDAY' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.birthday}}</td>
+        </tr>
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_ADDRESS' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.streetnumber}} {{identity.street}} {{identity.street2}}</td>
+        </tr>
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_CITY' | translate}}, {{'IDENTITY_COUNTRY' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.postcode}} {{vm.identity.city}}, {{vm.identity.country}}</td>
+        </tr>
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_PHONE' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.phonenumber}}</td>
+        </tr>
+        <tr class="boxElement">
+            <td class="tableListCell">{{'IDENTITY_MOBILE' | translate}}</td>
+            <td class="tableListCell">{{vm.identity.mobilenumber}}</td>
+        </tr>
+    </table>
+    <a href="#/identities">Close</a>
 </div>

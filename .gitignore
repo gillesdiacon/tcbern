@@ -1,5 +1,8 @@
 .idea
-webapp/bower_components
+*.iml
+atlassian-ide-plugin.xml
+webapp/dist/
+webapp/app/bower_components
 webapp/node_modules
 /webapp/**/.git
 /backend/**/.git

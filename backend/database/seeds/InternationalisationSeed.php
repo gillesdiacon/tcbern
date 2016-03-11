@@ -70,8 +70,9 @@ class InternationalisationSeed {
         $this->createAndSaveInternationalisation("BTN_LOGIN", "LogIn!", "LogIn!", "LogIn!");
         $this->createAndSaveInternationalisation("LOGIN_USERNAME", "Nom d'utilisateur", "Benützername", "Username");
         $this->createAndSaveInternationalisation("LOGIN_PASSWORD", "Mot de passe", "Passwort", "Password");
+        $this->createAndSaveInternationalisation("LOGIN_PASSWORD_REPEAT", "Répéter le mot de passe", "Passwort wiederholen", "Repeat the password");
         $this->createAndSaveInternationalisation("BTN_LOGOUT", "LogOut!", "LogOut!", "LogOut!");
-        $this->createAndSaveInternationalisation("BTN_SAVe", "Enregistrer", "Speichern", "Save");
+        $this->createAndSaveInternationalisation("BTN_SAVE", "Enregistrer", "Speichern", "Save");
         $this->createAndSaveInternationalisation("CONTACT_H1", "Contact", "Kontakt", "Contact");
         
     }
