@@ -9,7 +9,7 @@
     <!-- Trainings -->
     <div class="snippet-block">
         <div style="width: 100%; border-bottom: 1px solid black">
-            <a href="#/training" class="welcome-title welcome-link">Training</a>
+            <a href="#/training" class="welcome-title welcome-link">{{'MENU_TRAINING' | translate}}</a>
         </div>
 
         <table class="snippet-block">
@@ -39,15 +39,13 @@
     <!-- 3 last news -->
     <div>
         <div  style="width: 100%; border-bottom: 1px solid black">
-            <a href="#/infos" class="welcome-title welcome-link">Infos</a>
+            <a href="#/infos" class="welcome-title welcome-link">{{'MENU_INFO' | translate}}</a>
         </div>
         <table class="snippet-block">
             <tr>
                 <td align="center" ng-repeat="info in vm.infoPreview">
                     <div align="left" ng-click="vm.gotoInfo(info.id)" class="snippet-view snippet-3 clickable">
-                        <i>{{info.date}}</i><br />
-                        <b>{{info.title}}</b><br />
-                        {{info.content}}
+                        <app-single-info info="info"></app-single-info>
                     </div>
                 </td>
             </tr>
