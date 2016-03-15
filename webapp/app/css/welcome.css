@@ -26,6 +26,20 @@
     cursor: hand;
 }
 
+.welcome-shortcut-block {
+    font-size: large;
+}
+
+.welcome-shortcut {
+    margin: 15px;
+    width: 100%;
+}
+
+.welcome-shortcut-image {
+    width: 48px;
+    height: 48px;
+}
+
 .welcome-title {
     font-size: large;
     width: 100%;
