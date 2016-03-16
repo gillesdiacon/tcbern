@@ -1,12 +1,18 @@
 <div>
     <!-- Header: -->
     <!-- Image(s) and link to news and trainings -->
-    <div style="background-color: white; width: 100%" align="right">
-        <img src="images/welcome.jpg">
+    <div style="width: 100%" align="right">
+        <div class="welcome-shortcut-background">
+            <img src="images/welcome.jpg">
+        </div>
         <!-- images for the calendar or a small view of the calendar -->
-        <div class="welcome-shortcut-block">
-            <a href="#/agenda" class="welcome-shortcut"><img src="images/calendar.png" class="welcome-shortcut-image" />{{'MENU_AGENDA' | translate}}</a><br />
-            <a href="#/infos" class="welcome-shortcut"><img src="images/calendar.png" class="welcome-shortcut-image" />{{'MENU_INFO' | translate}}</a>
+        <div align="left" class="welcome-shortcut-block">
+            <div class="welcome-shortcut">
+                <a href="#/agenda"><img src="images/calendar.png" class="welcome-shortcut-image" />{{'MENU_AGENDA' | translate}}</a><br />
+            </div>
+            <div class="welcome-shortcut">
+                <a href="http://www.doodle.com/dppxhuywr26vcxhc" target="_blank"><img src="images/doodle.jpg" class="welcome-shortcut-image" />Doodle</a>
+            </div>
         </div>
     </div>
 
