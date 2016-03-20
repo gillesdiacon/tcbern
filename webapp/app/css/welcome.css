@@ -12,6 +12,7 @@
 
 .snippet-2 {
     max-width: 300px;
+    display: inline-block;
 }
 
 .snippet-3 {
@@ -19,6 +20,7 @@
     height: 300px;
     max-height: 300px;
     overflow: hidden;
+    display: inline-block;
 }
 
 .clickable {
@@ -29,6 +31,12 @@
 .welcome-shortcut-background {
     background-color: white;
     width: 100%;
+}
+
+.welcome-shortcut-title {
+    position: relative;
+    top: -400px;
+    left: 25px;
 }
 
 .welcome-shortcut-block {

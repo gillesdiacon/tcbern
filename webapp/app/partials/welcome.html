@@ -5,6 +5,7 @@
         <div class="welcome-shortcut-background">
             <img src="images/welcome.jpg">
         </div>
+        <h1 align="left" class="welcome-shortcut-title">TC Bern</h1>
         <!-- images for the calendar or a small view of the calendar -->
         <div align="left" class="welcome-shortcut-block">
             <div class="welcome-shortcut">
@@ -23,43 +24,33 @@
             <a href="#/training" class="welcome-title welcome-link">{{'MENU_TRAINING' | translate}}</a>
         </div>
 
-        <table class="snippet-block">
-            <tr>
-                <td align="center">
-                    <div align="left" class="snippet-view snippet-2">
-                        Bernmobil Turnhalle<br />
-                        Dienstag - 20:00 - 21:45<br />
-                        Tscharnerstrasse (Zugang) 3007 Bern<br />
-                        <a href="https://www.google.ch/maps/place/46%C2%B056'31.8%22N+7%C2%B025'41.2%22E/@46.9421667,7.4281111,436m/data=!3m2!1e3!4b1!4m2!3m1!1s0x0:0x0?hl=de"
-                           target="_blank">Google Maps</a>
-                    </div>
-                </td>
-                <td align="center">
-                    <div align="left" class="snippet-view snippet-2">
-                        Schosshalde<br />
-                        Freitag - 20:00 - 21:45<br />
-                        Schosshaldenstrasse 37, 3006 Bern<br />
-                        <a href="https://www.google.ch/maps/place/Schosshaldenstrasse+37,+3006+Bern/@46.9474278,7.4656385,628m/data=!3m1!1e3!4m2!3m1!1s0x478e3761e24985c5:0x156dd5a706fc1e1d?hl=de"
-                           target="_blank">Google Maps</a>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div align="center" class="snippet-block">
+            <div align="left" class="snippet-view snippet-2">
+                Bernmobil Turnhalle<br />
+                Dienstag - 20:00 - 21:45<br />
+                <a href="https://www.google.ch/maps/place/46%C2%B056'31.8%22N+7%C2%B025'41.2%22E/@46.9421667,7.4281111,436m/data=!3m2!1e3!4b1!4m2!3m1!1s0x0:0x0?hl=de"
+                   target="_blank">Tscharnerstrasse (Zugang) 3007 Bern</a>
+            </div>
+            <div align="left" class="snippet-view snippet-2">
+                Schosshalde<br />
+                Freitag - 18:00 - 19:45<br />
+                <a href="https://www.google.ch/maps/place/Schosshaldenstrasse+37,+3006+Bern/@46.9474278,7.4656385,628m/data=!3m1!1e3!4m2!3m1!1s0x478e3761e24985c5:0x156dd5a706fc1e1d?hl=de"
+                   target="_blank">Schosshaldenstrasse 37, 3006 Bern</a>
+            </div>
+        </div>
     </div>
 
     <!-- 3 last news -->
     <div>
-        <div  style="width: 100%; border-bottom: 1px solid black">
+        <div style="width: 100%; border-bottom: 1px solid black">
             <a href="#/infos" class="welcome-title welcome-link">{{'MENU_INFO' | translate}}</a>
         </div>
-        <table class="snippet-block">
-            <tr>
-                <td align="center" ng-repeat="info in vm.infoPreview">
-                    <div align="left" ng-click="vm.gotoInfo(info.id)" class="snippet-view snippet-3 clickable">
-                        <app-single-info info="info"></app-single-info>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div align="center" class="snippet-block">
+            <div align="left" ng-click="vm.gotoInfo(info.id)"
+                 class="snippet-view snippet-3 clickable"
+                 ng-repeat="info in vm.infoPreview">
+                <app-single-info info="info"></app-single-info>
+            </div>
+        </div>
     </div>
 </div>
