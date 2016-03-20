@@ -8,9 +8,12 @@ body {
 }
 
 .header {
+    position: fixed;
     background-color: #ef6c00;
     color: white;
     height: 45px;
+    width: 100%;
+    z-index: 2000;
 }
 
 .header-title {
@@ -22,7 +25,7 @@ body {
     vertical-align: top;
 }
 
-img.header {
+img.logo {
     height: 41px;
     padding-top: 2px;
     vertical-align: top;
