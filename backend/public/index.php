@@ -1,5 +1,6 @@
 <?php
 
+use TcBern\Model\Info;
 use TcBern\Model\User;
 use TcBern\Model\Group;
 use TcBern\Model\Profile;
@@ -159,6 +160,14 @@ $app->get(
           $q->where('key', '=', 'position.committee');
         })->get();
         echo $profiles->load('identity', 'positions')->toJson();
+    }
+);
+
+$app->get(
+    '/api/infopreview',
+    function() use ($app) {
+        $preview = Info::orderBy('date', 'DESC')->take(3)->get();
+        echo $preview->toJson();
     }
 );
 

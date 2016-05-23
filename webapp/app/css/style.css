@@ -8,9 +8,12 @@ body {
 }
 
 .header {
+    position: fixed;
     background-color: #ef6c00;
     color: white;
     height: 45px;
+    width: 100%;
+    z-index: 2000;
 }
 
 .header-title {
@@ -22,7 +25,7 @@ body {
     vertical-align: top;
 }
 
-img.header {
+img.logo {
     height: 41px;
     padding-top: 2px;
     vertical-align: top;
@@ -46,18 +49,12 @@ img.header {
 }
 
 .modal-content {
-    /* filter: alpha(opacity=65);
-    opacity: 0.65;
-    background-color: transparent;*/
-
     background-color: #ffffff;
     filter: alpha(opacity=100);
     opacity: 1;
 }
 
 .menuHeader {
-    /*background-color: #ffffff;
-    filter: alpha(opacity=100);*/
     opacity: 1;
 }
 
@@ -65,10 +62,6 @@ img.header {
     width: 100%;
     background-color: transparent;
     opacity: 1;
-    /*height: 100vh;
-    background-color: #ffffff;
-    filter: alpha(opacity=65);
-    opacity: 0.65;*/
     padding: 20px;
 }
 
@@ -122,7 +115,7 @@ img.header {
 }
 
 .infoContent {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .committeePosition {
