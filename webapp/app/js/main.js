@@ -16,23 +16,22 @@
         });
 
         var vm = this;
-        vm.title = '';
-        // inherited and thus usable by all the other controllers
-        $scope.setTitle = function(t) {
-            vm.title = t;
-        };
-
         vm.asideState = {
             open: false
         };
 
         vm.openAside = function() {
-            vm.asideState.open = true;
+            if (vm.asideState.open === true) {
+                vm.asideState.$modalInstance.dismiss();
+                return;
+            }
 
             function postClose() {
                 vm.asideState.open = false;
             }
 
+            var parentVm = vm;
+            vm.asideState.open = true;
             $aside.open({
                 templateUrl: 'partials/menu.html',
                 placement: 'left',
@@ -40,14 +39,15 @@
                 animation: true,
                 controllerAs: 'vm',
                 controller: ['$modalInstance', '$authentication', function($modalInstance, $authentication) {
+                    parentVm.asideState.$modalInstance = $modalInstance;
                     var vm = this;
                     vm.menuElementList = [
                         {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
                         {'route': 'agenda', 'html': 'MENU_AGENDA', 'requiresAuthentication': false},
-                        {'route': 'club', 'html': 'MENU_CLUB', 'requiresAuthentication': false},
                         {'route': 'training', 'html': 'MENU_TRAINING', 'requiresAuthentication': false},
                         {'route': 'identities', 'html': 'MENU_MEMBERS', 'requiresAuthentication': true},
                         {'route': 'account', 'html': 'MENU_ACCOUNT', 'requiresAuthentication': true},
+                        {'route': 'contact', 'html': 'MENU_CONTACT', 'requiresAuthentication': false},
                         {'route': 'login', 'html': 'MENU_LOGIN', 'requiresAuthentication': false}
                     ];
 
