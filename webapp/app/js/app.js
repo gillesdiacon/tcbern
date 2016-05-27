@@ -32,6 +32,10 @@
                     url: '/training',
                     template: '<app-training></app-training>'
                 })
+                .state('tournament', {
+                    url: '/tournament',
+                    template: '<app-tournament></app-tournament>'
+                })
                 .state('identities', {
                     url: '/identities',
                     template: '<app-identities-list></app-identities-list>'
