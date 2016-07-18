@@ -24,13 +24,17 @@
                     url: '/agenda',
                     template: '<app-agenda></app-agenda>'
                 })
-                .state('club', {
-                    url: '/club',
-                    template: '<app-club></app-club>'
+                .state('contact', {
+                    url: '/contact',
+                    template: '<app-contact></app-contact>'
                 })
                 .state('training', {
                     url: '/training',
                     template: '<app-training></app-training>'
+                })
+                .state('tournament', {
+                    url: '/tournament',
+                    template: '<app-tournament></app-tournament>'
                 })
                 .state('identities', {
                     url: '/identities',

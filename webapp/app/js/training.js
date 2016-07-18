@@ -10,6 +10,5 @@
 
     function TrainingController() {
         var vm = this;
-        //$scope.setTitle('TITLE_TRAINING');
     }
 })();

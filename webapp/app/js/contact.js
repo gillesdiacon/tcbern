@@ -2,15 +2,13 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.component('appClub', {
-        templateUrl: 'partials/club.html',
+    tcbernControllers.component('appContact', {
+        templateUrl: 'partials/contact.html',
         controllerAs: 'vm',
-        controller: ['Restangular', ClubController]
+        controller: ['Restangular', ContactController]
     });
 
-    function ClubController(Restangular) {
-        //$scope.setTitle('TITLE_COMMITTEE');
-
+    function ContactController(Restangular) {
         var vm = this;
 
         Restangular.all('committee').getList().then(function(allCommitteeMembers) {
@@ -23,7 +21,9 @@
             });
         }
 
-        vm.contact = 'vorstand' + '@' + 'tcbern.ch';
+        vm.contactCommittee = 'vorstand' + '@' + 'tcbern.ch';
+        vm.contactTournament = 'turnier' + '@' + 'tcbern.ch';
+        vm.contactCoaches = 'coach' + '@' + 'tcbern.ch';
         vm.getPositions = getPositions;
     }
 })();

@@ -3,21 +3,23 @@
 }
 
 .snippet-view {
-    background-color: rgba(239, 108, 0, 0.3);
-    border: 2px solid black;
-    border-radius: 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 2px solid #C9C9C9;
+    background-color: #ffffff;
     margin: 15px;
     padding: 5px;
 }
 
 .snippet-2 {
-    max-width: 300px;
+    width: 95%;
     display: inline-block;
 }
 
 .snippet-3 {
-    max-width: 200px;
-    max-height: 300px;
+    width: 95%;
+    height: 300px;
     overflow: hidden;
     display: inline-block;
 }
@@ -39,13 +41,13 @@
 
 .welcome-shortcut-title {
     position: absolute;
-    top: 200px;
+    top: 220px;
     left: 25px;
 }
 
 .welcome-shortcut-block {
     position: absolute;
-    top: 250px;
+    top: 270px;
     font-size: large;
 }
 

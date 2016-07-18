@@ -8,8 +8,7 @@ body {
 }
 
 .header {
-    position: fixed;
-    background-color: #ef6c00;
+    background-color: #f96234;
     color: white;
     height: 45px;
     width: 100%;
@@ -75,10 +74,6 @@ img.logo {
 
 .menu-element:hover {
     background-color: #eeeeee;
-}
-
-.login-text {
-    margin: 10px;
 }
 
 .no-bullet-list {
