@@ -1,6 +1,6 @@
 <div class="box">
     <ul class="boxList">
-        <li ng-repeat="info in vm.infosList" class="no-bullet-list boxElement">
+        <li ng-repeat="info in vm.infosList" class="no-bullet-list boxElement" ng-click="vm.gotoInfo(info.id)">
             <div class="limitedHeight">
                 <app-single-info info="info"></app-single-info>
             </div>

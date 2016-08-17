@@ -12,14 +12,15 @@
         if (!$authentication.isAuthenticated) {
             $state.go('login');
         } else {
-            //$scope.setTitle('TITLE_MEMBERS');
-
             var vm = this;
 
             Restangular.all('identities').getList().then(function(allIdentities) {
                 vm.identityList = allIdentities;
             });
 
+            vm.phone = function(identity) {
+                return (identity.phonenumber !== null) ? identity.phonenumber : identity.mobilenumber;
+            };
             vm.go = function(event, identity) {
                 event.stopPropagation();
                 $state.go('identity_detail', { 'id': identity.id });

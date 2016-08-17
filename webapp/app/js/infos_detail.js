@@ -9,12 +9,9 @@
     });
 
     function InfosDetailController($stateParams, Restangular) {
-        //$scope.setTitle('TITLE_INFO_DETAIL');
-
         var vm = this;
 
         Restangular.one('infos', $stateParams.id).get().then(function(info) {
-            //$scope.setTitle(info.title);
             vm.detail = info;
         });
     }

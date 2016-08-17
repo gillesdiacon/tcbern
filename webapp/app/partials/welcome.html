@@ -1,0 +1,59 @@
+<div>
+    <!-- Header: -->
+    <!-- Image(s) and link to news and trainings -->
+    <div align="right" class="welcome-block">
+        <div class="welcome-shortcut-background">
+            <img src="images/welcome.jpg">
+        </div>
+        <h1 align="left" class="welcome-shortcut-title">TC Bern</h1>
+        <!-- images for the calendar or a small view of the calendar -->
+        <div align="left" class="welcome-shortcut-block">
+            <div class="welcome-shortcut">
+                <a href="#/agenda"><img src="images/calendar.png" class="welcome-shortcut-image" />{{'MENU_AGENDA' | translate}}</a><br />
+            </div>
+            <div class="welcome-shortcut">
+                <a href="http://www.doodle.com/dppxhuywr26vcxhc" target="_blank"><img src="images/doodle.jpg" class="welcome-shortcut-image" />Doodle</a>
+            </div>
+            <div class="welcome-shortcut">
+                <a href="#/tournament" target="_blank"><img src="images/podium.png" class="welcome-shortcut-image" />{{'MENU_TOURNAMENT' | translate}}</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content: -->
+    <!-- Trainings -->
+    <div class="snippet-block">
+        <div style="width: 100%; border-bottom: 1px solid black">
+            <a href="#/training" class="welcome-title welcome-link">{{'MENU_TRAINING' | translate}}</a>
+        </div>
+
+        <div align="center" class="snippet-block">
+            <div align="left" class="snippet-view snippet-2">
+                Bernmobil Turnhalle<br />
+                Dienstag - 20:00 - 21:45<br />
+                <a href="https://www.google.ch/maps/place/46%C2%B056'31.8%22N+7%C2%B025'41.2%22E/@46.9421667,7.4281111,436m/data=!3m2!1e3!4b1!4m2!3m1!1s0x0:0x0?hl=de"
+                   target="_blank">Tscharnerstrasse (Zugang) 3007 Bern</a>
+            </div>
+            <div align="left" class="snippet-view snippet-2">
+                Schosshalde<br />
+                Freitag - 18:00 - 19:45<br />
+                <a href="https://www.google.ch/maps/place/Schosshaldenstrasse+37,+3006+Bern/@46.9474278,7.4656385,628m/data=!3m1!1e3!4m2!3m1!1s0x478e3761e24985c5:0x156dd5a706fc1e1d?hl=de"
+                   target="_blank">Schosshaldenstrasse 37, 3006 Bern</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 last news -->
+    <div>
+        <div style="width: 100%; border-bottom: 1px solid black">
+            <a href="#/infos" class="welcome-title welcome-link">{{'MENU_INFO' | translate}}</a>
+        </div>
+        <div align="center" class="snippet-block">
+            <div align="left" ng-click="vm.gotoInfo(info.id)"
+                 class="snippet-view snippet-3 clickable"
+                 ng-repeat="info in vm.infoPreview">
+                <app-single-info info="info"></app-single-info>
+            </div>
+        </div>
+    </div>
+</div>
