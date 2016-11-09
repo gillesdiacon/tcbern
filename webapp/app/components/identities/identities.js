@@ -19,7 +19,7 @@
             });
 
             vm.phone = function(identity) {
-                return (identity.phonenumber !== null) ? identity.phonenumber : identity.mobilenumber;
+                return (identity.phonenumber) ? identity.phonenumber : identity.mobilenumber;
             };
             vm.go = function(event, identity) {
                 event.stopPropagation();
