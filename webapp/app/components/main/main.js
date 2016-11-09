@@ -22,7 +22,7 @@
 
         vm.openAside = function() {
             if (vm.asideState.open === true) {
-                vm.asideState.$modalInstance.dismiss();
+                vm.asideState.$uibModalInstance.dismiss();
                 return;
             }
 
@@ -38,8 +38,8 @@
                 size: 'sm',
                 animation: true,
                 controllerAs: 'vm',
-                controller: ['$modalInstance', '$authentication', function($modalInstance, $authentication) {
-                    parentVm.asideState.$modalInstance = $modalInstance;
+                controller: ['$uibModalInstance', '$authentication', function($uibModalInstance, $authentication) {
+                    parentVm.asideState.$uibModalInstance = $uibModalInstance;
                     var vm = this;
                     vm.menuElementList = [
                         {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
@@ -61,7 +61,7 @@
                     };
 
                     vm.go = function(e, element) {
-                        $modalInstance.dismiss();
+                        $uibModalInstance.dismiss();
                         e.stopPropagation();
                         $state.go(element.route);
                     };
