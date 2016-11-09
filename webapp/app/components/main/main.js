@@ -33,7 +33,7 @@
             var parentVm = vm;
             vm.asideState.open = true;
             $aside.open({
-                templateUrl: 'partials/menu.html',
+                templateUrl: 'components/main/menu.html',
                 placement: 'left',
                 size: 'sm',
                 animation: true,

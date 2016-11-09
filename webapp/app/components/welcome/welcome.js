@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appWelcome', {
-        templateUrl: 'partials/welcome.html',
+        templateUrl: 'components/welcome/welcome.html',
         controllerAs: 'vm',
         controller: ['$state', 'Restangular', WelcomeController]
     });

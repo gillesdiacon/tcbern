@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appContact', {
-        templateUrl: 'partials/contact.html',
+        templateUrl: 'components/contact/contact.html',
         controllerAs: 'vm',
         controller: ['Restangular', ContactController]
     });

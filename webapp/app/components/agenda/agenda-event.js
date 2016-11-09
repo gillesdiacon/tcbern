@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appAgendaEvent', {
-        templateUrl: 'partials/agenda-event.html',
+        templateUrl: 'components/agenda/agenda-event.html',
         controller: AgendaEventController,
         controllerAs: 'vm',
         bindings: {

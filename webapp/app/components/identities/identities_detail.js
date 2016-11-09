@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appIdentitiesDetail', {
-        templateUrl: 'partials/identities.detail.html',
+        templateUrl: 'components/identities/identities.detail.html',
         controllerAs: 'vm',
         controller: ['$stateParams', '$state', 'Restangular', '$authentication', IdentityDetailController]
     });

@@ -20,10 +20,10 @@ gulp.task('clean', function () {
 });
 
 gulp.task('analyze', function () {
-    var basePath = path.resolve('./app/js/');
+    var basePath = path.resolve('./app/');
     $$.util.log('Analyzing sources in ' + basePath);
 
-    return gulp.src([basePath + '/**/*.js', '!./Content/bower_components/**/*'])
+    return gulp.src([basePath + '/**/*.js', '!./app/bower_components/**/*'])
         .pipe($$.jshint())
         .pipe($$.jshint.reporter('jshint-stylish', { verbose: true }))
         .pipe($$.jshint.reporter('fail'));
