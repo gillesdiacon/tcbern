@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appTournament', {
-        templateUrl: 'partials/tournament.html',
+        templateUrl: 'components/tournament/tournament.html',
         controllerAs: 'vm',
         controller: [TournamentController]
     });

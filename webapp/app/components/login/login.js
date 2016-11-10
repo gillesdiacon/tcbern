@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appLogin', {
-        templateUrl: 'partials/login.html',
+        templateUrl: 'components/login/login.html',
         controllerAs: 'vm',
         controller: ['$scope', '$state', '$authentication', LoginController]
     });

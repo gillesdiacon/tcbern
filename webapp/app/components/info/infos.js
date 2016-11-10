@@ -3,12 +3,12 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appInfosList', {
-        templateUrl: 'partials/infos.html',
+        templateUrl: 'components/info/infos.html',
         controllerAs: 'vm',
-        controller: ['Restangular', InfosController]
+        controller: ['$state', 'Restangular', InfosController]
     });
 
-    function InfosController(Restangular) {
+    function InfosController($state, Restangular) {
         var vm = this;
 
         var infos = Restangular.all('infos');

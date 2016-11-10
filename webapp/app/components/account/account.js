@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appAccountEditor', {
-        templateUrl: 'partials/account.html',
+        templateUrl: 'components/account/account.html',
         controllerAs: 'vm',
         controller: ['$state', 'Restangular', '$authentication', '$http', AccountController]
     });

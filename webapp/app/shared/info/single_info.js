@@ -2,13 +2,11 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.component('appMessage', {
-        templateUrl: 'partials/message.html',
+    tcbernControllers.component('appSingleInfo', {
+        templateUrl: 'shared/info/single-info.html',
         controllerAs: 'vm',
         bindings: {
-            message: '=',
-            isError: '='
+            info: '='
         }
     });
 })();
-

@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appIdentitiesList', {
-        templateUrl: 'partials/identities.html',
+        templateUrl: 'components/identities/identities.html',
         controllerAs: 'vm',
         controller: ['$state', 'Restangular', '$authentication', IdentitiesController]
     });
@@ -19,7 +19,7 @@
             });
 
             vm.phone = function(identity) {
-                return (identity.phonenumber !== null) ? identity.phonenumber : identity.mobilenumber;
+                return (identity.phonenumber) ? identity.phonenumber : identity.mobilenumber;
             };
             vm.go = function(event, identity) {
                 event.stopPropagation();

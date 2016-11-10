@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appTraining', {
-        templateUrl: 'partials/training.html',
+        templateUrl: 'components/training/training.html',
         controllerAs: 'vm',
         controller: [TrainingController]
     });

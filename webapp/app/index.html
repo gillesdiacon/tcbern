@@ -15,11 +15,11 @@
     <!-- endbuild -->
 
     <!-- build:css app.css -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/message.css">
-    <link rel="stylesheet" href="css/account.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/welcome.css">
+    <link rel="stylesheet" href="components/main/style.css">
+    <link rel="stylesheet" href="shared/message/message.css">
+    <link rel="stylesheet" href="components/account/account.css">
+    <link rel="stylesheet" href="components/login/login.css">
+    <link rel="stylesheet" href="components/welcome/welcome.css">
     <!-- endbuild -->
 
     <link rel="icon" type="image/png" href="images/favicon-94x94.png"/>
@@ -49,35 +49,35 @@
 <script src="bower_components/angular-aside/dist/js/angular-aside.min.js"></script>
 <script src="bower_components/angular-translate/angular-translate.min.js"></script>
 <script src="bower_components/marked/marked.min.js"></script>
-<script src="bower_components/angular-marked/angular-marked.min.js"></script>
+<script src="bower_components/angular-marked/dist/angular-marked.min.js"></script>
 <script src="bower_components/lodash/lodash.min.js"></script>
 <script src="bower_components/restangular/dist/restangular.min.js"></script>
 <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
 <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src='bower_components/fullcalendar/dist/lang/de.js'></script>
+<script src='bower_components/fullcalendar/dist/locale/de.js'></script>
 <script src="bower_components/fullcalendar/dist/gcal.js"></script>
 <script src="bower_components/blueimp-md5/js/md5.min.js"></script>
 <!-- endbuild -->
 
 <!-- build:js app.js -->
-<script src="js/authentication.js"></script>
-<script src="js/controllers.js"></script>
-<script src="js/account.js"></script>
-<script src="js/agenda.js"></script>
-<script src="js/agenda-event.js"></script>
-<script src="js/contact.js"></script>
-<script src="js/identities.js"></script>
-<script src="js/identities_detail.js"></script>
-<script src="js/infos.js"></script>
-<script src="js/infos_detail.js"></script>
-<script src="js/login.js"></script>
-<script src="js/main.js"></script>
-<script src="js/message.js"></script>
-<script src="js/single_info.js"></script>
-<script src="js/training.js"></script>
-<script src="js/tournament.js"></script>
-<script src="js/welcome.js"></script>
-<script src="js/app.js"></script>
+<script src="shared/authentication/authentication.js"></script>
+<script src="components/main/controllers.js"></script>
+<script src="components/account/account.js"></script>
+<script src="components/agenda/agenda.js"></script>
+<script src="components/agenda/agenda-event.js"></script>
+<script src="components/contact/contact.js"></script>
+<script src="components/identities/identities.js"></script>
+<script src="components/identities/identities_detail.js"></script>
+<script src="components/info/infos.js"></script>
+<script src="components/info/infos_detail.js"></script>
+<script src="components/login/login.js"></script>
+<script src="components/main/main.js"></script>
+<script src="shared/message/message.js"></script>
+<script src="shared/info/single_info.js"></script>
+<script src="components/training/training.js"></script>
+<script src="components/tournament/tournament.js"></script>
+<script src="components/welcome/welcome.js"></script>
+<script src="components/main/app.js"></script>
 <!-- endbuild -->
 
 <!-- inject:template-js -->

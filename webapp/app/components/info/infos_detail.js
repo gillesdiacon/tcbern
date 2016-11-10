@@ -3,7 +3,7 @@
 
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.component('appInfosDetail', {
-        templateUrl: 'partials/infos.detail.html',
+        templateUrl: 'components/info/infos.detail.html',
         controllerAs: 'vm',
         controller: ['$stateParams', 'Restangular', InfosDetailController]
     });
