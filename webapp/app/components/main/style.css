@@ -135,3 +135,13 @@ img.logo {
 .tableListCell {
     padding: 10px;
 }
+
+.fc-day {
+    background: rgba(255, 255, 255, 0.6);
+}
+.fc-today {
+    background-color: rgba(249, 98, 52, 0.6) !important;
+}
+.fc-day-top {
+    background-color: transparent !important;
+}
