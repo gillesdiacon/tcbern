@@ -51,7 +51,7 @@ function verification(\Slim\Route $route)
 $app->get(
     '/',
     function () use ($app) {
-        echo "Welcome to API";
+        echo "Welcome to API -> PHP Version " . phpversion();
     }
 )->name("home");
 

@@ -11,7 +11,7 @@
     tcbernControllers.factory('translateCustomLoader', ['$http', function ($http) {
         return function (options) {
             var language = options.key;
-            return $http.get('../../backend/public/api/internationalisation')
+            return $http.get('../../backend/v1/public/api/internationalisation')
                 .then(function (response) {
                     var result = {};
                     response.data.forEach(function (entry) {
