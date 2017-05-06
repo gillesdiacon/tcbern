@@ -33,7 +33,7 @@
                 } else if (vm.password !== vm.passwordRepeated) {
                     vm.message = 'The password and the repeated one must be identical';
                 } else {
-                    $http.post('../../backend/v1/public/password/' + $authentication.userId, {'password': md5(vm.password)}, {headers: {'Token': $authentication.token}})
+                    $http.post('../../backend/v2/public/password/' + $authentication.userId, {'password': md5(vm.password)}, {headers: {'Token': $authentication.token}})
                         .then(function() {
                             vm.password = '';
                             vm.passwordRepeated = '';

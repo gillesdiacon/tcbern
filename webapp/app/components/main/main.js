@@ -5,7 +5,7 @@
     tcbernControllers.controller('MainCtrl', ['$scope', '$aside', '$state', 'Restangular', '$authentication', MainController]);
 
     function MainController($scope, $aside, $state, Restangular, $authentication) {
-        Restangular.setBaseUrl('../../backend/v1/public/api');
+        Restangular.setBaseUrl('../../backend/v2/public/api');
         Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers) {
             if ($authentication.token !== null) {
                 headers.Token = $authentication.token;
