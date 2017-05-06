@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "2.*",
+        "illuminate/database": "*",
+        "tuupola/slim-jwt-auth": "dev-master"
+    },
+    "autoload": {
+        "files": [ "private/dbConfig.php" ],
+        "classmap": [ "private/models" ]
+    },
+	"config":{
+		"preferred-install": "dist"
+	}
+}
