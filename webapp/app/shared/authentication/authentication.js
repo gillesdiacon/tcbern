@@ -21,7 +21,7 @@
 
         service.authenticate = function authenticate(username, password) {
             return $q(function (resolve, reject) {
-                $http.post('../../backend/public/auth', {
+                $http.post('../../backend/v2/public/auth', {
                         'username': username,
                         'password': md5(password)
                     })
