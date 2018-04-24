@@ -14,8 +14,6 @@
         } else {
             var vm = this;
 
-            //$scope.setTitle('TITLE_ACCOUNT');
-
             vm.identity = {};
             vm.password = '';
             vm.passwordRepeated = '';
