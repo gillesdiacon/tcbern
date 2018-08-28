@@ -11,5 +11,6 @@
     function TournamentController($authentication, $loadedcontent) {
         var vm = this;
         vm.tournamentKey = 'TOURNAMENT';
+        vm.groups = ['admin', 'tournament'];
     }
 })();

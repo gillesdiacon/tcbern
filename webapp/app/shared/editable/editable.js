@@ -7,14 +7,15 @@
         controllerAs: 'vm',
         controller: ['$scope', '$authentication', '$loadedcontent', EditableController],
         bindings: {
-            contentKey: '='
+            contentKey: '=',
+            groups: '='
         }
     });
 
     function EditableController($scope, $authentication, $loadedcontent) {
         var vm = this;
         vm.edit = false;
-        vm.canNotEdit = !$authentication.isAuthenticated || !$authentication.isInGroup('admin');
+        vm.canNotEdit = !$authentication.isAuthenticated || !$authentication.isInAnyGroup(vm.groups);
         vm.pageContent = '';
 
         $loadedcontent.contentForKey(vm.contentKey).then(function(response) {
