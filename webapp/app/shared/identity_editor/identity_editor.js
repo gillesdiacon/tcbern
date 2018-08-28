@@ -2,19 +2,16 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.directive('appIdentityEditor', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'shared/identity_editor/identity_editor.html',
-            controllerAs: 'vm',
-            controller: ['$state', 'Restangular', '$authentication', '$http', '$scope', AccountController],
-            scope: {
-                identity: '='
-            }
+    tcbernControllers.component('appIdentityEditor', {
+        templateUrl: 'shared/identity_editor/identity_editor.html',
+        controllerAs: 'vm',
+        controller: ['$state', '$authentication', '$scope', IdentityEditorController],
+        bindings: {
+            identity: '='
         }
     });
 
-    function AccountController($state, Restangular, $authentication, $http, $scope) {
+    function IdentityEditorController($state, $authentication, $scope) {
         if (!$authentication.isAuthenticated) {
             $state.go('login');
         } else {
