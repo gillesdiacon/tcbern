@@ -1,4 +1,12 @@
 <div class="boxElement">
+    <button ng-hide="vm.edit" ng-click="vm.startEdit()">Edit</button>
+    <button ng-show="vm.edit" ng-click="vm.cancelEdit()">Cancel</button>
+    <button ng-show="vm.edit" ng-click="vm.save()">Save</button>
+    <br /><br />
+    <div ng-hide="vm.edit" marked="vm.content" class="infoContent"></div>
+    <input ng-show="vm.edit" type="text" ng-model="vm.content" />
+</div>
+<div class="boxElement">
     <h1>{{'TOURNAMENT_H1' | translate}}</h1>
 
     <b>Wann/when/quand?</b> 23.09.2018 (Sonntag / Sunday / Dimanche)

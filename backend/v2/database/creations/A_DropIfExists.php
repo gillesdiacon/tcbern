@@ -11,7 +11,8 @@ class A_DropIfExists {
 	    Capsule::schema()->dropIfExists('info');
 		
 		Capsule::schema()->dropIfExists('internationalisation');
-		
+		Capsule::schema()->dropIfExists('page');
+
         Capsule::schema()->dropIfExists('profileposition');
         Capsule::schema()->dropIfExists('profile');
         Capsule::schema()->dropIfExists('identity');

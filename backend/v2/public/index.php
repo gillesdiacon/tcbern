@@ -1,6 +1,7 @@
 <?php
 
 use TcBern\Model\Info;
+use TcBern\Model\Page;
 use TcBern\Model\User;
 use TcBern\Model\Group;
 use TcBern\Model\Profile;
@@ -81,6 +82,7 @@ $headerMw = function($request, $response, $next) {
 // list of authorized entities
 $authorizedEntities = array(
     "infos" => "TcBern\\Model\\Info",
+    "pages" => "TcBern\\Model\\Page",
     "internationalisation" => "TcBern\\Model\\Internationalisation",
     "identities" => "TcBern\\Model\\Identity",
     "users" => "TcBern\\Model\\User");
@@ -190,6 +192,7 @@ $app->get(
     function (Request $request, Response $response, $args) {
         global $authorizedEntities;
 
+        Page::all();
         $entity = $args['entity'];
         $objects = $authorizedEntities[$entity]::all();
         $response->getBody()->write($objects->toJson());
