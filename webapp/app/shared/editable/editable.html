@@ -1,0 +1,11 @@
+<div class="no-bullet-list boxElement">
+    <div ng-hide="vm.canNotEdit">
+        <button ng-hide="vm.edit" ng-click="vm.startEdit()">Edit</button>
+        <button ng-show="vm.edit" ng-click="vm.cancelEdit()">Cancel</button>
+        <button ng-show="vm.edit" ng-click="vm.save()">Save</button>
+        <br />
+        <br />
+    </div>
+    <div ng-hide="vm.edit" marked="vm.content.content" class="infoContent"></div>
+    <textarea ng-show="vm.edit" ng-model="vm.pageContent" />
+</div>

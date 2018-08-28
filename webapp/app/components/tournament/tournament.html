@@ -1,15 +1,7 @@
-<div class="boxElement">
-    <div ng-hide="vm.canNotEdit">
-        <button ng-hide="vm.edit" ng-click="vm.startEdit()">Edit</button>
-        <button ng-show="vm.edit" ng-click="vm.cancelEdit()">Cancel</button>
-        <button ng-show="vm.edit" ng-click="vm.save()">Save</button>
-        <br />
-        <br />
-    </div>
-    <div ng-hide="vm.edit" marked="vm.content.content" class="infoContent"></div>
-    <textarea ng-show="vm.edit" ng-model="vm.pageContent" />
+<div>
+    <app-editable content-key="vm.tournamentKey"></app-editable>
 </div>
-<div class="boxElement">
+<!--<div class="boxElement">
     <h1>{{'TOURNAMENT_H1' | translate}}</h1>
 
     <b>Wann/when/quand?</b> 23.09.2018 (Sonntag / Sunday / Dimanche)
@@ -46,4 +38,4 @@
         <li>http://www.ibis.com/fr/city/hotels-berne-v0398.shtml</li>
     </ul>
 
-</div>
+</div>-->
