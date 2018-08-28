@@ -40,6 +40,10 @@
             });
         };
 
+        service.isInGroup = function isInGroup(group) {
+            return service.group.map(e => e.key).includes(group);
+        }
+
         return service;
     }
 })();

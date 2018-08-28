@@ -1,10 +1,13 @@
 <div class="boxElement">
-    <button ng-hide="vm.edit" ng-click="vm.startEdit()">Edit</button>
-    <button ng-show="vm.edit" ng-click="vm.cancelEdit()">Cancel</button>
-    <button ng-show="vm.edit" ng-click="vm.save()">Save</button>
-    <br /><br />
-    <div ng-hide="vm.edit" marked="vm.content" class="infoContent"></div>
-    <input ng-show="vm.edit" type="text" ng-model="vm.content" />
+    <div ng-hide="vm.canNotEdit">
+        <button ng-hide="vm.edit" ng-click="vm.startEdit()">Edit</button>
+        <button ng-show="vm.edit" ng-click="vm.cancelEdit()">Cancel</button>
+        <button ng-show="vm.edit" ng-click="vm.save()">Save</button>
+        <br />
+        <br />
+    </div>
+    <div ng-hide="vm.edit" marked="vm.content.content" class="infoContent"></div>
+    <textarea ng-show="vm.edit" ng-model="vm.pageContent" />
 </div>
 <div class="boxElement">
     <h1>{{'TOURNAMENT_H1' | translate}}</h1>
@@ -36,7 +39,7 @@
         <li>Getränke/Drinks/Boissons</li>
         <li>Salat</li>
     </ul>
-    
+
     <b>Unterkunft / Accomodation / Hébergement?</b>
     <ul>
         <li>http://www.youthhostel.ch/en/hostels/berne</li>

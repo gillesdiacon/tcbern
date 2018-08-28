@@ -19,10 +19,11 @@ $c = $app->getContainer();
 $c['errorHandler'] = function ($c) {
     return function ($request, $response, $exception) use ($c) {
         $response->getBody()->rewind();
+        $trace = $exception->getTraceAsString();
         return $c['response']->withStatus(500)
                              ->withHeader('X-Status-Reason', $exception->getMessage())
                              ->withHeader('Content-Type', 'text/html')
-                             ->write('Something went wrong!');
+                             ->write("Something went wrong! $trace");
     };
 };
 
@@ -262,11 +263,15 @@ $app->put(
         // store modified article
         if ($object) {
             foreach($input as $key => $value) {
-                $object->$key = (string)$value;
+                if (!in_array($key, array('id', 'updated_at', 'created_at'))) {
+                    $object->$key = (string)$value;
+                }
             }
+            $object->updated_at = time();
             $object->save();
 
-            $response->getBody()->write($object->toJson());
+            $newObject = $authorizedEntities[$entity]::find($id);
+            $response->getBody()->write($newObject->toJson());
             return $response->withStatus(200);
         } else {
             return $response->withStatus(404);
