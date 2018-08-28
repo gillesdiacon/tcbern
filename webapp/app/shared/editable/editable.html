@@ -7,5 +7,10 @@
         <br />
     </div>
     <div ng-hide="vm.edit" marked="vm.content.content" class="infoContent"></div>
-    <textarea ng-show="vm.edit" ng-model="vm.pageContent" />
+    <textarea ng-show="vm.edit && !vm.preview" ng-model="vm.pageContent" />
+    <div ng-show="vm.preview" marked="vm.pageContent" class="infoContent"></div>
+    <div ng-hide="vm.canNotEdit">
+        <button ng-show="vm.edit && !vm.preview" ng-click="vm.switchToPreview()">Preview</button>
+        <button ng-show="vm.preview" ng-click="vm.backToEdit()">Edit</button>
+    </div>
 </div>
