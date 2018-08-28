@@ -217,7 +217,6 @@ $app->get(
     }
 )->add($authenticationMw)->add($verificationMw)->add($headerMw);;
 
-// handle POST requests to /entity
 $app->post(
     '/api/{entity}',
     function (Request $request, Response $response, $args) {
@@ -238,7 +237,6 @@ $app->post(
     }
 )->add($tokenMw)->add($verificationMw)->add($headerMw);;
 
-// handle PUT requests to /entity/:id
 $app->put(
     '/api/{entity}/{id}',
     function (Request $request, Response $response, $args) {
@@ -273,7 +271,6 @@ $app->put(
     }
 )->add($tokenMw)->add($verificationMw)->add($headerMw);;
 
-// handle DELETE requests for /entity/:id
 $app->delete(
     '/api/{entity}/{id}',
     function (Request $request, Response $response, $args) {
@@ -291,7 +288,7 @@ $app->delete(
             return $response->withStatus(404);
         }
     }
-)->add($authenticationMw)->add($verificationMw)->add($headerMw);;
+)->add($authenticationMw)->add($verificationMw)->add($headerMw);
 
 $app->run();
 
