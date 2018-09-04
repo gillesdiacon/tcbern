@@ -36,11 +36,8 @@
             vm.pageContent = vm.content.content;
             vm.edit = false;
         };
-        vm.switchToPreview = function() {
-            vm.preview = true;
-        };
-        vm.backToEdit = function() {
-            vm.preview = false;
+        vm.switchEditPreview = function() {
+            vm.preview = !vm.preview;
         };
     }
 })();
