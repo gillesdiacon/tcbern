@@ -21,4 +21,32 @@
                 });
         };
     }]);
+
+    function mapToAssociative(a) {
+        var result = {};
+        a.forEach(function(e) { result[e.key] = e; });
+        return result;
+    };
+
+    tcbernControllers.factory('$loadedcontent', ['$http', 'Restangular', '$q', function($http, Restangular, $q) {
+        var service = {
+            content: undefined
+        };
+
+        service.contentForKey = function contentForKey(key) {
+            if (service.content === undefined) {
+                return Restangular.all('pages').getList().then(function(response) {
+                    var mapped = mapToAssociative(response);
+                    service.content = mapped;
+                    return mapped[key];
+                });
+            } else {
+                var defer = $q.defer()
+                defer.resolve(service.content[key]);
+                return defer.promise;
+            }
+        }
+
+        return service;
+    }]);
 })();

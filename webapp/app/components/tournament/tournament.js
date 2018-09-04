@@ -5,11 +5,12 @@
     tcbernControllers.component('appTournament', {
         templateUrl: 'components/tournament/tournament.html',
         controllerAs: 'vm',
-        controller: [TournamentController]
+        controller: ['$authentication', '$loadedcontent', TournamentController]
     });
 
-    function TournamentController() {
+    function TournamentController($authentication, $loadedcontent) {
         var vm = this;
-        vm.email = 'turnier' + '@' + 'tcbern.ch';
+        vm.tournamentKey = 'TOURNAMENT';
+        vm.groups = ['admin', 'tournament'];
     }
 })();

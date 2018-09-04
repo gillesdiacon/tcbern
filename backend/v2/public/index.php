@@ -1,6 +1,7 @@
 <?php
 
 use TcBern\Model\Info;
+use TcBern\Model\Page;
 use TcBern\Model\User;
 use TcBern\Model\Group;
 use TcBern\Model\Profile;
@@ -18,10 +19,11 @@ $c = $app->getContainer();
 $c['errorHandler'] = function ($c) {
     return function ($request, $response, $exception) use ($c) {
         $response->getBody()->rewind();
+        $trace = $exception->getTraceAsString();
         return $c['response']->withStatus(500)
                              ->withHeader('X-Status-Reason', $exception->getMessage())
                              ->withHeader('Content-Type', 'text/html')
-                             ->write('Something went wrong!');
+                             ->write("Something went wrong! $trace");
     };
 };
 
@@ -81,6 +83,7 @@ $headerMw = function($request, $response, $next) {
 // list of authorized entities
 $authorizedEntities = array(
     "infos" => "TcBern\\Model\\Info",
+    "pages" => "TcBern\\Model\\Page",
     "internationalisation" => "TcBern\\Model\\Internationalisation",
     "identities" => "TcBern\\Model\\Identity",
     "users" => "TcBern\\Model\\User");
@@ -190,6 +193,7 @@ $app->get(
     function (Request $request, Response $response, $args) {
         global $authorizedEntities;
 
+        Page::all();
         $entity = $args['entity'];
         $objects = $authorizedEntities[$entity]::all();
         $response->getBody()->write($objects->toJson());
@@ -259,11 +263,15 @@ $app->put(
         // store modified article
         if ($object) {
             foreach($input as $key => $value) {
-                $object->$key = (string)$value;
+                if (!in_array($key, array('id', 'updated_at', 'created_at'))) {
+                    $object->$key = (string)$value;
+                }
             }
+            $object->updated_at = time();
             $object->save();
 
-            $response->getBody()->write($object->toJson());
+            $newObject = $authorizedEntities[$entity]::find($id);
+            $response->getBody()->write($newObject->toJson());
             return $response->withStatus(200);
         } else {
             return $response->withStatus(404);

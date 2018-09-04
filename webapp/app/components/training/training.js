@@ -10,5 +10,8 @@
 
     function TrainingController() {
         var vm = this;
+        vm.interestKey = 'TRAINING_INTEREST';
+        vm.halleBernmobilKey = 'TRAINING_HALLE_BERNMOBIL';
+        vm.groups = ['admin'];
     }
 })();
