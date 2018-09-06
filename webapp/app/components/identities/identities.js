@@ -25,6 +25,9 @@
                 event.stopPropagation();
                 $state.go('identity_detail', { 'id': identity.id });
             };
+            vm.createIdentity = function() {
+                $state.go('identity_create');
+            }
         }
     }
 })();

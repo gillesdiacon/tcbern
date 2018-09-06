@@ -24,6 +24,11 @@ body {
     vertical-align: top;
 }
 
+.icon {
+    padding: 5px;
+    cursor: pointer;
+}
+
 img.logo {
     height: 41px;
     padding-top: 2px;

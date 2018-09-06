@@ -1,6 +1,7 @@
 <?php
 
 use TcBern\Model\Info;
+use TcBern\Model\Identity;
 use TcBern\Model\Page;
 use TcBern\Model\User;
 use TcBern\Model\Group;
@@ -219,7 +220,41 @@ $app->get(
             return $response->withStatus(404);
         }
     }
-)->add($authenticationMw)->add($verificationMw)->add($headerMw);;
+)->add($authenticationMw)->add($verificationMw)->add($headerMw);
+
+$app->post(
+    '/api/identities/create',
+    function (Request $request, Response $response, $args) {
+        global $authorizedEntities;
+
+        $body = $request->getBody();
+        $input = json_decode($body);
+        $identitydata = $input->identity;
+        $groups = array_merge(['member'], $input->groups);
+
+        $groupIds = Group::whereIn('key', $groups)->get();
+
+        $user = new User();
+        $user->username = strtolower(substr($identitydata->firstname, 0, 1) . $identitydata->lastname);
+        $user->password = md5('password');
+
+        $user->save();
+
+        $user->groups()->sync($groupIds);
+        $user->save();
+
+        $identity = new Identity();
+        $identity->user()->associate($user);
+
+        foreach($identitydata as $key => $value) {
+            $identity->$key = (string)$value;
+        }
+
+        $identity->save();
+
+        return $response;
+    }
+)->add($authenticationMw);
 
 $app->post(
     '/api/{entity}',
@@ -239,7 +274,7 @@ $app->post(
         $response->getBody()->write($object->toJson());
         return $response;
     }
-)->add($tokenMw)->add($verificationMw)->add($headerMw);;
+)->add($tokenMw)->add($verificationMw)->add($headerMw);
 
 $app->put(
     '/api/{entity}/{id}',
@@ -277,7 +312,7 @@ $app->put(
             return $response->withStatus(404);
         }
     }
-)->add($tokenMw)->add($verificationMw)->add($headerMw);;
+)->add($tokenMw)->add($verificationMw)->add($headerMw);
 
 $app->delete(
     '/api/{entity}/{id}',

@@ -44,6 +44,10 @@
                     url: '/identities/:id',
                     template: '<app-identities-detail></app-identities-detail>'
                 })
+                .state('identity_create', {
+                    url: '/identity/create',
+                    template: '<app-identity-create></app-identity-create>'
+                })
                 .state('account', {
                     url: '/account',
                     template: '<app-account-editor></app-account-editor>'
