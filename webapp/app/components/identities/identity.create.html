@@ -1,5 +1,8 @@
 <div class="box">
     <i ng-click="vm.cancel()" class="icon glyphicon glyphicon-remove"></i>
-    <app-identity-editor identity="vm.identity"></app-identity-editor>
-    <input type="submit" class="edit-box" ng-click="vm.persistIdentity()" value="{{'BTN_SAVE' | translate}}" />
+    <app-message is-error="true" message="vm.message"></app-message>
+    <form ng-submit="vm.persistIdentity()">
+        <app-identity-editor identity="vm.identity"></app-identity-editor>
+        <input type="submit" class="edit-box" value="{{'BTN_SAVE' | translate}}" />
+    </form>
 </div>

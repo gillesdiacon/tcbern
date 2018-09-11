@@ -14,6 +14,7 @@
         } else {
             var vm = this;
             vm.identity = {};
+            vm.message = '';
 
             vm.cancel = function() {
                 $state.go('identities');
@@ -24,10 +25,10 @@
                          groups: []
                      })
                     .then(function (response) {
-                        console.log('success');
+                        $state.go('identities');
                     })
                     .catch(function (response) {
-                        console.log('failed');
+                        vm.message = 'Dieses Person ist bereit in System eingetragen';
                     });
             }
         }

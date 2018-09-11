@@ -230,29 +230,39 @@ $app->post(
         $body = $request->getBody();
         $input = json_decode($body);
         $identitydata = $input->identity;
-        $groups = array_merge(['member'], $input->groups);
 
-        $groupIds = Group::whereIn('key', $groups)->get();
+        // Ensure identity contains all the required data.
+        if (!checkIdentity($identitydata)) {
+            return $response->withStatus(400)
+                            ->withHeader('X-Status-Reason', "Missing attribute");
+        } else if (isUserAlreadyDefined($identitydata)) {
+            return $response->withStatus(400)
+                            ->withHeader('X-Status-Reason', "Identity already exists");
+        } else {
+            $groups = array_merge(['member'], $input->groups);
 
-        $user = new User();
-        $user->username = strtolower(substr($identitydata->firstname, 0, 1) . $identitydata->lastname);
-        $user->password = md5('password');
+            $groupIds = Group::whereIn('key', $groups)->get();
 
-        $user->save();
+            $user = new User();
+            $user->username = generateUsername($identitydata);
+            $user->password = md5('password');
 
-        $user->groups()->sync($groupIds);
-        $user->save();
+            $user->save();
 
-        $identity = new Identity();
-        $identity->user()->associate($user);
+            $user->groups()->sync($groupIds);
+            $user->save();
 
-        foreach($identitydata as $key => $value) {
-            $identity->$key = (string)$value;
+            $identity = new Identity();
+            $identity->user()->associate($user);
+
+            foreach($identitydata as $key => $value) {
+                $identity->$key = (string)$value;
+            }
+
+            $identity->save();
+
+            return $response;
         }
-
-        $identity->save();
-
-        return $response;
     }
 )->add($authenticationMw);
 
@@ -334,6 +344,27 @@ $app->delete(
 )->add($authenticationMw)->add($verificationMw)->add($headerMw);
 
 $app->run();
+
+function generateUsername($identitydata) {
+    return strtolower($identitydata->firstname . $identitydata->lastname);
+}
+
+function isUserAlreadyDefined($identitydata) {
+    $count = User::where('username', generateUsername($identitydata))->get()->count();
+    return $count > 0;
+}
+
+function checkIdentity($identitydata) {
+    return property_exists($identitydata, 'firstname') && isset($identitydata->firstname) &&
+           property_exists($identitydata, 'lastname') && isset($identitydata->lastname) &&
+           property_exists($identitydata, 'birthday') && isset($identitydata->birthday) &&
+           property_exists($identitydata, 'email') && isset($identitydata->email) &&
+           property_exists($identitydata, 'streetnumber') && isset($identitydata->streetnumber) &&
+           property_exists($identitydata, 'street') && isset($identitydata->street) &&
+           property_exists($identitydata, 'postcode') && isset($identitydata->postcode) &&
+           property_exists($identitydata, 'city') && isset($identitydata->city) &&
+           property_exists($identitydata, 'country') && isset($identitydata->country);
+}
 
 function mapGroups($item) {
     return array("id" => $item->id, "key" => $item->key);
