@@ -1,8 +1,9 @@
 <div class="box">
-    <i ng-click="vm.createIdentity()" class="icon material-icons">person_add</i>
+    <i ng-show="vm.isAdmin" ng-click="vm.createIdentity()" class="icon material-icons">person_add</i>
     <ul class="boxList">
         <li ng-repeat="identity in vm.identityList" ng-click="vm.go($event, identity)" class="no-bullet-list boxElement">
             {{identity.firstname}} {{identity.lastname}} - <a href="tel:vm.phone(identity)">{{vm.phone(identity)}}</a>
+            <i ng-show="vm.isAdmin" ng-click="vm.deleteIdentity(identity); $event.stopPropagation();" class="icon material-icons md-48" style="color:red;right:0px">delete</i>
         </li>
     </ul>
     <div ui-view></div>

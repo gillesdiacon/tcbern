@@ -13,10 +13,7 @@
             $state.go('login');
         } else {
             var vm = this;
-
-            Restangular.all('identities').getList().then(function(allIdentities) {
-                vm.identityList = allIdentities;
-            });
+            vm.isAdmin = $authentication.isInAnyGroup(["admin"]);
 
             vm.phone = function(identity) {
                 return (identity.phonenumber) ? identity.phonenumber : identity.mobilenumber;
@@ -27,7 +24,24 @@
             };
             vm.createIdentity = function() {
                 $state.go('identity_create');
+            };
+            vm.deleteIdentity = function(identity) {
+                if (window.confirm("Mitglied " + identity.firstname + " " + identity.lastname + " wirklich löschen?")) {
+                    Restangular.one('users', identity.user_id).get().then(function(user) {
+                        return user.remove();
+                    }).then(function() {
+                        vm.loadIdentities();
+                    });
+                }
+            };
+
+            vm.loadIdentities = function() {
+                Restangular.all('identities').getList().then(function(allIdentities) {
+                    vm.identityList = allIdentities;
+                });
             }
+
+            vm.loadIdentities();
         }
     }
 })();
