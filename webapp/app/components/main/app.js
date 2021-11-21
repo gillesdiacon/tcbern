@@ -12,18 +12,6 @@
                     url: '/welcome',
                     template: '<app-welcome></app-welcome>'
                 })
-                .state('infos', {
-                    url: '/infos',
-                    template: '<app-infos-list></app-infos-list>'
-                })
-                .state('infos_detail', {
-                    url: '/infos/:id',
-                    template: '<app-infos-detail></app-infos-detail>'
-                })
-                .state('agenda', {
-                    url: '/agenda',
-                    template: '<app-agenda></app-agenda>'
-                })
                 .state('contact', {
                     url: '/contact',
                     template: '<app-contact></app-contact>'
@@ -35,22 +23,6 @@
                 .state('tournament', {
                     url: '/tournament',
                     template: '<app-tournament></app-tournament>'
-                })
-                .state('identities', {
-                    url: '/identities',
-                    template: '<app-identities-list></app-identities-list>'
-                })
-                .state('identity_detail', {
-                    url: '/identities/:id',
-                    template: '<app-identities-detail></app-identities-detail>'
-                })
-                .state('account', {
-                    url: '/account',
-                    template: '<app-account-editor></app-account-editor>'
-                })
-                .state('login', {
-                    url: '/login',
-                    template: '<app-login></app-login>'
                 });
         }]);
 })();

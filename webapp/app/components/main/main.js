@@ -42,14 +42,9 @@
                     parentVm.asideState.$uibModalInstance = $uibModalInstance;
                     var vm = this;
                     vm.menuElementList = [
-                        {'route': 'infos', 'html': 'MENU_INFO', 'requiresAuthentication': false},
-                        {'route': 'agenda', 'html': 'MENU_AGENDA', 'requiresAuthentication': false},
                         {'route': 'training', 'html': 'MENU_TRAINING', 'requiresAuthentication': false},
                         {'route': 'tournament', 'html': 'MENU_TOURNAMENT', 'requiresAuthentication': false},
-                        {'route': 'identities', 'html': 'MENU_MEMBERS', 'requiresAuthentication': true},
-                        {'route': 'account', 'html': 'MENU_ACCOUNT', 'requiresAuthentication': true},
                         {'route': 'contact', 'html': 'MENU_CONTACT', 'requiresAuthentication': false},
-                        {'route': 'login', 'html': 'MENU_LOGIN', 'requiresAuthentication': false}
                     ];
 
                     vm.checkAuthorization = function(value) {

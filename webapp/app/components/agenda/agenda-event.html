@@ -1,8 +1,0 @@
-<div ng-if="vm.event && vm.event.allDay === true">
-    <b>{{vm.event.title}}</b> {{vm.event.location}}
-</div>
-<div ng-if="vm.event && vm.event.allDay === false">
-    <b>{{vm.event.title}}</b>
-    <i>{{vm.formatDate(vm.event.start.toDate())}} - {{vm.formatDate(vm.event.end.toDate())}}</i>
-    {{vm.event.location}}
-</div>

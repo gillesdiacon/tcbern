@@ -6,3 +6,4 @@ webapp/app/bower_components
 webapp/node_modules
 /webapp/**/.git
 /backend/**/.git
+/webapp/package-lock.json
