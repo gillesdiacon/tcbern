@@ -1,16 +1,3 @@
 <div>
-    <div ng-hide="vm.canNotEdit">
-        <i ng-hide="vm.edit" ng-click="vm.startEdit()" class="editable-icon glyphicon glyphicon-pencil"></i>
-        <i ng-show="vm.edit" ng-click="vm.cancelEdit()" class="editable-icon glyphicon glyphicon-remove"></i>
-        <i ng-show="vm.edit" ng-click="vm.save()" class="editable-icon glyphicon glyphicon-floppy-disk"></i>
-
-        <i ng-show="vm.edit && !vm.preview" ng-click="vm.switchToPreview()" class="editable-icon glyphicon glyphicon-retweet"></i>
-        <i ng-show="vm.preview" ng-click="vm.backToEdit()" class="editable-icon glyphicon glyphicon-retweet"></i>
-        <br />
-        <br />
-    </div>
-
-    <div ng-hide="vm.edit" marked="vm.content.content" class="infoContent"></div>
-    <textarea ng-show="vm.edit && !vm.preview" ng-model="vm.pageContent" class="infoContent editable-view" rows="20" data-min-rows="3" />
-    <div ng-show="vm.preview" marked="vm.pageContent" class="infoContent"></div>
+    <div marked="vm.content.content" class="infoContent"></div>
 </div>

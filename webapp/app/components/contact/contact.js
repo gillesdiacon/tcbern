@@ -11,6 +11,5 @@
     function ContactController(Restangular) {
         var vm = this;
         vm.contentKey = 'CONTACT';
-        vm.groups = ['admin'];
     }
 })();
