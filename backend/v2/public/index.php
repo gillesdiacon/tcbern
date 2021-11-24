@@ -32,10 +32,10 @@ $c['errorHandler'] = function ($c) {
 //    "path" => "/api",
 //    "secret" => "supersecretkeyyoushouldnotcommittogithub"
 //]));
-$cipher = mcrypt_module_open('rijndael-256', '', 'ofb', '');
-$iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($cipher), MCRYPT_DEV_RANDOM);
-$keySize = mcrypt_enc_get_key_size($cipher);
-$encryptionKey = substr(md5('supersecretkeyyoushouldnotcommittogithub'), 0, $keySize);
+//$cipher = mcrypt_module_open('rijndael-256', '', 'ofb', '');
+//$iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($cipher), MCRYPT_DEV_RANDOM);
+//$keySize = mcrypt_enc_get_key_size($cipher);
+//$encryptionKey = substr(md5('supersecretkeyyoushouldnotcommittogithub'), 0, $keySize);
 
 function tokenFunc(Request $request, Response $response, $next) {
     if (containsNoToken($request)) {

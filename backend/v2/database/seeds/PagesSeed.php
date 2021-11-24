@@ -5,7 +5,7 @@ use TcBern\Model\Page;
 /**
  * Seed template for use with "novice"
  */
-class PageSeed {
+class PagesSeed {
     function createAndSavePage($content) {
         $page = new Page;
         $page->content = $content;

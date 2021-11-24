@@ -5,7 +5,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 /**
  * Creation template for use with "novice"
  */
-class C_InternationalisationCreation {
+class C_WebsiteCreation {
 
     function run(){
         Capsule::schema()->create('internationalisation', function($table) {
