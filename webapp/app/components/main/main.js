@@ -2,7 +2,7 @@
     'use strict';
 
     var tcbernControllers = angular.module('tcbernControllers');
-    tcbernControllers.controller('MainCtrl', ['$scope', '$aside', '$state', 'Restangular', '$authentication', MainController]);
+    tcbernControllers.controller('MainCtrl', ['$scope', '$aside', '$state', 'Restangular', MainController]);
 
     function MainController($scope, $aside, $state, Restangular) {
         Restangular.setBaseUrl('../../backend/v2/public/api');

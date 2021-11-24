@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'authentication', 'ui.calendar', 'hc.marked', 'pascalprecht.translate'])
+    var tcbernControllers = angular.module('tcbernControllers', ['ui.bootstrap', 'ngAside', 'restangular', 'ui.calendar', 'hc.marked', 'pascalprecht.translate'])
         .config(['$translateProvider', function ($translateProvider) {
             $translateProvider.useLoader('translateCustomLoader', {});
             //$translateProvider.useSanitizeValueStrategy('sanitize');
@@ -26,7 +26,7 @@
         var result = {};
         a.forEach(function(e) { result[e.key] = e; });
         return result;
-    };
+    }
 
     tcbernControllers.factory('$loadedcontent', ['$http', 'Restangular', '$q', function($http, Restangular, $q) {
         var service = {
@@ -41,11 +41,11 @@
                     return mapped[key];
                 });
             } else {
-                var defer = $q.defer()
+                var defer = $q.defer();
                 defer.resolve(service.content[key]);
                 return defer.promise;
             }
-        }
+        };
 
         return service;
     }]);
