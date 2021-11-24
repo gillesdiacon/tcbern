@@ -5,15 +5,20 @@
     tcbernControllers.component('appWelcome', {
         templateUrl: 'components/welcome/welcome.html',
         controllerAs: 'vm',
-        controller: [WelcomeController]
+        controller: ['$location', '$anchorScroll', WelcomeController]
     });
 
-    function WelcomeController() {
+    function WelcomeController($location, $anchorScroll) {
         var vm = this;
 
         vm.interestKey = 'TRAINING_INTEREST';
         vm.halleBernmobilKey = 'TRAINING_HALLE_NEUFELD';
         vm.contactKey = 'CONTACT';
         vm.tournamentKey = 'TOURNAMENT';
+
+        vm.scrollTo = function(name) {
+            $location.hash(name);
+            $anchorScroll();
+        };
     }
 })();

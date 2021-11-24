@@ -24,11 +24,6 @@
     display: inline-block;
 }
 
-.clickable {
-    cursor: pointer;
-    cursor: hand;
-}
-
 .welcome-block {
     width: 100%;
     position: relative;
@@ -59,6 +54,7 @@
 .welcome-shortcut-image {
     width: 48px;
     height: 48px;
+    margin-right: 8px;
 }
 
 .welcome-title {
@@ -66,9 +62,10 @@
     width: 100%;
 }
 
-a.welcome-link {
-    color: black;
+.clickable {
+    color: #337ab7;
     text-decoration: none;
+    cursor: pointer;
 }
 
 hr {

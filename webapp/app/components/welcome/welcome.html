@@ -9,10 +9,16 @@
         <!-- images for the calendar or a small view of the calendar -->
         <div align="left" class="welcome-shortcut-block">
             <div class="welcome-shortcut">
-                <a href="https://doodle.com/poll/dppxhuywr26vcxhc" target="_blank"><img src="images/doodle.jpg" class="welcome-shortcut-image" />Doodle</a>
+                <a class="clickable" href="https://doodle.com/poll/dppxhuywr26vcxhc" target="_blank"><img src="images/doodle.jpg" class="welcome-shortcut-image" />Doodle</a>
             </div>
             <div class="welcome-shortcut">
-                <a href="#/tournament"><img src="images/podium.png" class="welcome-shortcut-image" />{{'MENU_TOURNAMENT' | translate}}</a>
+                <a class="clickable" ng-click="$event.preventDefault();vm.scrollTo('training_anchor')"><img src="images/training.png" class="welcome-shortcut-image" />{{'MENU_TRAINING' | translate}}</a>
+            </div>
+            <div class="welcome-shortcut">
+                <a class="clickable" ng-click="$event.preventDefault();vm.scrollTo('contact_anchor')"><img src="images/email.png" class="welcome-shortcut-image" />{{'MENU_CONTACT' | translate}}</a>
+            </div>
+            <div class="welcome-shortcut">
+                <a class="clickable" ng-click="$event.preventDefault();vm.scrollTo('tournament_anchor')"><img src="images/podium.png" class="welcome-shortcut-image" />{{'MENU_TOURNAMENT' | translate}}</a>
             </div>
         </div>
     </div>
@@ -21,7 +27,7 @@
     <!-- Trainings -->
     <div class="snippet-block">
         <div style="width: 100%; border-bottom: 1px solid black">
-            <a href="#/training" class="welcome-title welcome-link">{{'MENU_TRAINING' | translate}}</a>
+            <h2 class="welcome-title welcome-link" id="training_anchor">{{'MENU_TRAINING' | translate}}</h2>
         </div>
 
         <div class="box">
@@ -39,7 +45,7 @@
     <!-- Contact -->
     <div class="snippet-block">
         <div style="width: 100%; border-bottom: 1px solid black">
-            <a href="#/contact" class="welcome-title welcome-link">{{'MENU_CONTACT' | translate}}</a>
+            <h2 class="welcome-title welcome-link" id="contact_anchor">{{'MENU_CONTACT' | translate}}</h2>
         </div>
 
         <div class="boxElement">
@@ -51,7 +57,7 @@
     <!-- Tournament -->
     <div class="snippet-block">
         <div style="width: 100%; border-bottom: 1px solid black">
-            <a href="#/tournament" class="welcome-title welcome-link">{{'MENU_TOURNAMENT' | translate}}</a>
+            <h2 class="welcome-title welcome-link" id="tournament_anchor">{{'MENU_TOURNAMENT' | translate}}</h2>
         </div>
 
         <div class="boxElement">

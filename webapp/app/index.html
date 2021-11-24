@@ -13,8 +13,6 @@
 
     <!-- build:css vendor.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/angular-aside/dist/css/angular-aside.css">
-    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
     <!-- endbuild -->
 
     <!-- build:css app.css -->
@@ -30,8 +28,7 @@
 </head>
 <body ng-app="tcbernApp" ng-controller="MainCtrl as vm">
 <div class="header">
-    <input type="image" src="images/menu-icon.png" ng-click="vm.openAside()" alt="Menu" class="btn-menu" />
-    <a href="#/welcome"><img src="images/logo.png" class="logo" /></a>
+    <a style="margin-left: 15px" href="#/welcome"><img src="images/logo.png" class="logo" /></a>
 </div>
 
 <div ui-view style="height: 300px; padding-top: 45px" class="div-state" ng-cloak>
@@ -47,17 +44,11 @@
 <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="bower_components/angular-aside/dist/js/angular-aside.min.js"></script>
 <script src="bower_components/angular-translate/angular-translate.min.js"></script>
 <script src="bower_components/marked/marked.min.js"></script>
 <script src="bower_components/angular-marked/dist/angular-marked.min.js"></script>
 <script src="bower_components/lodash/lodash.min.js"></script>
 <script src="bower_components/restangular/dist/restangular.min.js"></script>
-<script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
-<script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src='bower_components/fullcalendar/dist/locale/de.js'></script>
-<script src="bower_components/fullcalendar/dist/gcal.js"></script>
-<script src="bower_components/blueimp-md5/js/md5.min.js"></script>
 <!-- endbuild -->
 
 <!-- build:js app.js -->
