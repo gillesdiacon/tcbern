@@ -40,13 +40,6 @@
             });
         };
 
-        service.isInAnyGroup = function isInAnyGroup(groups) {
-            if (groups === undefined) {
-                return true;
-            }
-            return service.group.map(e => e.key).filter(k => groups.includes(k)).length !== 0;
-        }
-
         return service;
     }
 })();

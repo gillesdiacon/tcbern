@@ -5,10 +5,10 @@
     tcbernControllers.component('appTournament', {
         templateUrl: 'components/tournament/tournament.html',
         controllerAs: 'vm',
-        controller: ['$authentication', '$loadedcontent', TournamentController]
+        controller: [TournamentController]
     });
 
-    function TournamentController($authentication, $loadedcontent) {
+    function TournamentController() {
         var vm = this;
         vm.tournamentKey = 'TOURNAMENT';
     }

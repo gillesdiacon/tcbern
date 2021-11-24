@@ -4,16 +4,8 @@
     var tcbernControllers = angular.module('tcbernControllers');
     tcbernControllers.controller('MainCtrl', ['$scope', '$aside', '$state', 'Restangular', '$authentication', MainController]);
 
-    function MainController($scope, $aside, $state, Restangular, $authentication) {
+    function MainController($scope, $aside, $state, Restangular) {
         Restangular.setBaseUrl('../../backend/v2/public/api');
-        Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers) {
-            if ($authentication.token !== null) {
-                headers.Token = $authentication.token;
-                return { 'headers': headers };
-            } else {
-                return {};
-            }
-        });
 
         var vm = this;
         vm.asideState = {
@@ -38,22 +30,14 @@
                 size: 'sm',
                 animation: true,
                 controllerAs: 'vm',
-                controller: ['$uibModalInstance', '$authentication', function($uibModalInstance, $authentication) {
+                controller: ['$uibModalInstance', function($uibModalInstance) {
                     parentVm.asideState.$uibModalInstance = $uibModalInstance;
                     var vm = this;
                     vm.menuElementList = [
-                        {'route': 'training', 'html': 'MENU_TRAINING', 'requiresAuthentication': false},
-                        {'route': 'tournament', 'html': 'MENU_TOURNAMENT', 'requiresAuthentication': false},
-                        {'route': 'contact', 'html': 'MENU_CONTACT', 'requiresAuthentication': false},
+                        {'route': 'training', 'html': 'MENU_TRAINING'},
+                        {'route': 'tournament', 'html': 'MENU_TOURNAMENT'},
+                        {'route': 'contact', 'html': 'MENU_CONTACT'},
                     ];
-
-                    vm.checkAuthorization = function(value) {
-                        if ($authentication.isAuthenticated) {
-                            return true;
-                        } else {
-                            return value.requiresAuthentication === false;
-                        }
-                    };
 
                     vm.go = function(e, element) {
                         $uibModalInstance.dismiss();

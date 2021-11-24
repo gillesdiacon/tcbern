@@ -3,7 +3,7 @@
     <div class="header-title">TcBern</div>
   </div>
   <ul class="menu-element-list">
-    <li ng-repeat="menuElement in vm.menuElementList | filter:vm.checkAuthorization" ng-click="vm.go($event, menuElement)" class="menu-element no-bullet-list">
+    <li ng-repeat="menuElement in vm.menuElementList" ng-click="vm.go($event, menuElement)" class="menu-element no-bullet-list">
       {{menuElement.html | translate}}
     </li>
   </ul>
