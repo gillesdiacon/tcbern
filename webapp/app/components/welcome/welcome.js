@@ -15,10 +15,6 @@
         vm.halleBernmobilKey = 'TRAINING_HALLE_NEUFELD';
         vm.groups = ['admin'];
         vm.infoPreview = [];
-        var preview = Restangular.all('infopreview');
-        preview.getList().then(function(infoPreview) {
-            vm.infoPreview = infoPreview;
-        });
 
         vm.gotoInfo = function(id) {
             $state.go('infos_detail', { 'id': id });
