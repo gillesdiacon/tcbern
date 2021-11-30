@@ -91,78 +91,7 @@ $app->get(
             return $response->withStatus(404);
         }
     }
-)->add($verificationMw)->add($headerMw);;
-
-//$app->post(
-//    '/api/{entity}',
-//    function (Request $request, Response $response, $args) {
-//        global $authorizedEntities;
-//
-//        $body = $request->getBody();
-//        $input = json_decode($body);
-//        $entity = $args['entity'];
-//
-//        $object = new $authorizedEntities[$entity]();
-//        foreach($input as $key => $value) {
-//            $object->$key = (string)$value;
-//        }
-//        $object->save();
-//
-//        $response->getBody()->write($object->toJson());
-//        return $response;
-//    }
-//)->add($verificationMw)->add($headerMw);;
-//
-//$app->put(
-//    '/api/{entity}/{id}',
-//    function (Request $request, Response $response, $args) {
-//        global $authorizedEntities;
-//
-//        $entity = $args['entity'];
-//        $id = $args['id'];
-//
-//        $body = $request->getBody();
-//        $input = json_decode($body);
-//
-//        $object = $authorizedEntities[$entity]::find($id);
-//
-//        // store modified article
-//        if ($object) {
-//            foreach($input as $key => $value) {
-//                if (!in_array($key, array('id', 'updated_at', 'created_at'))) {
-//                    $object->$key = (string)$value;
-//                }
-//            }
-//            $object->updated_at = time();
-//            $object->save();
-//
-//            $newObject = $authorizedEntities[$entity]::find($id);
-//            $response->getBody()->write($newObject->toJson());
-//            return $response->withStatus(200);
-//        } else {
-//            return $response->withStatus(404);
-//        }
-//    }
-//)->add($verificationMw)->add($headerMw);;
-//
-//$app->delete(
-//    '/api/{entity}/{id}',
-//    function (Request $request, Response $response, $args) {
-//        global $authorizedEntities;
-//
-//        $entity = $args['entity'];
-//        $id = $args['id'];
-//
-//        $object = $authorizedEntities[$entity]::find($id);
-//
-//        if ($object) {
-//            $object->delete();
-//            return $response->withStatus(200);
-//        } else {
-//            return $response->withStatus(404);
-//        }
-//    }
-//)->add($verificationMw)->add($headerMw);
+)->add($verificationMw)->add($headerMw);
 
 $app->run();
 
