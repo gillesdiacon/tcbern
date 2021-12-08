@@ -5,6 +5,6 @@
     tcbernControllers.controller('MainCtrl', ['$scope', 'Restangular', MainController]);
 
     function MainController($scope, Restangular) {
-        Restangular.setBaseUrl('../../backend/v2/public/api');
+        Restangular.setBaseUrl('../../backend/v3/public/api');
     }
 })();
