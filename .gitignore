@@ -8,3 +8,6 @@ webapp/node_modules
 /backend/**/.git
 /webapp/package-lock.json
 vendor
+node_modules
+.vscode
+.angular
