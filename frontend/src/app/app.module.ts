@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { provideHttpClient } from "@angular/common/http";
 import { MarkdownModule } from "ngx-markdown";
-import { NgHttpCachingModule } from 'ng-http-caching';
+import { provideNgHttpCaching } from 'ng-http-caching';
 import { SectionComponent } from './section/section.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -20,10 +20,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    MarkdownModule.forRoot(),
-    NgHttpCachingModule.forRoot()
+    MarkdownModule.forRoot()
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), provideNgHttpCaching()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
