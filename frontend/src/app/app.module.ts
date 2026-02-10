@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient } from "@angular/common/http";
 import { MarkdownModule } from "ngx-markdown";
-import { NgHttpCachingModule } from 'ng-http-caching';
+import { provideNgHttpCaching } from 'ng-http-caching';
 import { SectionComponent } from './section/section.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -20,11 +20,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule,
-    MarkdownModule.forRoot(),
-    NgHttpCachingModule.forRoot()
+    MarkdownModule.forRoot()
   ],
-  providers: [],
+  providers: [provideHttpClient(), provideNgHttpCaching()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
